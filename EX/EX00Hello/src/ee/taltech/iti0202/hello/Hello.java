@@ -13,7 +13,7 @@ public class Hello {
      * @return Greeting
      */
     public static String getGreeting(String name) {
-        String free = " ";
+        String free = "";
         if (name.equals(free)) {
             return "Hello"; }
         else {
@@ -25,6 +25,6 @@ public class Hello {
      * @param args Arguments from command line
      */
     public static void main(String[] args) {
-        System.out.println(getGreeting("Java"));
+        System.out.println(getGreeting(""));
     }
 }
