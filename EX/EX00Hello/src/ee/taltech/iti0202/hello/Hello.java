@@ -13,7 +13,13 @@ public class Hello {
      * @return Greeting
      */
     public static String getGreeting(String name) {
-        return null;
+        String free = " ";
+        if (name.equals(free)){
+            return "Hello";
+        }
+        else {
+            return "Hello, " + name;
+        }
     }
 
     /**
