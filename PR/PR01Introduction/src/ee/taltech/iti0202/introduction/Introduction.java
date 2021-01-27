@@ -37,7 +37,13 @@ public class Introduction {
      * @return list of even numbers.
      */
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
-        return null;
+        List<Integer> res = new ArrayList<>();
+        for (int i = 0; i < numbers.size(); i ++) {
+            if (numbers.get(i) % 2 ==0) {
+                res.add(numbers.get(i));
+            }
+        }
+        return res;
     }
 
     /**
