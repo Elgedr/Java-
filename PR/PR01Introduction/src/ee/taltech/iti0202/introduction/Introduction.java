@@ -38,11 +38,16 @@ public class Introduction {
      */
     public List<Integer> findEvenNumbersList(List<Integer> numbers) {
         List<Integer> res = new ArrayList<>();
-        for (int i = 0; i < numbers.size(); i ++) {
-            if (numbers.get(i) % 2 ==0) {
-                res.add(numbers.get(i));
+        /*for number in numbers*/
+        for (Integer number : numbers) {
+            if (number % 2 == 0) {
+                res.add(number);
             }
         }
+        /*for (int i = 0; i < numbers.size(); i ++) {
+            if (numbers.get(i) % 2 ==0) {
+                res.add(numbers.get(i));
+            } */
         return res;
     }
 
@@ -57,7 +62,19 @@ public class Introduction {
      * @return array of even numbers.
      */
     public int[] findEvenNumbersArray(int[] numbers) {
-        return null;
+        List<Integer> res = new ArrayList<>();
+        for (Integer element : numbers) {
+            if (element % 2 == 0) {
+               res.add(element);
+            }
+        }
+        int[] resultArray = new int[res.size()];
+        int counter = 0;
+        for (Integer elementt : res){
+            resultArray[counter] = elementt;
+            counter += 1;
+        }
+        return resultArray;
     }
 
     /**
