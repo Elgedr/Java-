@@ -19,9 +19,9 @@ public class Introduction {
      * @return String based on the values of valueOne and valueTwo
      */
     public String howIsOutcome(int valueOne, int valueTwo) {
-        if ((valueOne < 5) || (valueTwo < 5)){
+        if ((valueOne < 5) || (valueTwo < 5)) {
             return "bad";
-        } else if (((valueOne * 2) == valueTwo) || ((valueTwo * 2) == valueOne)){
+        } else if (((valueOne * 2) == valueTwo) || ((valueTwo * 2) == valueOne)) {
             return "good";
         } else {
             return "ok";
