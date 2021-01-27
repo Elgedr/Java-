@@ -17,7 +17,7 @@ public class Hello {
         if (name.equals(free)) {
             return "Hello"; }
         else {
-            return "Hello, " + name; }
+            return "Hello, " + name + "!"; }
     }
 
     /**
