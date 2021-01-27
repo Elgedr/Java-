@@ -70,7 +70,7 @@ public class Introduction {
         }
         int[] resultArray = new int[res.size()];
         int counter = 0;
-        for (Integer elementt : res){
+        for (Integer elementt : res) {
             resultArray[counter] = elementt;
             counter += 1;
         }
