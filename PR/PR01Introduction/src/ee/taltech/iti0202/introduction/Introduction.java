@@ -92,3 +92,5 @@ public class Introduction {
         System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
     }
 }
+/*ddd*/
+
