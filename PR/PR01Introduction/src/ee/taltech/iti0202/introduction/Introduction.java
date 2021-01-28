@@ -77,10 +77,6 @@ public class Introduction {
         return resultArray;
     }
 
-    /**
-     * Run tests.
-     * @param args info.
-     */
     public static void main(String[] args) {
         Introduction introduction = new Introduction();
         System.out.println(introduction.howIsOutcome(6, 12)); // "bad"
@@ -92,5 +88,4 @@ public class Introduction {
         System.out.println(Arrays.toString(introduction.findEvenNumbersArray(array))); // [0, 24, -6]
     }
 }
-/*ddd*/
 
