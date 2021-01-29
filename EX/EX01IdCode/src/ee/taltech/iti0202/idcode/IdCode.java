@@ -1,5 +1,5 @@
-
 package ee.taltech.iti0202.idcode;
+import java.util.regex.*;
 
 public class IdCode {
 
@@ -17,7 +17,9 @@ public class IdCode {
         return idCodeValue;
     }
 
-    /**Give a value to a konstant variable.*/
+    /**
+     * Give a value to a konstant variable.
+     */
     public IdCode(String idCodeValue) {
         this.idCodeValue = idCodeValue;
     }
@@ -28,8 +30,7 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        if (isGenderNumberCorrect() && isYearNumberCorrect() && isMonthNumberCorrect() && isDayNumberCorrect()
-                && isControlNumberCorrect()) {
+        if (getIdCodeValue().length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect() && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
             return true;
         } else {
             throw new IllegalArgumentException();
@@ -42,7 +43,7 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return null;
+        return "This is a " + this.getGender() + " born on " +  "in " + this.getBirthPlace();
     }
 
     /**
@@ -51,7 +52,18 @@ public class IdCode {
      * @return enum describing person's gender
      */
     public Gender getGender() {
-        return null;
+        char a = idCodeValue.charAt(0);
+        char first = '1';
+        char second = '3';
+        char third = '5';
+        int compareToFirst = Character.compare(a, first);
+        int compareToSecond = Character.compare(a, second);
+        int compareToThird = Character.compare(a, third);
+        if (compareToFirst == 0 || compareToSecond == 0 || compareToThird == 0){
+            return Gender.MALE;
+        } else {
+            return Gender.FEMALE;
+        }
     }
 
     /**
@@ -60,6 +72,8 @@ public class IdCode {
      * @return String with the person's birth place.
      */
     public String getBirthPlace() {
+        String place = null;
+        int code = Integer.parseInt(removeLeadingZeros(idCodeValue).substring(8, 11));
         return null;
     }
 
@@ -78,7 +92,7 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        return false;
+        return true;
     }
 
     /**
@@ -87,7 +101,7 @@ public class IdCode {
      * @return boolean describing whether the year number is correct.
      */
     private boolean isYearNumberCorrect() {
-        return false;
+        return true;
     }
 
     /**
@@ -95,8 +109,12 @@ public class IdCode {
      *
      * @return boolean describing whether the month number is correct.
      */
-    private boolean isMonthNumberCorrect() {
-        return false;
+    private Boolean isMonthNumberCorrect() {
+        int month = Integer.parseInt(removeLeadingZeros(idCodeValue).substring(3, 5));
+        if (month > 12) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -129,11 +147,19 @@ public class IdCode {
 
     /**
      * Run tests.
-     * @param args info.
+     * @param
      */
+
+    public String removeLeadingZeros(String str){
+        String regex = "^0+(?!$)";
+        str = str.replaceAll(regex, "");
+        return str;
+    }
+
+
     public static void main(String[] args) {
         IdCode validMaleIdCode = new IdCode("37605030299");
-        System.out.println(validMaleIdCode.isCorrect());
+//        System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
         System.out.println(validMaleIdCode.getBirthPlace());
