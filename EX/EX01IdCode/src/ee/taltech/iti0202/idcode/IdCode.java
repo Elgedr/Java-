@@ -145,11 +145,8 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        int genderCode = idCodeValue.charAt(0);
-        if (genderCode > 6) {
-            return false;
-        }
-        return true;
+        int genderCode = Integer.parseInt(idCodeValue.substring(0,1)); /*достаем из стринги несколько элементов и переводим их в число*/
+        return genderCode <= 6;
     }
 
     /**
@@ -168,10 +165,7 @@ public class IdCode {
      */
     private Boolean isMonthNumberCorrect() {
         int month = Integer.parseInt(removeLeadingZeros(idCodeValue).substring(3, 5));
-        if (month > 12) {
-            return false;
-        }
-        return true;
+        return month <= 12;
     }
 
     /**
@@ -189,16 +183,17 @@ public class IdCode {
      * @return boolean describing whether the control number is correct.
      */
     private boolean isControlNumberCorrect() {
-        int kontrolNumber = idCodeValue.charAt(10);
+        int kontrolNumber = Integer.parseInt(idCodeValue.substring(10)) ;
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
-            int numberOfId = idCodeValue.charAt(i);
-            numbers.add(numberOfId);
+            char numberOfIdChar = idCodeValue.charAt(i);
+            int numberOfChar = Character.getNumericValue(numberOfIdChar);
+            numbers.add(numberOfChar);
         }
         int sum1 = (numbers.get(0) + numbers.get(1) * 2 + numbers.get(2) * 3 + numbers.get(3) * 4 + numbers.get(4) * 5
                 + numbers.get(5) * 6 + numbers.get(6) * 7 + numbers.get(7) * 8 + numbers.get(8) * 9 + numbers.get(9)) % 11;
         int sum2 = (numbers.get(0) * 3 + numbers.get(1) * 4 + numbers.get(2) * 5 + numbers.get(3) * 6 + numbers.get(4) * 7
-                + numbers.get(5) * 8 + numbers.get(6) * 9 + numbers.get(7) + numbers.get(8) * 2 + numbers.get(9)) % 11;
+                + numbers.get(5) * 8 + numbers.get(6) * 9 + numbers.get(7) + numbers.get(8) * 2 + numbers.get(9) * 3) % 11;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
