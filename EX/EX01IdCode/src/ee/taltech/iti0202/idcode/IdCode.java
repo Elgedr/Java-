@@ -17,7 +17,7 @@ public class IdCode {
         return idCodeValue;
     }
 
-    /**.*/
+    /**Give a value to a konstant variable.*/
     public IdCode(String idCodeValue) {
         this.idCodeValue = idCodeValue;
     }
