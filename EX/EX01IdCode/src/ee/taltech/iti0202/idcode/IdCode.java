@@ -83,7 +83,7 @@ public class IdCode {
             return "Tartu";
         } else if (code >= 21 && code <= 220) {
             return "Tallinn";
-        } else if (code >= 221 && code <= 270){
+        } else if (code >= 221 && code <= 270) {
             return "Kohtla-Järve";
         } else if (code >= 271 && code <= 370) {
             return "Tartu";
@@ -116,7 +116,7 @@ public class IdCode {
         String res = "sss";
         int year = idCodeValue.charAt(0);
         String yearCodeFromId = removeLeadingZeros(idCodeValue).substring(1, 3);
-        switch (year){
+        switch (year) {
             case 1:
             case 2:
                 res = "18" + yearCodeFromId;
@@ -132,9 +132,10 @@ public class IdCode {
                 res = "20" + yearCodeFromId;
                 System.out.println(res);
                 break;
+            default:
+                break;
         }
-        return 0;
-//        return Integer.parseInt(res);
+        return Integer.parseInt(res);
     }
 
     /**
@@ -198,7 +199,7 @@ public class IdCode {
         int sum2 = (numbers.get(0) * 3 + numbers.get(1) * 4 + numbers.get(2) * 5 + numbers.get(3) * 6 + numbers.get(4) * 7 +
                 numbers.get(5) * 8 + numbers.get(6) * 9 + numbers.get(7)+ numbers.get(8) * 2 + numbers.get(9)) % 11;
         if (sum1 == 10){
-            if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2){
+            if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
             }
         } else if (sum1 == kontrolNumber){
@@ -236,7 +237,7 @@ public class IdCode {
      * @param str
      * @return str
      */
-    public String removeLeadingZeros(String str){
+    public String removeLeadingZeros(String str) {
         String regex = "^0+(?!$)";
         str = str.replaceAll(regex, "");
         return str;
