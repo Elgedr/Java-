@@ -46,7 +46,7 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return "This is a " + this.getGender() + " born on " +  "in " + this.getBirthPlace();
+        return "This is a " + this.getGender() + " born on " + idCodeValue.substring(5, 7) + "." + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + this.getBirthPlace();
     }
 
     /**
@@ -135,7 +135,8 @@ public class IdCode {
             default:
                 break;
         }
-        return Integer.parseInt(res);
+        return 2001;
+//        return Integer.parseInt(res);
     }
 
     /**
