@@ -78,7 +78,7 @@ public class IdCode {
         String place = null;
         int code = Integer.parseInt(removeLeadingZeros(idCodeValue).substring(7, 10));
         if (code >= 1 && code <= 10) {
-            return "Kuressare";
+            return "Kuressaare";
         } else if (code >= 11 && code <= 20) {
             return "Tartu";
         } else if (code >= 21 && code <= 220) {
