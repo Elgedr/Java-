@@ -46,7 +46,8 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return "This is a " + this.getGender() + " born on " + idCodeValue.substring(5, 7) + "." + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + this.getBirthPlace();
+        return "This is a " + this.getGender() + " born on " + idCodeValue.substring(5, 7) + "."
+                + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + this.getBirthPlace();
     }
 
     /**
