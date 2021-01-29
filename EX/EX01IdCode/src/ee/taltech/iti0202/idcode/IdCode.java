@@ -17,6 +17,7 @@ public class IdCode {
         return idCodeValue;
     }
 
+    /**.*/
     public IdCode(String idCodeValue) {
         this.idCodeValue = idCodeValue;
     }
