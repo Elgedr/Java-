@@ -21,6 +21,7 @@ public class IdCode {
 
     /**
      * Give a value to a konstant variable.
+     * @param idCodeValue
      */
     public IdCode(String idCodeValue) {
         this.idCodeValue = idCodeValue;
@@ -61,7 +62,7 @@ public class IdCode {
         int compareToFirst = Character.compare(a, first);
         int compareToSecond = Character.compare(a, second);
         int compareToThird = Character.compare(a, third);
-        if (compareToFirst == 0 || compareToSecond == 0 || compareToThird == 0){
+        if (compareToFirst == 0 || compareToSecond == 0 || compareToThird == 0) {
             return Gender.MALE;
         } else {
             return Gender.FEMALE;
@@ -84,23 +85,23 @@ public class IdCode {
             return "Tallinn";
         } else if (code >= 221 && code <= 270){
             return "Kohtla-Järve";
-        } else if (code >= 271 && code <= 370){
+        } else if (code >= 271 && code <= 370) {
             return "Tartu";
-        } else if (code >= 371 && code <= 420){
+        } else if (code >= 371 && code <= 420) {
             return "Narva";
-        } else if (code >= 421 && code <= 470){
+        } else if (code >= 421 && code <= 470) {
             return "Pärnu";
-        } else if (code >= 471 && code <= 490){
+        } else if (code >= 471 && code <= 490) {
             return "Tallinn";
-        } else if (code >= 491 && code <= 520){
+        } else if (code >= 491 && code <= 520) {
             return "Paide";
-        }else if (code >= 521 && code <= 570){
+        }else if (code >= 521 && code <= 570) {
             return "Rakvere";
-        }else if (code >= 571 && code <= 600){
+        }else if (code >= 571 && code <= 600) {
             return "Valga";
-        } else if (code >= 601 && code <= 650){
+        } else if (code >= 601 && code <= 650) {
             return "Viljandi";
-        } else if (code >= 651 && code <= 710){
+        } else if (code >= 651 && code <= 710) {
             return "Võru";
         }
         return "unknown";
