@@ -9,6 +9,7 @@ public class IdCode {
         MALE, FEMALE
     }
 
+
     /**
      * Method returns the id code.
      *
@@ -23,6 +24,7 @@ public class IdCode {
      * @param idCodeValue an id code as a string
      */
     public IdCode(String idCodeValue) {
+
         this.idCodeValue = idCodeValue;
     }
 
@@ -76,7 +78,6 @@ public class IdCode {
      * @return String with the person's birth place.
      */
     public String getBirthPlace() {
-        String place = null;
         int code = Integer.parseInt(idCodeValue.substring(7, 10));
         if (code >= 1 && code <= 10) {
             return "Kuressaare";
@@ -114,26 +115,37 @@ public class IdCode {
      * @return int with person's birth year.
      */
     public Integer getFullYear() {
-        String res = "sss";
-        int year = Integer.parseInt(idCodeValue.substring(0, 1));
-        String yearCodeFromId = idCodeValue.substring(1, 3);
-        switch (year) {
-            case 1:
-            case 2:
-                res = "18" + yearCodeFromId;
-                break;
-            case 3:
-            case 4:
-                res = "19" + yearCodeFromId;
-                break;
-            case 5:
-            case 6:
-                res = "20" + yearCodeFromId;
-                break;
-            default:
-                break;
+        String res = "";
+        String lastTwo = idCodeValue.substring(1, 3);
+        int firstInt = Integer.parseInt(idCodeValue.substring(0, 1));
+        if (firstInt == 1 || firstInt == 2){
+            res = "18" + lastTwo;
+        } else if (firstInt == 3 || firstInt == 4){
+            res = "19" + lastTwo;
+        } else if (firstInt == 5 || firstInt == 6){
+            res = "20" + lastTwo;
         }
         return Integer.parseInt(res);
+//        String res = "sss";
+//        int year = Integer.parseInt(idCodeValue.substring(0, 1));
+//        String yearCodeFromId = idCodeValue.substring(1, 3);
+//        switch (year) {
+//            case 1:
+//            case 2:
+//                res = "18" + yearCodeFromId;
+//                break;
+//            case 3:
+//            case 4:
+//                res = "19" + yearCodeFromId;
+//                break;
+//            case 5:
+//            case 6:
+//                res = "20" + yearCodeFromId;
+//                break;
+//            default:
+//                break;
+//        }
+//        return Integer.parseInt(res);
     }
 
     /**
@@ -161,7 +173,8 @@ public class IdCode {
      * @return boolean describing whether the month number is correct.
      */
     private Boolean isMonthNumberCorrect() {
-        int month = Integer.parseInt(removeLeadingZeros(idCodeValue).substring(3, 5));
+        int month = Integer.parseInt(idCodeValue.substring(3, 5));
+        System.out.println(month);
         return month <= 12;
     }
 
@@ -171,7 +184,7 @@ public class IdCode {
      * @return boolean describing whether the day number is correct.
      */
     private boolean isDayNumberCorrect() {
-        int month = Integer.parseInt(idCodeValue.substring(3, 5));
+        int month = Integer.parseInt(idCodeValue.substring(3, 5)); //если в str 01, то в int будет 1
         int day = Integer.parseInt(idCodeValue.substring(5, 7));
         List<Integer> bigMonth = new ArrayList<>();
         List<Integer> smallMonth = new ArrayList<>();
@@ -247,16 +260,16 @@ public class IdCode {
         return res;
     }
 
-    /**
-     *
-     * @param str String
-     * @return str
-     */
-    public String removeLeadingZeros(String str) {
-        String regex = "^0+(?!$)";
-        str = str.replaceAll(regex, "");
-        return str;
-    }
+//    /**
+//     *
+//     * @param str String
+//     * @return str
+//     */
+//    public String removeLeadingZeros(String str) {
+//        String regex = "^0+(?!$)";
+//        str = str.replaceAll(regex, "");
+//        return str;
+//    }
 
     /**
      * Run tests.
