@@ -171,7 +171,31 @@ public class IdCode {
      * @return boolean describing whether the day number is correct.
      */
     private boolean isDayNumberCorrect() {
-        return true;
+        int month = Integer.parseInt(idCodeValue.substring(3,5));
+        int day = Integer.parseInt(idCodeValue.substring(5, 7));
+        List<Integer> bigMonth = new ArrayList<>();
+        List<Integer> smallMonth = new ArrayList<>();
+        smallMonth.add(4);
+        smallMonth.add(6);
+        smallMonth.add(9);
+        smallMonth.add(11);
+        bigMonth.add(1);
+        bigMonth.add(3);
+        bigMonth.add(5);
+        bigMonth.add(7);
+        bigMonth.add(8);
+        bigMonth.add(10);
+        bigMonth.add(12);
+        if (month == 2 && isLeapYear(getFullYear()) && day <= 29){
+            return true;
+        } else if (month == 2 && !isLeapYear(getFullYear()) && day <= 28){
+            return true;
+        } else if (bigMonth.contains(month) && day <= 31){
+            return true;
+        } else if (smallMonth.contains(month) && day<= 30){
+            return true;
+        }
+        return false;
     }
 
     /**
