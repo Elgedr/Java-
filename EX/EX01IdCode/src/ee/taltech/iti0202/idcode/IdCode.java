@@ -33,7 +33,8 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        if (getIdCodeValue().length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect() && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
+        if (getIdCodeValue().length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
+                && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
             return true;
         } else {
             throw new IllegalArgumentException();
@@ -46,8 +47,8 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return "This is a " + this.getGender() + " born on " + idCodeValue.substring(5, 7) + "."
-                + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + this.getBirthPlace();
+        return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "."
+                + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + getBirthPlace();
     }
 
     /**
@@ -115,29 +116,25 @@ public class IdCode {
      */
     public Integer getFullYear() {
         String res = "sss";
-        int year = idCodeValue.charAt(0);
-        String yearCodeFromId = removeLeadingZeros(idCodeValue).substring(1, 3);
+        int year = Integer.parseInt(idCodeValue.substring(0,1));
+        String yearCodeFromId = idCodeValue.substring(1, 3);
         switch (year) {
             case 1:
             case 2:
                 res = "18" + yearCodeFromId;
-                System.out.println(res);
                 break;
             case 3:
             case 4:
                 res = "19" + yearCodeFromId;
-                System.out.println(res);
                 break;
             case 5:
             case 6:
                 res = "20" + yearCodeFromId;
-                System.out.println(res);
                 break;
             default:
                 break;
         }
-        return 2001;
-//        return Integer.parseInt(res);
+        return Integer.parseInt(res);
     }
 
     /**
