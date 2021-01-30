@@ -142,7 +142,7 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        int genderCode = Integer.parseInt(idCodeValue.substring(0,1)); /*достаем из str несколько элементов и переводим их в int*/
+        int genderCode = Integer.parseInt(idCodeValue.substring(0,1)); //достаем из str несколько элементов и переводим их в int//
         return genderCode <= 6;
     }
 
