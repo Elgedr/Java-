@@ -20,7 +20,7 @@ public class IdCode {
 
     /**
      * Give a value to a konstant variable.
-     * @param idCodeValue
+     * @param idCodeValue an id code as a string
      */
     public IdCode(String idCodeValue) {
         this.idCodeValue = idCodeValue;
