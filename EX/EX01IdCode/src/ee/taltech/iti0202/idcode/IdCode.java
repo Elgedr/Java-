@@ -142,7 +142,7 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        int genderCode = Integer.parseInt(idCodeValue.substring(0,1)); //достаем из str несколько элементов и переводим их в int//
+        int genderCode = Integer.parseInt(idCodeValue.substring(0, 1)); //достаем из str несколько элементов и переводим их в int//
         return genderCode <= 6;
     }
 
@@ -171,7 +171,7 @@ public class IdCode {
      * @return boolean describing whether the day number is correct.
      */
     private boolean isDayNumberCorrect() {
-        int month = Integer.parseInt(idCodeValue.substring(3,5));
+        int month = Integer.parseInt(idCodeValue.substring(3, 5));
         int day = Integer.parseInt(idCodeValue.substring(5, 7));
         List<Integer> bigMonth = new ArrayList<>();
         List<Integer> smallMonth = new ArrayList<>();
@@ -186,13 +186,13 @@ public class IdCode {
         bigMonth.add(8);
         bigMonth.add(10);
         bigMonth.add(12);
-        if (month == 2 && isLeapYear(getFullYear()) && day <= 29){
+        if (month == 2 && isLeapYear(getFullYear()) && day <= 29) {
             return true;
-        } else if (month == 2 && !isLeapYear(getFullYear()) && day <= 28){
+        } else if (month == 2 && !isLeapYear(getFullYear()) && day <= 28) {
             return true;
-        } else if (bigMonth.contains(month) && day <= 31){
+        } else if (bigMonth.contains(month) && day <= 31) {
             return true;
-        } else if (smallMonth.contains(month) && day<= 30){
+        } else if (smallMonth.contains(month) && day <= 30) {
             return true;
         }
         return false;
