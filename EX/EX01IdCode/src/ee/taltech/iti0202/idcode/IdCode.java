@@ -7,10 +7,10 @@ public class IdCode {
     public static final int SEVEN = 7;
     public static final int TWELWE = 20;
     public static final int FOURHUNDRED = 400;
-    public static final int NINE = 9;
     public static final int EIGHT = 8;
     public static final int SIX = 6;
     public static final int ELEVEN = 11;
+    public static final int NINE = 9;
     private final String idCodeValue;
     enum Gender {
         MALE, FEMALE
@@ -232,8 +232,8 @@ public class IdCode {
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX + n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * 9 + n.get(9)) % ELEVEN;
-        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT + n.get(SIX) * 9 + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(9) * 3) % ELEVEN;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX + n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * IdCode.NINE + n.get(IdCode.NINE)) % ELEVEN;
+        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT + n.get(SIX) * IdCode.NINE + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(IdCode.NINE) * 3) % ELEVEN;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
