@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.idcode;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.*;
 
 public class IdCode {
 
@@ -78,7 +77,7 @@ public class IdCode {
      */
     public String getBirthPlace() {
         String place = null;
-        int code = Integer.parseInt(removeLeadingZeros(idCodeValue).substring(7, 10));
+        int code = Integer.parseInt(idCodeValue.substring(7, 10));
         if (code >= 1 && code <= 10) {
             return "Kuressaare";
         } else if (code >= 11 && code <= 20) {
