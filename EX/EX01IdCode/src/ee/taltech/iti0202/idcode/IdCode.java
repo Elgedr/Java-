@@ -8,6 +8,10 @@ public class IdCode {
     enum Gender {
         MALE, FEMALE
     }
+    final int THREE = 3;
+    final int ELEVEN = 11;
+    final int ZERO = 0;
+    final int SIX = 6;
 
 
     /**
@@ -65,7 +69,7 @@ public class IdCode {
         int compareToFirst = Character.compare(a, first);
         int compareToSecond = Character.compare(a, second);
         int compareToThird = Character.compare(a, third);
-        if (compareToFirst == 0 || compareToSecond == 0 || compareToThird == 0) {
+        if (compareToFirst == ZERO || compareToSecond == ZERO || compareToThird == ZERO) {
             return Gender.MALE;
         } else {
             return Gender.FEMALE;
