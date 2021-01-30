@@ -34,6 +34,9 @@ public class IdCode {
     public IdCode(String idCodeValue) {
 
         this.idCodeValue = idCodeValue;
+        if (!this.isCorrect()) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
@@ -45,9 +48,8 @@ public class IdCode {
         if (getIdCodeValue().length() == ELEVEN && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
             return true;
-        } else {
-            throw new IllegalArgumentException();
         }
+        return false;
     }
 
     /**
@@ -162,7 +164,8 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        int genderCode = Integer.parseInt(idCodeValue.substring(0, 1)); //достаем из str несколько элементов и переводим их в int//
+        int genderCode = Integer.parseInt(idCodeValue.substring(0, 1)); //достаем из str несколько элементов и
+        // переводим их в int//
         return genderCode <= SIX;
     }
 
@@ -232,8 +235,10 @@ public class IdCode {
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX + n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * IdCode.NINE + n.get(IdCode.NINE)) % ELEVEN;
-        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT + n.get(SIX) * IdCode.NINE + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(IdCode.NINE) * 3) % ELEVEN;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX +
+                n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * IdCode.NINE + n.get(IdCode.NINE)) % ELEVEN;
+        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT
+                + n.get(SIX) * IdCode.NINE + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(IdCode.NINE) * 3) % ELEVEN;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
