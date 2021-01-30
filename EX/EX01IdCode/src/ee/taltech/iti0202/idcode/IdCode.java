@@ -4,11 +4,13 @@ import java.util.List;
 
 public class IdCode {
 
-    public static final int Eleven = 11;
-    public static final int ELEVEN = Eleven;
     public static final int SEVEN = 7;
     public static final int TWELWE = 20;
     public static final int FOURHUNDRED = 400;
+    public static final int NINE = 9;
+    public static final int EIGHT = 8;
+    public static final int SIX = 6;
+    public static final int ELEVEN = 11;
     private final String idCodeValue;
     enum Gender {
         MALE, FEMALE
@@ -40,7 +42,7 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        if (getIdCodeValue().length() == Eleven && isGenderNumberCorrect() && isYearNumberCorrect()
+        if (getIdCodeValue().length() == ELEVEN && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
             return true;
         } else {
@@ -128,7 +130,7 @@ public class IdCode {
             res = "18" + lastTwo;
         } else if (firstInt == 3 || firstInt == 4) {
             res = "19" + lastTwo;
-        } else if (firstInt == 5 || firstInt == 6) {
+        } else if (firstInt == 5 || firstInt == SIX) {
             res = "20" + lastTwo;
         }
         return Integer.parseInt(res);
@@ -161,7 +163,7 @@ public class IdCode {
      */
     private boolean isGenderNumberCorrect() {
         int genderCode = Integer.parseInt(idCodeValue.substring(0, 1)); //достаем из str несколько элементов и переводим их в int//
-        return genderCode <= 6;
+        return genderCode <= SIX;
     }
 
     /**
@@ -195,14 +197,14 @@ public class IdCode {
         List<Integer> bigMonth = new ArrayList<>();
         List<Integer> smallMonth = new ArrayList<>();
         smallMonth.add(4);
-        smallMonth.add(6);
-        smallMonth.add(9);
-        smallMonth.add(Eleven);
+        smallMonth.add(SIX);
+        smallMonth.add(NINE);
+        smallMonth.add(ELEVEN);
         bigMonth.add(1);
         bigMonth.add(3);
         bigMonth.add(5);
         bigMonth.add(SEVEN);
-        bigMonth.add(8);
+        bigMonth.add(EIGHT);
         bigMonth.add(10);
         bigMonth.add(12);
         if (month == 2 && isLeapYear(getFullYear()) && day <= 29) {
@@ -225,13 +227,13 @@ public class IdCode {
     private boolean isControlNumberCorrect() {
         int kontrolNumber = Integer.parseInt(idCodeValue.substring(10));
         List<Integer> n = new ArrayList<>();
-        for (int i = 0; i < Eleven; i++) {
+        for (int i = 0; i < ELEVEN; i++) {
             char numberOfIdChar = idCodeValue.charAt(i);
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * 6 + n.get(6) * SEVEN + n.get(SEVEN) * 8 + n.get(8) * 9 + n.get(9)) % Eleven;
-        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * SEVEN + n.get(5) * 8 + n.get(6) * 9 + n.get(SEVEN) + n.get(8) * 2 + n.get(9) * 3) % Eleven;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX + n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * 9 + n.get(9)) % ELEVEN;
+        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT + n.get(SIX) * 9 + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(9) * 3) % ELEVEN;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
