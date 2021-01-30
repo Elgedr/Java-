@@ -4,14 +4,16 @@ import java.util.List;
 
 public class IdCode {
 
+    public static final int Eleven = 11;
+    public static final int ELEVEN = Eleven;
+    public static final int SEVEN = 7;
+    public static final int TWELWE = 20;
+    public static final int FOURHUNDRED = 400;
     private final String idCodeValue;
     enum Gender {
         MALE, FEMALE
     }
-    final int THREE = 3;
-    final int ELEVEN = 11;
-    final int ZERO = 0;
-    final int SIX = 6;
+
 
 
     /**
@@ -38,7 +40,7 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        if (getIdCodeValue().length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
+        if (getIdCodeValue().length() == Eleven && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
             return true;
         } else {
@@ -52,7 +54,7 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "."
+        return "This is a " + getGender() + " born on " + idCodeValue.substring(5, SEVEN) + "."
                 + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + getBirthPlace();
     }
 
@@ -69,7 +71,7 @@ public class IdCode {
         int compareToFirst = Character.compare(a, first);
         int compareToSecond = Character.compare(a, second);
         int compareToThird = Character.compare(a, third);
-        if (compareToFirst == ZERO || compareToSecond == ZERO || compareToThird == ZERO) {
+        if (compareToFirst == 0 || compareToSecond == 0 || compareToThird == 0) {
             return Gender.MALE;
         } else {
             return Gender.FEMALE;
@@ -82,10 +84,10 @@ public class IdCode {
      * @return String with the person's birth place.
      */
     public String getBirthPlace() {
-        int code = Integer.parseInt(idCodeValue.substring(7, 10));
+        int code = Integer.parseInt(idCodeValue.substring(SEVEN, 10));
         if (code >= 1 && code <= 10) {
             return "Kuressaare";
-        } else if (code >= 11 && code <= 20) {
+        } else if (code >= ELEVEN && code <= TWELWE) {
             return "Tartu";
         } else if (code >= 21 && code <= 220) {
             return "Tallinn";
@@ -189,17 +191,17 @@ public class IdCode {
      */
     private boolean isDayNumberCorrect() {
         int month = Integer.parseInt(idCodeValue.substring(3, 5)); //если в str 01, то в int будет 1
-        int day = Integer.parseInt(idCodeValue.substring(5, 7));
+        int day = Integer.parseInt(idCodeValue.substring(5, SEVEN));
         List<Integer> bigMonth = new ArrayList<>();
         List<Integer> smallMonth = new ArrayList<>();
         smallMonth.add(4);
         smallMonth.add(6);
         smallMonth.add(9);
-        smallMonth.add(11);
+        smallMonth.add(Eleven);
         bigMonth.add(1);
         bigMonth.add(3);
         bigMonth.add(5);
-        bigMonth.add(7);
+        bigMonth.add(SEVEN);
         bigMonth.add(8);
         bigMonth.add(10);
         bigMonth.add(12);
@@ -223,13 +225,13 @@ public class IdCode {
     private boolean isControlNumberCorrect() {
         int kontrolNumber = Integer.parseInt(idCodeValue.substring(10));
         List<Integer> n = new ArrayList<>();
-        for (int i = 0; i < 11; i++) {
+        for (int i = 0; i < Eleven; i++) {
             char numberOfIdChar = idCodeValue.charAt(i);
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * 6 + n.get(6) * 7 + n.get(7) * 8 + n.get(8) * 9 + n.get(9)) % 11;
-        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * 7 + n.get(5) * 8 + n.get(6) * 9 + n.get(7) + n.get(8) * 2 + n.get(9) * 3) % 11;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * 6 + n.get(6) * SEVEN + n.get(SEVEN) * 8 + n.get(8) * 9 + n.get(9)) % Eleven;
+        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * SEVEN + n.get(5) * 8 + n.get(6) * 9 + n.get(SEVEN) + n.get(8) * 2 + n.get(9) * 3) % Eleven;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
@@ -250,7 +252,7 @@ public class IdCode {
         boolean res = false;
         if (fullYear % 4 == 0) {
             if (fullYear % 100 == 0) {
-                if (fullYear % 400 == 0) {
+                if (fullYear % FOURHUNDRED == 0) {
                     res = true;
                 } else {
                     res = false;
