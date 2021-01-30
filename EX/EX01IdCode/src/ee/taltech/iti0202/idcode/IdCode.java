@@ -180,7 +180,7 @@ public class IdCode {
      * @return boolean describing whether the control number is correct.
      */
     private boolean isControlNumberCorrect() {
-        int kontrolNumber = Integer.parseInt(idCodeValue.substring(10)) ;
+        int kontrolNumber = Integer.parseInt(idCodeValue.substring(10));
         List<Integer> n = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             char numberOfIdChar = idCodeValue.charAt(i);
@@ -202,7 +202,7 @@ public class IdCode {
     /**
      * Check if the given year is a leap year.
      *
-     * @param fullYear
+     * @param fullYear int
      * @return boolean describing whether the given year is a leap year.
      */
     private boolean isLeapYear(int fullYear) {
@@ -225,7 +225,7 @@ public class IdCode {
 
     /**
      *
-     * @param str
+     * @param str String
      * @return str
      */
     public String removeLeadingZeros(String str) {
@@ -236,11 +236,11 @@ public class IdCode {
 
     /**
      * Run tests.
-     * @param
+     * @param args args
      */
     public static void main(String[] args) {
         IdCode validMaleIdCode = new IdCode("60111202216");
-//        System.out.println(validMaleIdCode.isCorrect());
+        System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
         System.out.println(validMaleIdCode.getBirthPlace());
