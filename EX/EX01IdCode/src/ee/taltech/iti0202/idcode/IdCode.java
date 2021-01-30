@@ -118,11 +118,11 @@ public class IdCode {
         String res = "";
         String lastTwo = idCodeValue.substring(1, 3);
         int firstInt = Integer.parseInt(idCodeValue.substring(0, 1));
-        if (firstInt == 1 || firstInt == 2){
+        if (firstInt == 1 || firstInt == 2) {
             res = "18" + lastTwo;
-        } else if (firstInt == 3 || firstInt == 4){
+        } else if (firstInt == 3 || firstInt == 4) {
             res = "19" + lastTwo;
-        } else if (firstInt == 5 || firstInt == 6){
+        } else if (firstInt == 5 || firstInt == 6) {
             res = "20" + lastTwo;
         }
         return Integer.parseInt(res);
