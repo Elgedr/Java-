@@ -115,7 +115,7 @@ public class IdCode {
      */
     public Integer getFullYear() {
         String res = "sss";
-        int year = Integer.parseInt(idCodeValue.substring(0,1));
+        int year = Integer.parseInt(idCodeValue.substring(0, 1));
         String yearCodeFromId = idCodeValue.substring(1, 3);
         switch (year) {
             case 1:
@@ -142,7 +142,7 @@ public class IdCode {
      * @return boolean describing whether the gender number is correct.
      */
     private boolean isGenderNumberCorrect() {
-        int genderCode = Integer.parseInt(idCodeValue.substring(0,1)); /*достаем из стринги несколько элементов и переводим их в число*/
+        int genderCode = Integer.parseInt(idCodeValue.substring(0,1)); /*достаем из str несколько элементов и переводим их в int*/
         return genderCode <= 6;
     }
 
@@ -187,10 +187,8 @@ public class IdCode {
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5
-                + n.get(5) * 6 + n.get(6) * 7 + n.get(7) * 8 + n.get(8) * 9 + n.get(9)) % 11;
-        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * 7
-                + n.get(5) * 8 + n.get(6) * 9 + n.get(7) + n.get(8) * 2 + n.get(9) * 3) % 11;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * 6 + n.get(6) * 7 + n.get(7) * 8 + n.get(8) * 9 + n.get(9)) % 11;
+        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * 7 + n.get(5) * 8 + n.get(6) * 9 + n.get(7) + n.get(8) * 2 + n.get(9) * 3) % 11;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
