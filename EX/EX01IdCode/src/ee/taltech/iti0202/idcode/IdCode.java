@@ -92,7 +92,7 @@ public class IdCode {
      */
     public String getBirthPlace() {
         int code = Integer.parseInt(idCodeValue.substring(SEVEN, 10));
-        final int tarSt = 11, tarEn = 20;
+        final int tarSt = 11, tarEn = 20; /* должны писаться большими буквами*/
         final int tlnSt = 21, tlnEn = 220;
         final int kjSt = 221, kjEn = 270;
         final int tar2St = 271, tar2En = 370;
