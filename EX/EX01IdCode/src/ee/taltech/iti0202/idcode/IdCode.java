@@ -4,13 +4,13 @@ import java.util.List;
 
 public class IdCode {
 
-    public static final int SEVEN = 7; /*большими буквами потому что статичная и можно звать во всем коде*/
-    public static final int TWELWE = 20;
-    public static final int FOURHUNDRED = 400;
-    public static final int EIGHT = 8;
-    public static final int SIX = 6;
-    public static final int ELEVEN = 11;
-    public static final int NINE = 9;
+//    public static final int SEVEN = 7; /*большими буквами потому что статичная и можно звать во всем коде*/
+//    public static final int TWELWE = 20;
+//    public static final int FOURHUNDRED = 400;
+//    public static final int EIGHT = 8;
+//    public static final int SIX = 6;
+//    public static final int ELEVEN = 11;
+//    public static final int NINE = 9;
     private final String idCodeValue;
     enum Gender {
         MALE, FEMALE
@@ -45,7 +45,7 @@ public class IdCode {
      * @return boolean describing whether or not the id code was correct.
      */
     public boolean isCorrect() {
-        if (getIdCodeValue().length() == ELEVEN && isGenderNumberCorrect() && isYearNumberCorrect()
+        if (getIdCodeValue().length() == 11 && isGenderNumberCorrect() && isYearNumberCorrect()
                 && isMonthNumberCorrect() && isDayNumberCorrect() && isControlNumberCorrect()) {
             return true;
         }
@@ -58,7 +58,7 @@ public class IdCode {
      * @return String containing information.
      */
     public String getInformation() {
-        return "This is a " + getGender() + " born on " + idCodeValue.substring(5, SEVEN) + "."
+        return "This is a " + getGender() + " born on " + idCodeValue.substring(5, 7) + "."
                 + idCodeValue.substring(3, 5) + "." + getFullYear() + " in " + getBirthPlace();
     }
 
@@ -88,7 +88,7 @@ public class IdCode {
      * @return String with the person's birth place.
      */
     public String getBirthPlace() {
-        int code = Integer.parseInt(idCodeValue.substring(SEVEN, 10));
+        int code = Integer.parseInt(idCodeValue.substring(7, 10));
         final int tarSt = 11, tarEn = 20;
         final int tlnSt = 21, tlnEn = 220;
         final int kjSt = 221, kjEn = 270;
@@ -145,7 +145,7 @@ public class IdCode {
             res = "18" + lastTwo;
         } else if (firstInt == 3 || firstInt == 4) {
             res = "19" + lastTwo;
-        } else if (firstInt == 5 || firstInt == SIX) {
+        } else if (firstInt == 5 || firstInt == 6) {
             res = "20" + lastTwo;
         }
         return Integer.parseInt(res);
@@ -179,7 +179,7 @@ public class IdCode {
     private boolean isGenderNumberCorrect() {
         int genderCode = Integer.parseInt(idCodeValue.substring(0, 1)); //достаем из str несколько элементов и
         // переводим их в int//
-        return genderCode <= SIX;
+        return genderCode <= 6;
     }
 
     /**
@@ -215,18 +215,18 @@ public class IdCode {
         final int maxDayForLeapYear = 31;
 
         int month = Integer.parseInt(idCodeValue.substring(3, 5)); //если в str 01, то в int будет 1
-        int day = Integer.parseInt(idCodeValue.substring(5, SEVEN));
+        int day = Integer.parseInt(idCodeValue.substring(5, 7));
         List<Integer> bigMonth = new ArrayList<>();
         List<Integer> smallMonth = new ArrayList<>();
         smallMonth.add(4);
-        smallMonth.add(SIX);
-        smallMonth.add(NINE);
-        smallMonth.add(ELEVEN);
+        smallMonth.add(6);
+        smallMonth.add(9);
+        smallMonth.add(11);
         bigMonth.add(1);
         bigMonth.add(3);
         bigMonth.add(5);
-        bigMonth.add(SEVEN);
-        bigMonth.add(EIGHT);
+        bigMonth.add(7);
+        bigMonth.add(8);
         bigMonth.add(10);
         bigMonth.add(12);
         if (month == 2 && isLeapYear(getFullYear()) && day <= maxDayForLeapYearFeb) {
@@ -249,15 +249,15 @@ public class IdCode {
     private boolean isControlNumberCorrect() {
         int kontrolNumber = Integer.parseInt(idCodeValue.substring(10));
         List<Integer> n = new ArrayList<>();
-        for (int i = 0; i < ELEVEN; i++) {
+        for (int i = 0; i < 11; i++) {
             char numberOfIdChar = idCodeValue.charAt(i);
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX
-                + n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * IdCode.NINE + n.get(IdCode.NINE)) % ELEVEN;
-        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT
-                + n.get(SIX) * IdCode.NINE + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(IdCode.NINE) * 3) % ELEVEN;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * 6
+                + n.get(6) * 7 + n.get(7) * 8 + n.get(8) * 9 + n.get(9)) % 11;
+        int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * 7 + n.get(5) * 8
+                + n.get(6) * 9 + n.get(7) + n.get(8) * 2 + n.get(9) * 3) % 11;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
@@ -278,7 +278,7 @@ public class IdCode {
         boolean res = false;
         if (fullYear % 4 == 0) {
             if (fullYear % 100 == 0) {
-                if (fullYear % FOURHUNDRED == 0) {
+                if (fullYear % 400 == 0) {
                     res = true;
                 } else {
                     res = false;
