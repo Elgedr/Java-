@@ -4,7 +4,7 @@ import java.util.List;
 
 public class IdCode {
 
-    public static final int SEVEN = 7;
+    public static final int SEVEN = 7; /*большими буквами потому что статичная и можно звать во всем коде*/
     public static final int TWELWE = 20;
     public static final int FOURHUNDRED = 400;
     public static final int EIGHT = 8;
@@ -89,31 +89,43 @@ public class IdCode {
      */
     public String getBirthPlace() {
         int code = Integer.parseInt(idCodeValue.substring(SEVEN, 10));
+        final int tlnSt = 21, tlnEn = 220;
+        final int kjSt = 221, kjEn = 270;
+        final int tar2St = 271, tar2En = 370;
+        final int narSt = 371, narEn = 420;
+        final int parSt = 421, parEn = 470;
+        final int tln2St = 471, tln2En = 490;
+        final int paiSt = 491, paiEn = 520;
+        final int rakSt = 521, rakEn = 570;
+        final int valSt = 571, valEn = 600;
+        final int vilSt = 601, vilEn = 650;
+        final int vorSt = 551, vorEn = 710;
+
         if (code >= 1 && code <= 10) {
             return "Kuressaare";
         } else if (code >= ELEVEN && code <= TWELWE) {
             return "Tartu";
-        } else if (code >= 21 && code <= 220) {
+        } else if (code >= tlnSt && code <= tlnEn) {
             return "Tallinn";
-        } else if (code >= 221 && code <= 270) {
+        } else if (code >= kjSt && code <= kjEn) {
             return "Kohtla-Järve";
-        } else if (code >= 271 && code <= 370) {
+        } else if (code >= tar2St && code <= tar2En) {
             return "Tartu";
-        } else if (code >= 371 && code <= 420) {
+        } else if (code >= narSt && code <= narEn) {
             return "Narva";
-        } else if (code >= 421 && code <= 470) {
+        } else if (code >= parSt && code <= parEn) {
             return "Pärnu";
-        } else if (code >= 471 && code <= 490) {
+        } else if (code >= tln2St && code <= tln2En) {
             return "Tallinn";
-        } else if (code >= 491 && code <= 520) {
+        } else if (code >= paiSt && code <= paiEn) {
             return "Paide";
-        } else if (code >= 521 && code <= 570) {
+        } else if (code >= rakSt && code <= rakEn) {
             return "Rakvere";
-        } else if (code >= 571 && code <= 600) {
+        } else if (code >= valSt && code <= valEn) {
             return "Valga";
-        } else if (code >= 601 && code <= 650) {
+        } else if (code >= vilSt && code <= vilEn) {
             return "Viljandi";
-        } else if (code >= 651 && code <= 710) {
+        } else if (code >= vorSt && code <= vorEn) {
             return "Võru";
         }
         return "unknown";
