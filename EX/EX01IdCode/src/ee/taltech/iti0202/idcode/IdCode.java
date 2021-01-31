@@ -89,6 +89,7 @@ public class IdCode {
      */
     public String getBirthPlace() {
         int code = Integer.parseInt(idCodeValue.substring(SEVEN, 10));
+        final int tarSt = 11, tarEn = 20;
         final int tlnSt = 21, tlnEn = 220;
         final int kjSt = 221, kjEn = 270;
         final int tar2St = 271, tar2En = 370;
@@ -103,7 +104,7 @@ public class IdCode {
 
         if (code >= 1 && code <= 10) {
             return "Kuressaare";
-        } else if (code >= ELEVEN && code <= TWELWE) {
+        } else if (code >= tarSt && code <= tarEn) {
             return "Tartu";
         } else if (code >= tlnSt && code <= tlnEn) {
             return "Tallinn";
@@ -196,9 +197,10 @@ public class IdCode {
      * @return boolean describing whether the month number is correct.
      */
     private Boolean isMonthNumberCorrect() {
+        final int maxMonth = 12;
         int month = Integer.parseInt(idCodeValue.substring(3, 5));
         System.out.println(month);
-        return month <= 12;
+        return month <= maxMonth;
     }
 
     /**
@@ -207,6 +209,11 @@ public class IdCode {
      * @return boolean describing whether the day number is correct.
      */
     private boolean isDayNumberCorrect() {
+        final int maxDayForLeapYearFeb = 29;
+        final int maxDayForNotLeapYearFeb = 28;
+        final int maxDayForNotLeapYear = 30;
+        final int maxDayForLeapYear = 31;
+
         int month = Integer.parseInt(idCodeValue.substring(3, 5)); //если в str 01, то в int будет 1
         int day = Integer.parseInt(idCodeValue.substring(5, SEVEN));
         List<Integer> bigMonth = new ArrayList<>();
@@ -222,13 +229,13 @@ public class IdCode {
         bigMonth.add(EIGHT);
         bigMonth.add(10);
         bigMonth.add(12);
-        if (month == 2 && isLeapYear(getFullYear()) && day <= 29) {
+        if (month == 2 && isLeapYear(getFullYear()) && day <= maxDayForLeapYearFeb) {
             return true;
-        } else if (month == 2 && !isLeapYear(getFullYear()) && day <= 28) {
+        } else if (month == 2 && !isLeapYear(getFullYear()) && day <= maxDayForNotLeapYearFeb) {
             return true;
-        } else if (bigMonth.contains(month) && day <= 31) {
+        } else if (bigMonth.contains(month) && day <= maxDayForLeapYear) {
             return true;
-        } else if (smallMonth.contains(month) && day <= 30) {
+        } else if (smallMonth.contains(month) && day <= maxDayForNotLeapYear) {
             return true;
         }
         return false;
@@ -247,8 +254,8 @@ public class IdCode {
             int numberOfChar = Character.getNumericValue(numberOfIdChar);
             n.add(numberOfChar);
         }
-        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX +
-                n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * IdCode.NINE + n.get(IdCode.NINE)) % ELEVEN;
+        int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * SIX
+                + n.get(SIX) * SEVEN + n.get(SEVEN) * EIGHT + n.get(EIGHT) * IdCode.NINE + n.get(IdCode.NINE)) % ELEVEN;
         int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * SIX + n.get(4) * SEVEN + n.get(5) * EIGHT
                 + n.get(SIX) * IdCode.NINE + n.get(SEVEN) + n.get(EIGHT) * 2 + n.get(IdCode.NINE) * 3) % ELEVEN;
         if (sum1 == 10) {
