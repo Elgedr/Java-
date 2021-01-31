@@ -5,7 +5,7 @@ import java.util.List;
 public class IdCode {
 
     public static final int SEVEN = 7; /*большими буквами потому что статичная и можно звать во всем коде*/
-    public static final int TWENTY = 20;
+    public static final int TWELVE = 12;
     public static final int FOURHUNDRED = 400;
     public static final int EIGHT = 8;
     public static final int SIX = 6;
@@ -228,7 +228,7 @@ public class IdCode {
         bigMonth.add(SEVEN);
         bigMonth.add(EIGHT);
         bigMonth.add(10);
-        bigMonth.add(12);
+        bigMonth.add(TWELVE);
         if (month == 2 && isLeapYear(getFullYear()) && day <= maxDayForLeapYearFeb) {
             return true;
         } else if (month == 2 && !isLeapYear(getFullYear()) && day <= maxDayForNotLeapYearFeb) {
