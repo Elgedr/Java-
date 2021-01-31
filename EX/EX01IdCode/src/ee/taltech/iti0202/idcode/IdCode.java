@@ -4,11 +4,14 @@ import java.util.List;
 
 public class IdCode {
 
+    /**
+     *Описание к задекларированной переменной seven
+     */ /*Чтобы увидеть описание наводим мышь на переменную и CTRL + Q*/
     public static final int SEVEN = 7; /*большими буквами потому что статичная и можно звать во всем коде*/
-    public static final int TWELVE = 12;
-    public static final int FOURHUNDRED = 400;
-    public static final int EIGHT = 8;
-    public static final int SIX = 6;
+    public static final int TWELVE = 12; /*CTRL + ALT + C . Наводим на число и нажимаем комбинацию*/
+    public static final int FOURHUNDRED = 400; /*CTRL + F6 . Поменять название*/
+    public static final int EIGHT = 8; /*Если меняем тут цыфру, то поменяется во всем коде */
+    public static final int SIX = 6; /*psfi - сокращенная команда*/
     public static final int ELEVEN = 11;
     public static final int NINE = 9;
     private final String idCodeValue;
@@ -35,7 +38,7 @@ public class IdCode {
 
         this.idCodeValue = idCodeValue;
         if (!this.isCorrect()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(); /*Выкидываем ошибку в конструкторе*/
         }
     }
 
