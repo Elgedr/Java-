@@ -248,6 +248,7 @@ public class IdCode {
      */
     private boolean isControlNumberCorrect() {
         int kontrolNumber = Integer.parseInt(idCodeValue.substring(10));
+        final int eleven = 11;
         List<Integer> n = new ArrayList<>();
         for (int i = 0; i < 11; i++) {
             char numberOfIdChar = idCodeValue.charAt(i);
@@ -255,9 +256,9 @@ public class IdCode {
             n.add(numberOfChar);
         }
         int sum1 = (n.get(0) + n.get(1) * 2 + n.get(2) * 3 + n.get(3) * 4 + n.get(4) * 5 + n.get(5) * 6
-                + n.get(6) * 7 + n.get(7) * 8 + n.get(8) * 9 + n.get(9)) % 11;
+                + n.get(6) * 7 + n.get(7) * 8 + n.get(8) * 9 + n.get(9)) % eleven;
         int sum2 = (n.get(0) * 3 + n.get(1) * 4 + n.get(2) * 5 + n.get(3) * 6 + n.get(4) * 7 + n.get(5) * 8
-                + n.get(6) * 9 + n.get(7) + n.get(8) * 2 + n.get(9) * 3) % 11;
+                + n.get(6) * 9 + n.get(7) + n.get(8) * 2 + n.get(9) * 3) % eleven;
         if (sum1 == 10) {
             if (sum2 == 10 && kontrolNumber == 0 || sum2 != 10 && kontrolNumber == sum2) {
                 return true;
