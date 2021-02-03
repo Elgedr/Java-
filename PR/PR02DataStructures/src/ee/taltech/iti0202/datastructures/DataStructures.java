@@ -54,8 +54,7 @@ public class DataStructures {
                 result.put(word, result.get(word) + 1); /*если такой ключ уже есть, то прибавляем к значению +1 */
             }
         }
-        System.out.println(result);
-        return null;
+        return result;
     }
 
     /**
