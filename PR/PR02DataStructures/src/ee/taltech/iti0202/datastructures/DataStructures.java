@@ -1,12 +1,7 @@
 package ee.taltech.iti0202.datastructures;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class DataStructures {
 
@@ -27,7 +22,18 @@ public class DataStructures {
      * @return the longest String from input
      */
     public static String findLongestWord(String sentence) {
-        return null;
+        String[] arrayOfSplittedString = sentence.split(" "); /*создаем array с разделенными именами*/
+        List<String> sortedList = Arrays.stream(arrayOfSplittedString).sorted().collect(Collectors.toList()); //переводим список в стрим.
+        // сортируем список по умолчанию по алфавиту.превращаем обратно в список
+        int lengthh = 0;
+        String biggestWord = "";
+        for (String word: sortedList){
+            if (word.length() > lengthh){
+                lengthh = word.length();
+                biggestWord = word;
+            }
+        }
+        return biggestWord;
     }
 
     /**
@@ -39,6 +45,15 @@ public class DataStructures {
      * @return map containing all word to count mappings.
      */
     public static Map<String, Integer> wordCount(String[] sentence) {
+        Map<String, Integer> result = new HashMap<>(); /*создаем новый словарь*/
+        for (String word: sentence){
+            if (! result.containsKey(word)){ /*если в словаре нет такого ключа, то добавляем*/
+                result.put(word, 1);
+            } else {
+                result.put(word, result.get(word) + 1); /*если такой ключ уже есть, то прибавляем к значению +1 */
+            }
+        }
+        System.out.println(result);
         return null;
     }
 
@@ -64,7 +79,13 @@ public class DataStructures {
      * @param studentInfo String with a pattern (name:grade)
      */
     public void addStudent(String studentInfo) {
-
+        Map<String, Integer> resultWithStudentsAndGrades = new HashMap<>();
+        String[] arrayWithNameGrade = studentInfo.split(":");
+        int grade = Integer.parseInt(arrayWithNameGrade[1]);
+        if (grade >= 0 && grade <= 5){
+            resultWithStudentsAndGrades.put(arrayWithNameGrade[0], grade);
+        }
+        System.out.println(resultWithStudentsAndGrades);
     }
 
     /**
@@ -76,7 +97,8 @@ public class DataStructures {
      * @return int student's grade.
      */
     public int getStudentGrade(String name) {
-        return 0;
+        int ifNoSuchStudent = -1;
+        return resultWithStudentsAndGrades.getOrDefault(name, ifNoSuchStudent);
     }
 
     /**

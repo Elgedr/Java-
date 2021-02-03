@@ -311,7 +311,7 @@ public class IdCode {
      * @param args args
      */
     public static void main(String[] args) {
-        IdCode validMaleIdCode = new IdCode("60111202219");
+        IdCode validMaleIdCode = new IdCode("60111202216");
         System.out.println(validMaleIdCode.isCorrect());
         System.out.println(validMaleIdCode.getInformation());
         System.out.println(validMaleIdCode.getGender());
