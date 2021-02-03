@@ -85,7 +85,7 @@ public class DataStructures {
         for (String key: countAppearance.keySet()) { /*чтобы итерировать через ключи словаря*/
             int appearance = countAppearance.get(key); /*получаем значение. кол-во раз, сколько слово встречалось*/
             if (appearance >= 2) {
-                for (int i = 0; i < (appearance / 2); i++) { /* простое деление со знаком "/" дает целую часть. если будет 3.9, то получим 3*/
+                for (int i = 0; i < (appearance / 2); i++) { //делениe с "/" дает целую часть.если 3.9, то получим 3
                     result.add(key);
                 }
             }
