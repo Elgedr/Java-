@@ -78,16 +78,19 @@ public class DataStructures {
         List<String> result = new ArrayList<>();
         Map<String, Integer> countAppearance = new HashMap<>();
         for (String word: words) {
-            if (!countAppearance.containsKey(word)){
+            if (!countAppearance.containsKey(word)) {
                 countAppearance.put(word, 1);
             } else {
                 countAppearance.put(word, countAppearance.get(word) + 1);
             }
         }
         System.out.println(countAppearance);
-        for (String key: countAppearance.keySet()){ /*чтобы итерировать через ключи словаря*/
+        for (String key: countAppearance.keySet()) { /*чтобы итерировать через ключи словаря*/
             int string = countAppearance.get(key);
-            if (string >= 2){
+            if (string >= 4) {
+                result.add(key);
+                result.add(key);
+            } else if (string >= 2){
                 result.add(key);
             }
         }
