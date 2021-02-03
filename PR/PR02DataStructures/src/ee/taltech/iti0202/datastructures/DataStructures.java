@@ -86,12 +86,11 @@ public class DataStructures {
         }
         System.out.println(countAppearance);
         for (String key: countAppearance.keySet()) { /*чтобы итерировать через ключи словаря*/
-            int string = countAppearance.get(key);
-            if (string >= 4) {
-                result.add(key);
-                result.add(key);
-            } else if (string >= 2){
-                result.add(key);
+            int appearance = countAppearance.get(key); /*получаем значение. кол-во раз, сколько слово встречалось*/
+            if (appearance >= 2){
+                for (int i = 0; i< (appearance / 2); i++){
+                    result.add(key);
+                }
             }
         }
         return result;
