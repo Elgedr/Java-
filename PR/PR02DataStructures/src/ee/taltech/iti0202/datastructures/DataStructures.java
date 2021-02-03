@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class DataStructures {
+    private Map<String, Integer> resultWithStudentsAndGrades = new HashMap<>();
 
     /**
      * Given String is a sentence with some words.
@@ -79,13 +80,11 @@ public class DataStructures {
      * @param studentInfo String with a pattern (name:grade)
      */
     public void addStudent(String studentInfo) {
-        Map<String, Integer> resultWithStudentsAndGrades = new HashMap<>();
         String[] arrayWithNameGrade = studentInfo.split(":");
         int grade = Integer.parseInt(arrayWithNameGrade[1]);
         if (grade >= 0 && grade <= 5){
             resultWithStudentsAndGrades.put(arrayWithNameGrade[0], grade);
         }
-        System.out.println(resultWithStudentsAndGrades);
     }
 
     /**
