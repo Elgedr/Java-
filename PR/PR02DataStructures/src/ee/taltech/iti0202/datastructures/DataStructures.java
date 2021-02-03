@@ -3,10 +3,8 @@ package ee.taltech.iti0202.datastructures;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DataStructures {
@@ -87,8 +85,8 @@ public class DataStructures {
         System.out.println(countAppearance);
         for (String key: countAppearance.keySet()) { /*чтобы итерировать через ключи словаря*/
             int appearance = countAppearance.get(key); /*получаем значение. кол-во раз, сколько слово встречалось*/
-            if (appearance >= 2){
-                for (int i = 0; i< (appearance / 2); i++){
+            if (appearance >= 2) {
+                for (int i = 0; i < (appearance / 2); i++) {
                     result.add(key);
                 }
             }
