@@ -28,8 +28,8 @@ public class DataStructures {
         // сортируем список по умолчанию по алфавиту.превращаем обратно в список
         int lengthh = 0;
         String biggestWord = "";
-        for (String word: sortedList){
-            if (word.length() > lengthh){
+        for (String word: sortedList) {
+            if (word.length() > lengthh) {
                 lengthh = word.length();
                 biggestWord = word;
             }
@@ -48,7 +48,7 @@ public class DataStructures {
     public static Map<String, Integer> wordCount(String[] sentence) {
         Map<String, Integer> result = new HashMap<>(); /*создаем новый словарь*/
         for (String word: sentence){
-            if (! result.containsKey(word)){ /*если в словаре нет такого ключа, то добавляем*/
+            if (! result.containsKey(word)) { /*если в словаре нет такого ключа, то добавляем*/
                 result.put(word, 1);
             } else {
                 result.put(word, result.get(word) + 1); /*если такой ключ уже есть, то прибавляем к значению +1 */
