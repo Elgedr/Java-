@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class DataStructures {
-    private Map<String, Integer> resultWithStudentsAndGrades = new HashMap<>();
+    private final Map<String, Integer> resultWithStudentsAndGrades = new HashMap<>();
 
     /**
      * Given String is a sentence with some words.
@@ -82,11 +82,10 @@ public class DataStructures {
                 countAppearance.put(word, countAppearance.get(word) + 1);
             }
         }
-        System.out.println(countAppearance);
         for (String key: countAppearance.keySet()) { /*чтобы итерировать через ключи словаря*/
             int appearance = countAppearance.get(key); /*получаем значение. кол-во раз, сколько слово встречалось*/
             if (appearance >= 2) {
-                for (int i = 0; i < (appearance / 2); i++) {
+                for (int i = 0; i < (appearance / 2); i++) { /* простое деление со знаком "/" дает целую часть. если будет 3.9, то получим 3*/
                     result.add(key);
                 }
             }
