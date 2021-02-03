@@ -24,8 +24,8 @@ public class DataStructures {
      */
     public static String findLongestWord(String sentence) {
         String[] arrayOfSplittedString = sentence.split(" "); /*создаем array с разделенными именами*/
-        List<String> sortedList = Arrays.stream(arrayOfSplittedString).sorted().collect(Collectors.toList()); //переводим список в стрим.
-        // сортируем список по умолчанию по алфавиту.превращаем обратно в список
+        List<String> sortedList = Arrays.stream(arrayOfSplittedString).sorted().collect(Collectors.toList());
+        /*переводим список в стрим.сортируем список по умолчанию по алфавиту.превращаем обратно в список*/
         int lengthh = 0;
         String biggestWord = "";
         for (String word: sortedList) {
@@ -47,8 +47,8 @@ public class DataStructures {
      */
     public static Map<String, Integer> wordCount(String[] sentence) {
         Map<String, Integer> result = new HashMap<>(); /*создаем новый словарь*/
-        for (String word: sentence){
-            if (! result.containsKey(word)) { /*если в словаре нет такого ключа, то добавляем*/
+        for (String word: sentence) {
+            if (!result.containsKey(word)) { /*если в словаре нет такого ключа, то добавляем*/
                 result.put(word, 1);
             } else {
                 result.put(word, result.get(word) + 1); /*если такой ключ уже есть, то прибавляем к значению +1 */
@@ -81,7 +81,7 @@ public class DataStructures {
     public void addStudent(String studentInfo) {
         String[] arrayWithNameGrade = studentInfo.split(":");
         int grade = Integer.parseInt(arrayWithNameGrade[1]);
-        if (grade >= 0 && grade <= 5){
+        if (grade >= 0 && grade <= 5) {
             resultWithStudentsAndGrades.put(arrayWithNameGrade[0], grade);
         }
     }
@@ -105,27 +105,27 @@ public class DataStructures {
      */
     public static void main(String[] args) {
         System.out.println(findLongestWord("nimi on salastatud"));  // "salastatud"
-        System.out.println(findLongestWord("aaa bbbbb"));  // "bbbbb"
-        System.out.println(findLongestWord("hello ahllo")); // "ahllo"
+//        System.out.println(findLongestWord("aaa bbbbb"));  // "bbbbb"
+//        System.out.println(findLongestWord("hello ahllo")); // "ahllo"
 
-        System.out.println(wordCount(new String[]{})); // empty
-        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
-        // {bacon=2, eggs=2, SPAM=3}
-
-        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
-        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
-        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
-
-        DataStructures dataStructures = new DataStructures();
-
-        dataStructures.addStudent("Ago:5");
-        dataStructures.addStudent("Martin:0");
-        dataStructures.addStudent("Margo:3");
-        dataStructures.addStudent("Cheater:6");
-
-        System.out.println(dataStructures.getStudentGrade("Ago")); // 5
-        System.out.println(dataStructures.getStudentGrade("Martin")); // 0
-        System.out.println(dataStructures.getStudentGrade("Margo")); // 3
-        System.out.println(dataStructures.getStudentGrade("Cheater")); // -1
+//        System.out.println(wordCount(new String[]{})); // empty
+//        System.out.println(wordCount(new String[]{"eggs", "SPAM", "eggs", "bacon", "SPAM", "bacon", "SPAM"}));
+//        // {bacon=2, eggs=2, SPAM=3}
+//
+//        System.out.println(onlyEvenWords(Arrays.asList("foo", "bar", "baz", "baz", "bar", "foo"))); // [baz, bar, foo]
+//        System.out.println(onlyEvenWords(Arrays.asList("a", "b", "b", "a"))); // [b, a]
+//        System.out.println(onlyEvenWords(Arrays.asList("eggs", "bacon", "SPAM", "ham", "SPAM", "SPAM"))); // [SPAM]
+//
+//        DataStructures dataStructures = new DataStructures();
+//
+//        dataStructures.addStudent("Ago:5");
+//        dataStructures.addStudent("Martin:0");
+//        dataStructures.addStudent("Margo:3");
+//        dataStructures.addStudent("Cheater:6");
+//
+//        System.out.println(dataStructures.getStudentGrade("Ago")); // 5
+//        System.out.println(dataStructures.getStudentGrade("Martin")); // 0
+//        System.out.println(dataStructures.getStudentGrade("Margo")); // 3
+//        System.out.println(dataStructures.getStudentGrade("Cheater")); // -1
     }
 }
