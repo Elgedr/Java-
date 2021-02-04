@@ -46,7 +46,7 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (back){
+        if (back) {
             lastPage = currentPage;
             currentPage = forwarded;
             visitedSites.add(forwarded);
@@ -106,18 +106,18 @@ public class WebBrowser {
      */
     public String getTop3VisitedPages() {
         Map<String, Integer> resulting = new LinkedHashMap<>();
-        for (String site: visitedSites){
+        for (String site: visitedSites) {
             if (!visitings.containsKey(site)) {
                 visitings.put(site, 1);
             } else {
                 visitings.put(site, visitings.get(site) + 1);
             }
         }
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             int max = 0;
             String siteName = "";
             for (String key: visitings.keySet()) {
-                if (visitings.get(key) > max){
+                if (visitings.get(key) > max) {
                     siteName = key;
                     max = visitings.get(key);
                 }
@@ -128,12 +128,12 @@ public class WebBrowser {
         System.out.println(visitedSites);
         System.out.println(resulting);
         List<String> finalSites = new ArrayList<>();
-        for (String sites: resulting.keySet()){
+        for (String sites: resulting.keySet()) {
             finalSites.add(sites);
         }
-        return finalSites.get(0) + " - " + resulting.get(finalSites.get(0)) + " visits" + "\n" + finalSites.get(1) + " - "
-                + resulting.get(finalSites.get(1)) + " visits" + "\n" + finalSites.get(2) + " - "
-                + resulting.get(finalSites.get(2)) + " visits" + "\n";
+        return finalSites.get(0) + " - " + resulting.get(finalSites.get(0)) + " visits" + "\n"
+                + finalSites.get(1) + " - " + resulting.get(finalSites.get(1)) + " visits" + "\n" + finalSites.get(2)
+                + " - " + resulting.get(finalSites.get(2)) + " visits" + "\n";
     }
 
     /**
@@ -204,4 +204,3 @@ public class WebBrowser {
     }
 
 }
-
