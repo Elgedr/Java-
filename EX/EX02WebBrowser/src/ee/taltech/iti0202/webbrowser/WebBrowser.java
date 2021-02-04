@@ -10,10 +10,9 @@ public class WebBrowser {
     private String homePage;
     private String currentPage = "google.com";
     private String lastPage;
-    private String forwarded;
 
     private List<String> bookMarkedSites = new ArrayList<>();
-    private List<String> visitedSites = Arrays.asList("google.com");
+    private List<String> visitedSites = new ArrayList<>(Arrays.asList("google.com"));
     private Map<String, Integer> visitings = new HashMap<>();
 
     private Boolean back = false;
@@ -41,8 +40,7 @@ public class WebBrowser {
      */
     public void forward() {
         if (back){
-            visitedSites.add(forwarded);
-            currentPage = forwarded;
+            visitedSites.add(currentPage);
             back = false;
         }
     }
@@ -56,6 +54,7 @@ public class WebBrowser {
         if (!currentPage.equals(url)){
             lastPage = currentPage;
             currentPage = url;
+            System.out.println(url);
             visitedSites.add(url);
         }
     }
@@ -124,4 +123,30 @@ public class WebBrowser {
     public String getCurrentUrl() {
         return currentPage;
     }
+
+    /**
+     * Run tests.
+     * @param args args
+     */
+    public static void main(String[] args) {
+        WebBrowser site = new WebBrowser();
+        System.out.println(site.getCurrentUrl());
+        site.setHomePage("neti.ee");
+        site.goTo("facebook.com");
+        System.out.println(site.getCurrentUrl());
+        site.goTo("google.com");
+        System.out.println(site.currentPage);
+        site.back();
+        System.out.println(site.getCurrentUrl());
+        site.addAsBookmark();
+        System.out.println(site.currentPage);
+        site.forward();
+        System.out.println(site.getCurrentUrl());
+        site.homePage();
+        System.out.println(site.getCurrentUrl());
+        site.addAsBookmark();
+        System.out.println(site.getBookmarks());
+    }
+
 }
+
