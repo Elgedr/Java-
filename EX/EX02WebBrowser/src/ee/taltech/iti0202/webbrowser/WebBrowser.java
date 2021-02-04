@@ -2,8 +2,10 @@ package ee.taltech.iti0202.webbrowser;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class WebBrowser {
 
@@ -104,8 +106,35 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        //TODO: implement
-        return null;
+        Map<String, Integer> resulting = new LinkedHashMap<>();
+        for (String site: visitedSites){
+            if (!visitings.containsKey(site)){
+                visitings.put(site, 1);
+            } else {
+                visitings.put(site, visitings.get(site) + 1);
+            }
+        }
+        for (int i = 0; i < 3; i++){
+            int max = 0;
+            String siteName = "";
+            for (String key: visitings.keySet()){
+                if (visitings.get(key) > max){
+                    siteName = key;
+                    max = visitings.get(key);
+                }
+            }
+            resulting.put(siteName, max);
+            visitings.remove(siteName);
+        }
+        System.out.println(visitedSites);
+        System.out.println(resulting);
+        List<String> finalSites = new ArrayList<>();
+        for (String sites: resulting.keySet()){
+            finalSites.add(sites);
+        }
+        return finalSites.get(0) + " - " + resulting.get(finalSites.get(0)) + " visits" + "\n" + finalSites.get(1) + " - "
+                + resulting.get(finalSites.get(1)) + " visits" + "\n" + finalSites.get(2) + " - "
+                + resulting.get(finalSites.get(2)) + " visits" + "\n";
     }
 
     /**
@@ -137,22 +166,42 @@ public class WebBrowser {
      */
     public static void main(String[] args) {
         WebBrowser site = new WebBrowser();
-        System.out.println(site.getCurrentUrl());
-        site.setHomePage("neti.ee");
+//        System.out.println(site.getCurrentUrl());
+//        site.setHomePage("neti.ee");
+//        site.goTo("facebook.com");
+//        System.out.println(site.getCurrentUrl());
+//        site.goTo("google.com");
+//        System.out.println(site.currentPage);
+//        site.back();
+//        System.out.println(site.getCurrentUrl());
+//        site.addAsBookmark();
+//        site.forward();
+//        System.out.println(site.getCurrentUrl());
+//        site.homePage();
+//        System.out.println(site.getCurrentUrl());
+//        site.addAsBookmark();
+//        System.out.println(site.getBookmarks());
+//        System.out.println(site.getHistory());
+
+//        site.setHomePage("neti.ee");
+//        site.goTo("facebook.com");
+//        site.forward();
+//        site.forward();
+//        System.out.println(site.getHistory());
+
+//        site.getCurrentUrl();
+//        site.setHomePage("neti.ee");
+//        site.goTo("facebook.com");
+//        site.back();
+//        site.back();
+//        System.out.println(site.getHistory());
+
+        site.goTo("neti.ee");
         site.goTo("facebook.com");
-        System.out.println(site.getCurrentUrl());
-        site.goTo("google.com");
-        System.out.println(site.currentPage);
         site.back();
-        System.out.println(site.getCurrentUrl());
-        site.addAsBookmark();
         site.forward();
-        System.out.println(site.getCurrentUrl());
-        site.homePage();
-        System.out.println(site.getCurrentUrl());
-        site.addAsBookmark();
-        System.out.println(site.getBookmarks());
         System.out.println(site.getHistory());
+        System.out.println(site.getTop3VisitedPages());
     }
 
 }
