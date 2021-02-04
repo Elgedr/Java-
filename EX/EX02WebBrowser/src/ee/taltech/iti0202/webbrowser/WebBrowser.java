@@ -32,6 +32,7 @@ public class WebBrowser {
      */
     public void back() {
         back = true;
+        visitedSites.add(lastPage);
 
     }
 
@@ -139,13 +140,13 @@ public class WebBrowser {
         site.back();
         System.out.println(site.getCurrentUrl());
         site.addAsBookmark();
-        System.out.println(site.currentPage);
         site.forward();
         System.out.println(site.getCurrentUrl());
         site.homePage();
         System.out.println(site.getCurrentUrl());
         site.addAsBookmark();
         System.out.println(site.getBookmarks());
+        System.out.println(site.getHistory());
     }
 
 }
