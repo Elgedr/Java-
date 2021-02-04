@@ -33,6 +33,7 @@ public class WebBrowser {
     public void back() {
         back = true;
         visitedSites.add(lastPage);
+        currentPage = lastPage;
 
     }
 
