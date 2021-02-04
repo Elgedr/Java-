@@ -71,7 +71,9 @@ public class WebBrowser {
      * Add a webpage as a bookmark.
      */
     public void addAsBookmark() {
-        bookMarkedSites.add(currentPage);
+        if (!bookMarkedSites.contains(currentPage)){
+            bookMarkedSites.add(currentPage);
+        }
     }
 
     /**
@@ -164,7 +166,7 @@ public class WebBrowser {
      * @param args args
      */
     public static void main(String[] args) {
-        WebBrowser site = new WebBrowser();
+//        WebBrowser site = new WebBrowser();
 //        System.out.println(site.getCurrentUrl());
 //        site.setHomePage("neti.ee");
 //        site.goTo("facebook.com");
@@ -195,12 +197,49 @@ public class WebBrowser {
 //        site.back();
 //        System.out.println(site.getHistory());
 
-        site.goTo("neti.ee");
-        site.goTo("facebook.com");
-        site.back();
-        site.forward();
-        System.out.println(site.getHistory());
-        System.out.println(site.getTop3VisitedPages());
+//        site.goTo("neti.ee");
+//        site.goTo("facebook.com");
+//        site.back();
+//        site.forward();
+//        System.out.println(site.getHistory());
+//        System.out.println(site.getTop3VisitedPages());
+
+
+//        WebBrowser b = new WebBrowser();
+//        b.goTo("neti.ee");
+//        b.goTo("facebook.com");
+//        b.goTo("neti.ee");
+//        b.goTo("facebook.com");
+//        b.goTo("google.com");
+//        b.goTo("delfi.ee");
+//        System.out.println(b.getTop3VisitedPages());
+
+        WebBrowser webBrowser = new WebBrowser();
+
+//        webBrowser.back();
+//        webBrowser.back();
+//        webBrowser.goTo("neti.ee");
+//        webBrowser.forward();
+//
+//        System.out.println(webBrowser.getCurrentUrl());
+//
+
+        webBrowser.goTo("facebook.com"); // facebook
+        webBrowser.setHomePage("facebook.com");
+        webBrowser.goTo("page3.com"); // page 3
+        webBrowser.goTo("page4.com"); // page 4
+        webBrowser.goTo("page5.com"); // page 5
+        webBrowser.goTo("page6.com"); // page 6
+        webBrowser.homePage(); // facebook
+        webBrowser.back(); // page 6
+        webBrowser.back(); // page 5
+        webBrowser.homePage(); // facebook
+        webBrowser.back(); // page 5
+        webBrowser.back(); // page 4
+        webBrowser.back(); // page 3
+        webBrowser.forward(); // page 4
+        webBrowser.forward(); // page 5
+        webBrowser.forward(); // facebook   конечный результат должен быть facebook
     }
 
 }
