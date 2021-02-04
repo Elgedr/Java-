@@ -6,10 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public class WebBrowser {
-    private String startPage = "google.com";
+
     private String homePage;
     private String currentPage = "google.com";
-    private String lastPage;
+    private String lastPage = "nothing";
+    private String forwarded;
 
     private List<String> bookMarkedSites = new ArrayList<>();
     private List<String> visitedSites = new ArrayList<>(Arrays.asList("google.com"));
@@ -31,9 +32,12 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        back = true;
-        visitedSites.add(lastPage);
-        currentPage = lastPage;
+        if (!lastPage.equals("nothing")){
+            back = true;
+            visitedSites.add(lastPage);
+            forwarded = currentPage;
+            currentPage = lastPage;
+        }
 
     }
 
@@ -42,7 +46,9 @@ public class WebBrowser {
      */
     public void forward() {
         if (back){
-            visitedSites.add(currentPage);
+            lastPage = currentPage;
+            currentPage = forwarded;
+            visitedSites.add(forwarded);
             back = false;
         }
     }
@@ -56,7 +62,6 @@ public class WebBrowser {
         if (!currentPage.equals(url)){
             lastPage = currentPage;
             currentPage = url;
-            System.out.println(url);
             visitedSites.add(url);
         }
     }
