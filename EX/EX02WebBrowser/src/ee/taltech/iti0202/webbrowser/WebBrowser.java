@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class WebBrowser {
 
@@ -25,7 +24,7 @@ public class WebBrowser {
      */
     public void homePage() {
         currentPage = homePage;
-        if (!currentPage.equals(lastPage)){
+        if (!currentPage.equals(lastPage)) {
             visitedSites.add(homePage);
         }
     }
@@ -34,7 +33,7 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        if (!lastPage.equals("nothing")){
+        if (!lastPage.equals("nothing")) {
             back = true;
             visitedSites.add(lastPage);
             forwarded = currentPage;
@@ -61,7 +60,7 @@ public class WebBrowser {
      * @param url url to go to
      */
     public void goTo(String url) {
-        if (!currentPage.equals(url)){
+        if (!currentPage.equals(url)) {
             lastPage = currentPage;
             currentPage = url;
             visitedSites.add(url);
@@ -108,7 +107,7 @@ public class WebBrowser {
     public String getTop3VisitedPages() {
         Map<String, Integer> resulting = new LinkedHashMap<>();
         for (String site: visitedSites){
-            if (!visitings.containsKey(site)){
+            if (!visitings.containsKey(site)) {
                 visitings.put(site, 1);
             } else {
                 visitings.put(site, visitings.get(site) + 1);
@@ -117,7 +116,7 @@ public class WebBrowser {
         for (int i = 0; i < 3; i++){
             int max = 0;
             String siteName = "";
-            for (String key: visitings.keySet()){
+            for (String key: visitings.keySet()) {
                 if (visitings.get(key) > max){
                     siteName = key;
                     max = visitings.get(key);
