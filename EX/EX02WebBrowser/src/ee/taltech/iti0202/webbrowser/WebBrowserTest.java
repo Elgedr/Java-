@@ -60,8 +60,9 @@ public class WebBrowserTest {
         webBrowser.forward();
         webBrowser.homePage();
         webBrowser.addAsBookmark();
+        webBrowser.removeBookmark("neti.ee");
         List<String> actual = webBrowser.getBookmarks();
-        List<String> expectedd = new ArrayList<>(Arrays.asList("facebook.com", "neti.ee"));
+        List<String> expectedd = new ArrayList<>(Arrays.asList("facebook.com"));
         Assert.assertArrayEquals(new List[]{expectedd}, new List[]{actual});
     }
 
@@ -78,7 +79,9 @@ public class WebBrowserTest {
     /**Test9*/
     @org.junit.Test
     public void getTop3VisitedPages() {
-        String expectedAnswer = "google.com - 1 visit" + "\n";
+        String expectedAnswer = "google.com - 2 visits" + "\n" + "facebook.com - 1 visit" + "\n";
+        webBrowser.goTo("facebook.com");
+        webBrowser.goTo("google.com");
         String actualResult = webBrowser.getTop3VisitedPages();
         Assert.assertEquals(expectedAnswer, actualResult);
     }
