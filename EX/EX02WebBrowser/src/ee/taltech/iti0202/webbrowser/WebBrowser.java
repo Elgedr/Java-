@@ -45,7 +45,7 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (size + 2 <= visitedSites.size()) {
+        if (size + 1 < visitedSites.size()) {
             lastPage = currentPage;
             size += 1;
             currentPage = visitedSites.get(size);
@@ -63,7 +63,7 @@ public class WebBrowser {
             lastPage = currentPage;
             currentPage = url;
             visitedSites.add(url);
-            size = visitedSites.size() - 1;
+            size ++;
         }
     }
 
@@ -263,10 +263,11 @@ public class WebBrowser {
             webBrowser.back();
         }
         System.out.println(webBrowser.getHistory());
+        for (int i = 1; i <= 5; i++) {
+            webBrowser.goTo("page" + i);
+        }
 
-        webBrowser.homePage(); // google.com
         System.out.println(webBrowser.getHistory());
-
         for (int i = 0; i < 30; i++) {
             webBrowser.back();
         }
