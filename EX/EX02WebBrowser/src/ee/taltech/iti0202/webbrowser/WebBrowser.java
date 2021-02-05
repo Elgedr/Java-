@@ -118,7 +118,7 @@ public class WebBrowser {
         }
         for (int i = 0; i < 3; i++) {
             int max = 0;
-            String siteName = "";
+            String siteName = "null";
             for (String key: visitings.keySet()) {
                 if (visitings.get(key) > max) {
                     siteName = key;
@@ -128,6 +128,7 @@ public class WebBrowser {
             resulting.put(siteName, max);
             visitings.remove(siteName);
         }
+        resulting.remove("null");
         System.out.println(visitedSites);
         System.out.println(resulting);
         List<String> finalSites = new ArrayList<>();
@@ -171,7 +172,7 @@ public class WebBrowser {
      * @param args args
      */
     public static void main(String[] args) {
-//        WebBrowser site = new WebBrowser();
+        WebBrowser site = new WebBrowser();
 //        System.out.println(site.getCurrentUrl());
 //        site.setHomePage("neti.ee");
 //        site.goTo("facebook.com");
@@ -220,13 +221,13 @@ public class WebBrowser {
 //        System.out.println(b.getTop3VisitedPages());
 
         WebBrowser webBrowser = new WebBrowser();
-
-        webBrowser.back();
-        webBrowser.back();
-        webBrowser.goTo("neti.ee");
-        webBrowser.forward();
-
-        System.out.println(webBrowser.getCurrentUrl());
+//
+//        webBrowser.back();
+//        webBrowser.back();
+//        webBrowser.goTo("neti.ee");
+//        webBrowser.forward();
+//
+//        System.out.println(webBrowser.getCurrentUrl());
 //
 
 //        webBrowser.goTo("facebook.com"); // facebook
@@ -246,6 +247,9 @@ public class WebBrowser {
 //        webBrowser.forward(); // page 5
 //        webBrowser.forward(); // facebook   конечный результат должен быть facebook
 //        System.out.println(webBrowser.currentPage);
+
+
+        System.out.println(webBrowser.getTop3VisitedPages());
     }
 
 }
