@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.webbrowser;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,34 +107,34 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        Map<String, Integer> resulting = new LinkedHashMap<>(); // создаю словарь, в ктором элементы будут оставаться в таком же порядке, как и при итерировании
-        for (String site: visitedSites) { //прохожусь по истории посещенных сайтов
-            if (!visitings.containsKey(site)) { //если такого сайта еще нет в словаре с сайтами и их посещениями, то добавляю со значением 1
+        Map<String, Integer> resulting = new LinkedHashMap<>(); /* создаю словарь, в ктором элементы будут оставаться в таком же порядке, как и при итерировании*/
+        for (String site: visitedSites) { /*прохожусь по истории посещенных сайтов*/
+            if (!visitings.containsKey(site)) { /*если такого сайта еще нет в словаре с сайтами и их посещениями, то добавляю со значением 1*/
                 visitings.put(site, 1);
             } else {
-                visitings.put(site, visitings.get(site) + 1); //если такой сайт уже есть, то добавляем к посещению +1
+                visitings.put(site, visitings.get(site) + 1); //если такой сайт уже есть, то добавляем к посещению +1*/
             }
         }
-        for (int i = 0; i < 3; i++) { //тк нам надо максимуи топ3, итерирую в рэйнже 0,3
-            int max = 0; //сюда пойдет само количество посещений определенного сайта
-            String siteName = "null"; //сюда пойдет название сайта с самым максимальным кол-вом посещений
-            for (String key: visitings.keySet()) { //итерирую через словарь с сайтами и их посещениями
+        for (int i = 0; i < 3; i++) { /* тк нам надо максимуи топ3, итерирую в рэйнже 0,3 */
+            int max = 0; /* сюда пойдет само количество посещений определенного сайта */
+            String siteName = "null"; /*сюда пойдет название сайта с самым максимальным кол-вом посещений */
+            for (String key: visitings.keySet()) { /*итерирую через словарь с сайтами и их посещениями */
                 if (visitings.get(key) > max) {
                     siteName = key;
                     max = visitings.get(key);
                 }
             }
-            resulting.put(siteName, max); // нахожу сайт с самым большим количеством
-            visitings.remove(siteName); //удаляю из словаря этот сайт, чтобы найти следующий с максимальным количеством. Если не удалить, то постоянно только его и буддет выдавать
+            resulting.put(siteName, max); /* нахожу сайт с самым большим количеством */
+            visitings.remove(siteName); /* удаляю из словаря этот сайт, чтобы найти следующий с максимальным количеством. Если не удалить, то постоянно только его и буддет выдавать */
         }
-        resulting.remove("null"); // так как у нас может быть посещено всего 1 или 2 сайта, а итерирую 2 раза, то третий сайт в словаре будет "null"=0. На всякий случай удаляю
-        //у нас всегда в любом случае в словаре будет только 1 пара "null"=0. тк в джаве используя .put мы заменяем значение к ключу на новое.
+        resulting.remove("null"); /* так как у нас может быть посещено всего 1 или 2 сайта, а итерирую 2 раза, то третий сайт в словаре будет "null"=0. На всякий случай удаляю */
+        /* у нас всегда в любом случае в словаре будет только 1 пара "null"=0. тк в джаве используя .put мы заменяем значение к ключу на новое */
 //        List<String> finalSites = new ArrayList<>(); //
 //        finalSites.addAll(resulting.keySet()); // добавляем в финальный список сразу все ключи из словаря с 3мя самыми посещяемыми сайтами
         String res = "";
         for (String finalSite : resulting.keySet()) {
             String visitsOrVisit = " visit";
-            if (resulting.get(finalSite) > 1){ //если сайт посещался больше 1ого раза, то используем visits. если только 1 раз, то visit
+            if (resulting.get(finalSite) > 1){ /* если сайт посещался больше 1ого раза, то используем visits. если только 1 раз, то visit */
                 visitsOrVisit = " visits";
             }
             res += finalSite + " - " + resulting.get(finalSite) + visitsOrVisit + "\n";
