@@ -134,7 +134,11 @@ public class WebBrowser {
         finalSites.addAll(resulting.keySet());
         String res = "";
         for (String finalSite : finalSites) {
-            res += finalSite + " - " + resulting.get(finalSite) + " visits" + "\n";
+            String visitsOrVisit = " visit";
+            if (resulting.get(finalSite) > 1){
+                visitsOrVisit = " visits";
+            }
+            res += finalSite + " - " + resulting.get(finalSite) + visitsOrVisit + "\n";
         }
         return res;
     }
