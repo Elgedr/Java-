@@ -24,7 +24,7 @@ public class WebBrowser {
         currentPage = homePage;
         if (!currentPage.equals(lastPage)) {
             visitedSites.add(homePage);
-            size = visitedSites.size() - 1;
+            size ++;
         }
     }
 
@@ -140,7 +140,7 @@ public class WebBrowser {
         String res = "";
         for (String finalSite : resulting.keySet()) {
             String visitsOrVisit = " visit";
-            if (resulting.get(finalSite) > 1){ /* если сайт посещался больше 1ого раза, то используем visits. если
+            if (resulting.get(finalSite) > 1) { /* если сайт посещался больше 1ого раза, то используем visits. если
              только 1 раз, то visit */
                 visitsOrVisit = " visits";
             }
@@ -177,7 +177,7 @@ public class WebBrowser {
      * @param args args
      */
     public static void main(String[] args) {
-        WebBrowser site = new WebBrowser();
+//        WebBrowser site = new WebBrowser();
 //        System.out.println(site.getCurrentUrl());
 //        site.setHomePage("neti.ee");
 //        site.goTo("facebook.com");
@@ -225,7 +225,7 @@ public class WebBrowser {
 //        b.goTo("delfi.ee");
 //        System.out.println(b.getTop3VisitedPages());
 
-        WebBrowser webBrowser = new WebBrowser();
+//        WebBrowser webBrowser = new WebBrowser();
 //
 //        webBrowser.back();
 //        webBrowser.back();
@@ -253,7 +253,24 @@ public class WebBrowser {
 //        webBrowser.forward(); // facebook   конечный результат должен быть facebook
 //        System.out.println(webBrowser.currentPage);
 
-        System.out.println(webBrowser.getTop3VisitedPages());
+        WebBrowser webBrowser = new WebBrowser();
+
+        for (int i = 1; i <= 100; i++) {
+            webBrowser.goTo("page" + i);
+        }
+        System.out.println(webBrowser.getHistory());
+        for (int i = 0; i < 30; i++) {
+            webBrowser.back();
+        }
+        System.out.println(webBrowser.getHistory());
+
+        webBrowser.homePage(); // google.com
+        System.out.println(webBrowser.getHistory());
+
+        for (int i = 0; i < 30; i++) {
+            webBrowser.back();
+        }
+        System.out.println(webBrowser.getCurrentUrl());
     }
 
 }
