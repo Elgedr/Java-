@@ -8,16 +8,15 @@ import java.util.Map;
 
 public class WebBrowser {
 
-    private String homePage;
+    private String homePage = "google.com";
     private String currentPage = "google.com";
-    private String lastPage = "nothing";
-    private String forwarded;
+    private int size = 0;
+    private String lastPage;
 
     private List<String> bookMarkedSites = new ArrayList<>();
     private List<String> visitedSites = new ArrayList<>(Arrays.asList("google.com"));
     private Map<String, Integer> visitings = new HashMap<>();
 
-    private Boolean back = false;
 
     /**
      * Goes to homepage.
@@ -26,6 +25,7 @@ public class WebBrowser {
         currentPage = homePage;
         if (!currentPage.equals(lastPage)) {
             visitedSites.add(homePage);
+            size = visitedSites.size() - 1;
         }
     }
 
@@ -33,11 +33,11 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        if (!lastPage.equals("nothing")) {
-            back = true;
-            visitedSites.add(lastPage);
-            forwarded = currentPage;
-            currentPage = lastPage;
+        if (size - 1 >= 0) {
+            size -= 1;
+            lastPage = currentPage;
+            currentPage = visitedSites.get(size);
+            visitedSites.add(currentPage);
         }
 
     }
@@ -46,11 +46,11 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (back) {
+        if (size + 2 <= visitedSites.size()) {
             lastPage = currentPage;
-            currentPage = forwarded;
-            visitedSites.add(forwarded);
-            back = false;
+            size += 1;
+            currentPage = visitedSites.get(size);
+            visitedSites.add(currentPage);
         }
     }
 
@@ -64,6 +64,7 @@ public class WebBrowser {
             lastPage = currentPage;
             currentPage = url;
             visitedSites.add(url);
+            size = visitedSites.size() - 1;
         }
     }
 
@@ -71,7 +72,7 @@ public class WebBrowser {
      * Add a webpage as a bookmark.
      */
     public void addAsBookmark() {
-        if (!bookMarkedSites.contains(currentPage)){
+        if (!bookMarkedSites.contains(currentPage)) {
             bookMarkedSites.add(currentPage);
         }
     }
@@ -130,9 +131,7 @@ public class WebBrowser {
         System.out.println(visitedSites);
         System.out.println(resulting);
         List<String> finalSites = new ArrayList<>();
-        for (String sites: resulting.keySet()) {
-            finalSites.add(sites);
-        }
+        finalSites.addAll(resulting.keySet());
         return finalSites.get(0) + " - " + resulting.get(finalSites.get(0)) + " visits" + "\n"
                 + finalSites.get(1) + " - " + resulting.get(finalSites.get(1)) + " visits" + "\n" + finalSites.get(2)
                 + " - " + resulting.get(finalSites.get(2)) + " visits" + "\n";
@@ -240,6 +239,7 @@ public class WebBrowser {
         webBrowser.forward(); // page 4
         webBrowser.forward(); // page 5
         webBrowser.forward(); // facebook   конечный результат должен быть facebook
+        System.out.println(webBrowser.currentPage);
     }
 
 }
