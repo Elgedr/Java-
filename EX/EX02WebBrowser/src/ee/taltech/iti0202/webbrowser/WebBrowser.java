@@ -177,23 +177,23 @@ public class WebBrowser {
      * @param args args
      */
     public static void main(String[] args) {
-        WebBrowser site = new WebBrowser();
-        System.out.println(site.getCurrentUrl());
-        site.setHomePage("neti.ee");
-        site.goTo("facebook.com");
-        System.out.println(site.getCurrentUrl());
-        site.goTo("google.com");
-        System.out.println(site.currentPage);
-        site.back();
-        System.out.println(site.getCurrentUrl());
-        site.addAsBookmark();
-        site.forward();
-        System.out.println(site.getCurrentUrl());
-        site.homePage();
-        System.out.println(site.getCurrentUrl());
-        site.addAsBookmark();
-        System.out.println(site.getBookmarks());
-        System.out.println(site.getHistory());
+//        WebBrowser site = new WebBrowser();
+//        System.out.println(site.getCurrentUrl());
+//        site.setHomePage("neti.ee");
+//        site.goTo("facebook.com");
+//        System.out.println(site.getCurrentUrl());
+//        site.goTo("google.com");
+//        System.out.println(site.currentPage);
+//        site.back();
+//        System.out.println(site.getCurrentUrl());
+//        site.addAsBookmark();
+//        site.forward();
+//        System.out.println(site.getCurrentUrl());
+//        site.homePage();
+//        System.out.println(site.getCurrentUrl());
+//        site.addAsBookmark();
+//        System.out.println(site.getBookmarks());
+//        System.out.println(site.getHistory());
 
 //        site.setHomePage("neti.ee");
 //        site.goTo("facebook.com");

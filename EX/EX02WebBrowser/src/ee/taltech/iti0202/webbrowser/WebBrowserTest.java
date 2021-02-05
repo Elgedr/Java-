@@ -10,6 +10,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class WebBrowserTest {
+    public static final int THIRTY = 30;
     WebBrowser webBrowser = new WebBrowser();
     /**Test1*/
     @org.junit.Test
@@ -61,7 +62,7 @@ public class WebBrowserTest {
         webBrowser.homePage();
         webBrowser.addAsBookmark();
         List<String> actual = webBrowser.getBookmarks();
-        List<String> expectedd = new ArrayList<>(Arrays.asList("facebook.com","neti.ee"));
+        List<String> expectedd = new ArrayList<>(Arrays.asList("facebook.com", "neti.ee"));
         Assert.assertArrayEquals(new List[]{expectedd}, new List[]{actual});
     }
 
@@ -96,7 +97,8 @@ public class WebBrowserTest {
         webBrowser.homePage();
         webBrowser.addAsBookmark();
         List<String> actual = webBrowser.getHistory();
-        List<String> expectedd = new ArrayList<>(Arrays.asList("google.com","facebook.com","google.com","facebook.com","google.com","neti.ee"));
+        List<String> expectedd = new ArrayList<>(Arrays.asList("google.com", "facebook.com", "google.com",
+                "facebook.com", "google.com", "neti.ee"));
         Assert.assertArrayEquals(new List[]{expectedd}, new List[]{actual});
     }
 
@@ -110,13 +112,13 @@ public class WebBrowserTest {
             webBrowser.goTo("page" + i);
         }
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < THIRTY; i++) {
             webBrowser.back();
         }
 
         webBrowser.homePage(); // google.com
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < THIRTY; i++) {
             webBrowser.back();
         }
 
