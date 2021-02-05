@@ -132,9 +132,11 @@ public class WebBrowser {
         System.out.println(resulting);
         List<String> finalSites = new ArrayList<>();
         finalSites.addAll(resulting.keySet());
-        return finalSites.get(0) + " - " + resulting.get(finalSites.get(0)) + " visits" + "\n"
-                + finalSites.get(1) + " - " + resulting.get(finalSites.get(1)) + " visits" + "\n" + finalSites.get(2)
-                + " - " + resulting.get(finalSites.get(2)) + " visits" + "\n";
+        String res = "";
+        for (String finalSite : finalSites) {
+            res += finalSite + " - " + resulting.get(finalSite) + " visits" + "\n";
+        }
+        return res;
     }
 
     /**
@@ -215,31 +217,31 @@ public class WebBrowser {
 
         WebBrowser webBrowser = new WebBrowser();
 
-//        webBrowser.back();
-//        webBrowser.back();
-//        webBrowser.goTo("neti.ee");
-//        webBrowser.forward();
-//
-//        System.out.println(webBrowser.getCurrentUrl());
+        webBrowser.back();
+        webBrowser.back();
+        webBrowser.goTo("neti.ee");
+        webBrowser.forward();
+
+        System.out.println(webBrowser.getCurrentUrl());
 //
 
-        webBrowser.goTo("facebook.com"); // facebook
-        webBrowser.setHomePage("facebook.com");
-        webBrowser.goTo("page3.com"); // page 3
-        webBrowser.goTo("page4.com"); // page 4
-        webBrowser.goTo("page5.com"); // page 5
-        webBrowser.goTo("page6.com"); // page 6
-        webBrowser.homePage(); // facebook
-        webBrowser.back(); // page 6
-        webBrowser.back(); // page 5
-        webBrowser.homePage(); // facebook
-        webBrowser.back(); // page 5
-        webBrowser.back(); // page 4
-        webBrowser.back(); // page 3
-        webBrowser.forward(); // page 4
-        webBrowser.forward(); // page 5
-        webBrowser.forward(); // facebook   конечный результат должен быть facebook
-        System.out.println(webBrowser.currentPage);
+//        webBrowser.goTo("facebook.com"); // facebook
+//        webBrowser.setHomePage("facebook.com");
+//        webBrowser.goTo("page3.com"); // page 3
+//        webBrowser.goTo("page4.com"); // page 4
+//        webBrowser.goTo("page5.com"); // page 5
+//        webBrowser.goTo("page6.com"); // page 6
+//        webBrowser.homePage(); // facebook
+//        webBrowser.back(); // page 6
+//        webBrowser.back(); // page 5
+//        webBrowser.homePage(); // facebook
+//        webBrowser.back(); // page 5
+//        webBrowser.back(); // page 4
+//        webBrowser.back(); // page 3
+//        webBrowser.forward(); // page 4
+//        webBrowser.forward(); // page 5
+//        webBrowser.forward(); // facebook   конечный результат должен быть facebook
+//        System.out.println(webBrowser.currentPage);
     }
 
 }
