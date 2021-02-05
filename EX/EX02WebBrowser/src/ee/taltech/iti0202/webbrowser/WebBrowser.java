@@ -15,7 +15,7 @@ public class WebBrowser {
 
     private List<String> bookMarkedSites = new ArrayList<>();
     private List<String> visitedSites = new ArrayList<>(Arrays.asList("google.com"));
-    private Map<String, Integer> visitings = new HashMap<>();
+    private Map<String, Integer> visitings = new LinkedHashMap<>();
 
 
     /**
@@ -108,7 +108,7 @@ public class WebBrowser {
      * @return a String that contains top three visited pages separated with a newline "\n"
      */
     public String getTop3VisitedPages() {
-        Map<String, Integer> resulting = new LinkedHashMap<>();
+        Map<String, Integer> resulting = new LinkedHashMap<>(); // создаю словарь с сайтами и количеством их посещений
         for (String site: visitedSites) {
             if (!visitings.containsKey(site)) {
                 visitings.put(site, 1);
@@ -116,6 +116,7 @@ public class WebBrowser {
                 visitings.put(site, visitings.get(site) + 1);
             }
         }
+        System.out.println(visitings);
         for (int i = 0; i < 3; i++) {
             int max = 0;
             String siteName = "null";
@@ -248,7 +249,7 @@ public class WebBrowser {
 //        webBrowser.forward(); // facebook   конечный результат должен быть facebook
 //        System.out.println(webBrowser.currentPage);
 
-
+        webBrowser.goTo("twitter.com");
         System.out.println(webBrowser.getTop3VisitedPages());
     }
 
