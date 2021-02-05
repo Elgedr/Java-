@@ -24,7 +24,7 @@ public class WebBrowser {
         currentPage = homePage;
         if (!currentPage.equals(lastPage)) {
             visitedSites.add(homePage);
-            size ++;
+            size++;
         }
     }
 
