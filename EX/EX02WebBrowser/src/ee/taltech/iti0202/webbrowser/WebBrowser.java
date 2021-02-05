@@ -253,25 +253,25 @@ public class WebBrowser {
 //        webBrowser.forward(); // facebook   конечный результат должен быть facebook
 //        System.out.println(webBrowser.currentPage);
 
-        WebBrowser webBrowser = new WebBrowser();
-
-        for (int i = 1; i <= 100; i++) {
-            webBrowser.goTo("page" + i);
-        }
-        System.out.println(webBrowser.getHistory());
-        for (int i = 0; i < 30; i++) {
-            webBrowser.back();
-        }
-        System.out.println(webBrowser.getHistory());
-        for (int i = 1; i <= 5; i++) {
-            webBrowser.goTo("page" + i);
-        }
-
-        System.out.println(webBrowser.getHistory());
-        for (int i = 0; i < 30; i++) {
-            webBrowser.back();
-        }
-        System.out.println(webBrowser.getCurrentUrl());
+//        WebBrowser webBrowser = new WebBrowser();
+//
+//        for (int i = 1; i <= 100; i++) {
+//            webBrowser.goTo("page" + i);
+//        }
+//        System.out.println(webBrowser.getHistory());
+//        for (int i = 0; i < 30; i++) {
+//            webBrowser.back();
+//        }
+//        System.out.println(webBrowser.getHistory());
+//        for (int i = 1; i <= 5; i++) {
+//            webBrowser.goTo("page" + i);
+//        }
+//
+//        System.out.println(webBrowser.getHistory());
+//        for (int i = 0; i < 30; i++) {
+//            webBrowser.back();
+//        }
+//        System.out.println(webBrowser.getCurrentUrl());
     }
 
 }
