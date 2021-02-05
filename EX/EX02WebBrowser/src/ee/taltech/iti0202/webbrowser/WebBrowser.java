@@ -63,7 +63,7 @@ public class WebBrowser {
             lastPage = currentPage;
             currentPage = url;
             visitedSites.add(url);
-            size ++;
+            size = visitedSites.size() - 1;
         }
     }
 
