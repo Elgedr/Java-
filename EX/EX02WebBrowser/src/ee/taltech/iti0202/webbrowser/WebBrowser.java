@@ -9,9 +9,12 @@ public class WebBrowser {
 
     private String homePage = "google.com";
     private String currentPage = "google.com";
-    private int size = 0;
+//    private int size = 0;
     private String lastPage;
+    boolean isBackPrevious = false;
 
+    private List<String> backList = new ArrayList<>(Arrays.asList("google.com"));
+    private List<String> forwardList = new ArrayList<>();
     private List<String> bookMarkedSites = new ArrayList<>();
     private List<String> visitedSites = new ArrayList<>(Arrays.asList("google.com"));
     private Map<String, Integer> visitings = new LinkedHashMap<>();
@@ -21,10 +24,10 @@ public class WebBrowser {
      * Goes to homepage.
      */
     public void homePage() {
-        currentPage = homePage;
-        if (!currentPage.equals(lastPage)) {
+        if (!currentPage.equals(homePage)) {
+            currentPage = homePage;
             visitedSites.add(homePage);
-            size++;
+            backList.add(homePage);
         }
     }
 
@@ -32,10 +35,12 @@ public class WebBrowser {
      * Goes back to previous page.
      */
     public void back() {
-        if (size - 1 >= 0) {
-            size -= 1;
+        if (backList.size() - 1 >= 0) {
+            isBackPrevious = true;
             lastPage = currentPage;
-            currentPage = visitedSites.get(size);
+            forwardList.add(backList.get(backList.size() - 1));
+            backList.remove(backList.size() - 1);
+            currentPage = backList.get(backList.size() - 1);
             visitedSites.add(currentPage);
         }
 
@@ -45,10 +50,10 @@ public class WebBrowser {
      * Goes forward to next page.
      */
     public void forward() {
-        if (size + 1 < visitedSites.size()) {
+        if (forwardList.size() - 1 >= 0) {
             lastPage = currentPage;
-            size += 1;
-            currentPage = visitedSites.get(size);
+            backList.add(currentPage);
+            currentPage = forwardList.get(forwardList.size() - 1);
             visitedSites.add(currentPage);
         }
     }
@@ -63,7 +68,12 @@ public class WebBrowser {
             lastPage = currentPage;
             currentPage = url;
             visitedSites.add(url);
-            size = visitedSites.size() - 1;
+//            size = visitedSites.size() - 1;
+            if (isBackPrevious){
+                forwardList.clear();
+                isBackPrevious = false;
+            }
+            backList.add(url);
         }
     }
 
@@ -253,25 +263,25 @@ public class WebBrowser {
 //        webBrowser.forward(); // facebook   конечный результат должен быть facebook
 //        System.out.println(webBrowser.currentPage);
 
-//        WebBrowser webBrowser = new WebBrowser();
-//
-//        for (int i = 1; i <= 100; i++) {
-//            webBrowser.goTo("page" + i);
-//        }
-//        System.out.println(webBrowser.getHistory());
-//        for (int i = 0; i < 30; i++) {
-//            webBrowser.back();
-//        }
-//        System.out.println(webBrowser.getHistory());
-//        for (int i = 1; i <= 5; i++) {
-//            webBrowser.goTo("page" + i);
-//        }
-//
-//        System.out.println(webBrowser.getHistory());
-//        for (int i = 0; i < 30; i++) {
-//            webBrowser.back();
-//        }
-//        System.out.println(webBrowser.getCurrentUrl());
+        WebBrowser webBrowser = new WebBrowser();
+
+        for (int i = 1; i <= 100; i++) {
+            webBrowser.goTo("page" + i);
+        }
+        System.out.println(webBrowser.getHistory());
+        for (int i = 0; i < 30; i++) {
+            webBrowser.back();
+        }
+        System.out.println(webBrowser.getHistory());
+        for (int i = 1; i <= 5; i++) {
+            webBrowser.goTo("page" + i);
+        }
+
+        System.out.println(webBrowser.getHistory());
+        for (int i = 0; i < 30; i++) {
+            webBrowser.back();
+        }
+        System.out.println(webBrowser.getCurrentUrl());
     }
 
 }
