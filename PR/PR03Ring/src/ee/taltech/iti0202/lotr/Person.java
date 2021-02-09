@@ -41,6 +41,8 @@ public class Person {
             return "No, he just stole the ring";
         } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE)) && !(getRing().getMaterial() == Ring.Material.GOLD)){
             return "No, but he's claiming to be";
+        } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE)) && (getRing().getMaterial() == Ring.Material.GOLD)) {
+            return "No, but he's claiming to be";
         } else {
             return "No";
         }
