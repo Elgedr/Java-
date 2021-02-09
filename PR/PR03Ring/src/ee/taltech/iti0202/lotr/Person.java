@@ -38,9 +38,9 @@ public class Person {
         } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && !(getRing().getMaterial() == Ring.Material.GOLD)){
             return "No, the ring is fake!";
         } else if (!(getName().equals("Sauron")) && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD){
-            return "No, he just stole the ring.";
+            return "No, he just stole the ring";
         } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE)) && getRing().getMaterial() == Ring.Material.GOLD){
-            return " No, but he's claiming to be.";
+            return " No, but he's claiming to be";
         } else {
             return "No";
         }
