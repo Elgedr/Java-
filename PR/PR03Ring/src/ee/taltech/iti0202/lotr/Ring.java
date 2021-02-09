@@ -8,16 +8,16 @@ public class Ring {
     enum Type{THE_ONE, GOLDEN, NENYA, OTHER}
     enum Material{GOLD, SILVER, BRONZE, PLASTIC, DIAMOND}
 
-    public Ring(Type type, Material material){
+    public Ring(Type type, Material material) {
         this.type = type;
         this.material = material;
     }
 
-    public Type getType(){
+    public Type getType() {
         return this.type;
     }
 
-    public Material getMaterial(){
+    public Material getMaterial() {
         return this.material;
     }
 
