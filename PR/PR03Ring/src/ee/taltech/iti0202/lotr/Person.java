@@ -6,10 +6,10 @@ public class Person {
     private Ring ring;
 
     /**
-     *
-     * @param race
-     * @param name
-     * @param ring
+     * Firt constructor
+     * @param race race of hero
+     * @param name name of hero
+     * @param ring Ring object
      */
     public Person(String race, String name, Ring ring) {
         this.race = race;
@@ -18,9 +18,9 @@ public class Person {
     } //конструктор. При создании нового объекта этого класса прийдется указывать эти данные.
 
     /**
-     *
-     * @param race
-     * @param name
+     * Second constructor
+     * @param race set race to object
+     * @param name set name to onject
      */
     public Person(String race, String name) {
         this.race = race;
