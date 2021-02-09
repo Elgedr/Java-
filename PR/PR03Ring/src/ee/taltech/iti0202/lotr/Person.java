@@ -33,8 +33,8 @@ public class Person {
     }
 
     public String isSauron() {
-        if (this.ring == null) {
-            return "No";
+        if (getName().equals("Sauron") && this.ring == null){
+            return "No, but he's claiming to be";
         } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE)
                 && getRing().getMaterial() == Ring.Material.GOLD) {
             return "Affirmative";
