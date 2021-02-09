@@ -5,8 +5,8 @@ public class Ring {
     private Type type;
     private Material material;
 
-    enum Type{THE_ONE, GOLDEN, NENYA, OTHER}
-    enum Material{GOLD, SILVER, BRONZE, PLASTIC, DIAMOND}
+    enum Type{ THE_ONE, GOLDEN, NENYA, OTHER }
+    enum Material{ GOLD, SILVER, BRONZE, PLASTIC, DIAMOND }
 
     public Ring(Type type, Material material) {
         this.type = type;

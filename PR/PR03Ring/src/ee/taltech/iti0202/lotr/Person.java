@@ -14,7 +14,7 @@ public class Person {
     public Person(String race, String name) {
         this.race = race;
         this.name = name;
-    } //конструтор на тот случай, если при создании объекта не написали кольцо. его мы присвоим герою в отдельном методе
+    } //конструтор на тот случай,если при создании объекта не написали кольцо. его мы присвоим герою в отдельном методе
 
     public void setRing(Ring ring) {
         this.ring = ring;
@@ -33,13 +33,16 @@ public class Person {
     }
 
     public String isSauron() {
-        if (this.ring == null){
+        if (this.ring == null) {
             return "No";
-        }else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD) {
+        } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) &&
+                getRing().getMaterial() == Ring.Material.GOLD) {
             return "Affirmative";
-        } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && !(getRing().getMaterial() == Ring.Material.GOLD)) {
+        } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) &&
+                !(getRing().getMaterial() == Ring.Material.GOLD)) {
             return "No, the ring is fake!";
-        } else if (!(getName().equals("Sauron")) && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD) {
+        } else if (!(getName().equals("Sauron")) && getRing().getType().equals(Ring.Type.THE_ONE) &&
+                getRing().getMaterial() == Ring.Material.GOLD) {
             return "No, he just stole the ring";
         } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE))) {
             return "No, but he's claiming to be";
