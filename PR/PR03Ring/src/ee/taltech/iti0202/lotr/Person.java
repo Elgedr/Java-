@@ -35,15 +35,13 @@ public class Person {
     public String isSauron() {
         if (this.ring == null){
             return "No, but he's claiming to be";
-        }else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD){
+        }else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD) {
             return "Affirmative";
-        } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && !(getRing().getMaterial() == Ring.Material.GOLD)){
+        } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && !(getRing().getMaterial() == Ring.Material.GOLD)) {
             return "No, the ring is fake!";
-        } else if (!(getName().equals("Sauron")) && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD){
+        } else if (!(getName().equals("Sauron")) && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD) {
             return "No, he just stole the ring";
-        } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE)) && !(getRing().getMaterial() == Ring.Material.GOLD)){
-            return "No, but he's claiming to be";
-        } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE)) && (getRing().getMaterial() == Ring.Material.GOLD)) {
+        } else if (getName().equals("Sauron") && !(getRing().getType().equals(Ring.Type.THE_ONE))) {
             return "No, but he's claiming to be";
         } else {
             return "No";
@@ -72,7 +70,6 @@ public class Person {
 // check Sauron
         Ring fakeOne = new Ring(Ring.Type.THE_ONE, Ring.Material.PLASTIC);
         sauron.setRing(fakeOne);
-        System.out.println(fakeOne.getMaterial());
         System.out.println(sauron.isSauron()); // No, the ring is fake!
         System.out.println(frodo.isSauron()); // No, he just stole the ring
         Ring nenya = new Ring(Ring.Type.NENYA, Ring.Material.DIAMOND);
