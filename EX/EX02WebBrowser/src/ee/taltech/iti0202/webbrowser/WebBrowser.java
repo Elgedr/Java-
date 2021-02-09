@@ -177,7 +177,8 @@ public class WebBrowser {
      * @param args args
      */
     public static void main(String[] args) {
-//        WebBrowser site = new WebBrowser();
+        WebBrowser site = new WebBrowser();
+        System.out.println(site.getHistory());
 //        System.out.println(site.getCurrentUrl());
 //        site.setHomePage("neti.ee");
 //        site.goTo("facebook.com");
