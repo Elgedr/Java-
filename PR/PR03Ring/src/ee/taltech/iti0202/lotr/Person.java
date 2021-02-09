@@ -27,18 +27,34 @@ public class Person {
         this.name = name;
     } //конструтор на тот случай,если при создании объекта не написали кольцо. его мы присвоим герою в отдельном методе
 
+    /**
+     *
+     * @param ring ring type to set
+     */
     public void setRing(Ring ring) {
         this.ring = ring;
     } //присваиваем кольцо герою. или же меняем старое кольцо на новое
 
+    /**
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return race
+     */
     public String getRace() {
         return race;
     }
 
+    /**
+     *
+     * @return ring object
+     */
     public Ring getRing() {
         return ring;
     }
@@ -68,6 +84,10 @@ public class Person {
         }
     }
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         // LOTR simplified play through
         Ring theRing = new Ring(Ring.Type.THE_ONE, Ring.Material.GOLD);
