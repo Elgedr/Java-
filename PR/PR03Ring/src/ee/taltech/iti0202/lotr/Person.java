@@ -33,7 +33,9 @@ public class Person {
     }
 
     public String isSauron() {
-        if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD){
+        if (this.ring == null){
+            return "No";
+        }else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && getRing().getMaterial() == Ring.Material.GOLD){
             return "Affirmative";
         } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE) && !(getRing().getMaterial() == Ring.Material.GOLD)){
             return "No, the ring is fake!";
