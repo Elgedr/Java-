@@ -5,12 +5,23 @@ public class Person {
     private final String name;
     private Ring ring;
 
+    /**
+     *
+     * @param race
+     * @param name
+     * @param ring
+     */
     public Person(String race, String name, Ring ring) {
         this.race = race;
         this.name = name;
         this.ring = ring;
     } //конструктор. При создании нового объекта этого класса прийдется указывать эти данные.
 
+    /**
+     *
+     * @param race
+     * @param name
+     */
     public Person(String race, String name) {
         this.race = race;
         this.name = name;
@@ -32,10 +43,14 @@ public class Person {
         return ring;
     }
 
+    /**
+     *
+     * @return message if the sauron is real
+     */
     public String isSauron() {
-        if (getName().equals("Sauron") && this.ring == null){
+        if (getName().equals("Sauron") && this.ring == null) {
             return "No, but he's claiming to be";
-        } else if (!(getName().equals("Sauron")) && this.ring == null){
+        } else if (!(getName().equals("Sauron")) && this.ring == null) {
             return "No";
         } else if (getName().equals("Sauron") && getRing().getType().equals(Ring.Type.THE_ONE)
                 && getRing().getMaterial() == Ring.Material.GOLD) {
