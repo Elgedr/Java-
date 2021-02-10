@@ -7,21 +7,39 @@ public class Person {
     private int money;
     private Book hisBook;
 
-    public Person(String name, int money){
+    /**
+     * Constructor
+     * @param name person's name
+     * @param money person's current money
+     */
+    public Person(String name, int money) {
         this.name = name;
         this.money = money;
     }
 
-    public String getName(){
+    /**
+     *
+     * @return person's name
+     */
+    public String getName() {
         return this.name;
     }
 
+    /**
+     *
+     * @return person's money
+     */
     public int getMoney(){
         return this.money;
     }
 
+    /**
+     *
+     * @param book book object
+     * @return if it is possible to buy a book or not
+     */
     public boolean buyBook(Book book){
-        if (book == null || this.money < book.getPrice() || book.getOwner() != null){
+        if (book == null || this.money < book.getPrice() || book.getOwner() != null) {
             return false;
         } else {
             this.money -= book.getPrice();
@@ -31,8 +49,13 @@ public class Person {
         }
     }
 
+    /**
+     *
+     * @param book book object
+     * @return if it is possible to sell a book or not
+     */
     public boolean sellBook(Book book){
-        if (this.hisBook != book || book.getOwner() != this || book == null){
+        if (this.hisBook != book || book.getOwner() != this || book == null) {
             return false;
         } else {
             this.money += book.getPrice();
@@ -42,6 +65,10 @@ public class Person {
         }
     }
 
+    /**
+     *
+     * @return List of books
+     */
     public List<Book> getBooks(){
         return null;
     }
