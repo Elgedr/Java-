@@ -11,7 +11,7 @@ public class Book {
     private int id = -1; //ид должен начинаться с 0. так как при создании делаем +1, как раз первый ид будет 0
     private Person owner;
 
-    public Book(String title, String author, int yearOfPublishing, int price){
+    public Book(String title, String author, int yearOfPublishing, int price) {
         this.title = title;
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
@@ -24,7 +24,7 @@ public class Book {
      *
      * @return book's title
      */
-    public String getTitle(){
+    public String getTitle() {
         return this.title;
     }
 
@@ -32,7 +32,7 @@ public class Book {
      *
      * @return book's author
      */
-    public String getAuthor(){
+    public String getAuthor() {
         return this.author;
     }
 
@@ -40,7 +40,7 @@ public class Book {
      *
      * @return year og publishing
      */
-    public int getYearOfPublishing(){
+    public int getYearOfPublishing() {
         return this.yearOfPublishing;
     }
 
@@ -48,7 +48,7 @@ public class Book {
      *
      * @return book's price
      */
-    public int getPrice(){
+    public int getPrice() {
         return this.price;
     }
 
@@ -56,7 +56,7 @@ public class Book {
      *
      * @return book's id
      */
-    public int getId(){
+    public int getId() {
         return this.id;
     }
 
@@ -72,7 +72,7 @@ public class Book {
      *
      * @return ger=t a current book's owner
      */
-    public Person getOwner(){
+    public Person getOwner() {
         return this.owner;
     }
 

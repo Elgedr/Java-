@@ -29,7 +29,7 @@ public class Person {
      *
      * @return person's money
      */
-    public int getMoney(){
+    public int getMoney() {
         return this.money;
     }
 
@@ -38,7 +38,7 @@ public class Person {
      * @param book book object
      * @return if it is possible to buy a book or not
      */
-    public boolean buyBook(Book book){
+    public boolean buyBook(Book book) {
         if (book == null || this.money < book.getPrice() || book.getOwner() != null) {
             return false;
         } else {
@@ -54,7 +54,7 @@ public class Person {
      * @param book book object
      * @return if it is possible to sell a book or not
      */
-    public boolean sellBook(Book book){
+    public boolean sellBook(Book book) {
         if (this.hisBook != book || book.getOwner() != this || book == null) {
             return false;
         } else {
@@ -69,7 +69,7 @@ public class Person {
      *
      * @return List of books
      */
-    public List<Book> getBooks(){
+    public List<Book> getBooks() {
         return null;
     }
 }
