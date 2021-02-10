@@ -1,4 +1,4 @@
-package ee.taltech.iti0202.webbrowser;
+package ee.taltech.iti0202.bookshelf;
 
 public class Person {
     private String name;
@@ -39,4 +39,3 @@ public class Person {
         }
     }
 }
-
