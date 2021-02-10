@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.bookshelf;
 
+import java.util.List;
+
 public class Book {
     private static int futureid;
     private String title;
@@ -59,6 +61,30 @@ public class Book {
 
     public static int getAndIncrementNextId(){
         return futureid;
+    }
+
+    public static Book of(String title, String author, int yearOfPublishing, int price){
+        return null;
+    }
+
+    public static Book of(String title, int price){
+        return null;
+    }
+
+    public static List<Book> getBooksByOwner(Person owner){
+        return null;
+    }
+
+    public static boolean removeBook(Book book){
+        return true;
+    }
+
+    public static List<Book> getBooksByAuthor(String author){
+        return null;
+    }
+
+    public List<Book> getBooks(){
+        return null;
     }
 
 }
