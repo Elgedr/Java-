@@ -99,26 +99,59 @@ public class Book {
         }
     }
 
+    /**
+     *
+     * @return id of a future book
+     */
     public static int getAndIncrementNextId() {
         return futureid;
     }
 
+    /**
+     *
+     * @param title book's title
+     * @param author book's author credentials
+     * @param yearOfPublishing book's year of publishing
+     * @param price book's price
+     * @return book object
+     */
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         return null;
     }
 
+    /**
+     *
+     * @param title book's title
+     * @param price book's price
+     * @return book object
+     */
     public static Book of(String title, int price) {
         return null;
     }
 
+    /**
+     *
+     * @param owner person object
+     * @return list of books by owner
+     */
     public static List<Book> getBooksByOwner(Person owner) {
         return null;
     }
 
+    /**
+     *
+     * @param book book object
+     * @return bool
+     */
     public static boolean removeBook(Book book) {
         return true;
     }
 
+    /**
+     *
+     * @param author author's credentials
+     * @return list of books by author
+     */
     public static List<Book> getBooksByAuthor(String author) {
         return null;
     }
