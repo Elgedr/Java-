@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.bookshelf;
 
+import java.util.List;
+
 public class Person {
     private String name;
     private int money;
@@ -37,5 +39,9 @@ public class Person {
             this.hisBook = null;
             return true;
         }
+    }
+
+    public List<Book> getBooks(){
+        return null;
     }
 }
