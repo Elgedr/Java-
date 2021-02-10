@@ -37,6 +37,7 @@ public class Person {
         } else {
             this.money += book.getPrice();
             this.hisBook = null;
+            book.setOwner(null);
             return true;
         }
     }
