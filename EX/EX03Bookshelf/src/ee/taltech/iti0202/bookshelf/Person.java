@@ -55,7 +55,7 @@ public class Person {
      * @return if it is possible to sell a book or not
      */
     public boolean sellBook(Book book) {
-        if (this.hisBook != book || book.getOwner() != this || book == null) {
+        if (book.getOwner() != this || book == null) {
             return false;
         } else {
             this.money += book.getPrice();
