@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Book {
     private static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1, как раз первый ид будет 0. эта переменная статическая т.е глобальная
-    private static int futureid = 1;
+    private static int futureid = 0;
 
     private String title;
     private String author;
@@ -106,7 +106,7 @@ public class Book {
      * @return id of a future book
      */
     public static int getAndIncrementNextId() {
-        return futureid;
+        return futureid + 1;
     }
 
     /**
