@@ -55,13 +55,13 @@ public class Person {
      * @return if it is possible to sell a book or not
      */
     public boolean sellBook(Book book) {
-        if (book == null || book.getOwner() == null || book.getOwner() != this) {
-            return false;
-        } else {
+        if (book != null && book.getOwner() == this) {
             this.money += book.getPrice();
             this.hisBook = null;
             book.setOwner(null);
             return true;
+        } else {
+            return false;
         }
     }
 
