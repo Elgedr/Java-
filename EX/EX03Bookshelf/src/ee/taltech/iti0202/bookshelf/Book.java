@@ -106,7 +106,7 @@ public class Book {
      * @return id of a future book
      */
     public static int getAndIncrementNextId() {
-        futureid++;
+        futureid += 1;
         return futureid;
     }
 
