@@ -8,7 +8,8 @@ public class Book {
     private String author;
     private int yearOfPublishing;
     private int price;
-    public static int id = -1; //ид должен начинаться с -1. так как при создании делаем +1, как раз первый ид будет 0
+    public static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1, как раз первый ид будет 0
+    private int id;
     private Person owner;
 
     /**
@@ -23,7 +24,8 @@ public class Book {
         this.author = author;
         this.yearOfPublishing = yearOfPublishing;
         this.price = price;
-        this.id += 1; //при создании новой книги у нее будет новый ид. на 1 больше
+        globalid += 1; //при создании новой книги у нее будет новый ид. на 1 больше
+        this.id = globalid;
         futureid = this.id + 1;
     }
 
