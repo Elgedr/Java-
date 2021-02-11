@@ -28,7 +28,7 @@ public class Book {
         this.price = price;
         globalid += 1; //при создании новой книги у нее будет новый ид. на 1 больше
         this.id = globalid;
-        futureid = this.id + 1;
+        futureid += 1;
         this.nextId = futureid;
     }
 
