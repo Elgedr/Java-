@@ -3,7 +3,8 @@ package ee.taltech.iti0202.bookshelf;
 import java.util.List;
 
 public class Book {
-    private static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1, как раз первый ид будет 0. эта переменная статическая т.е глобальная
+    private static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1,
+    // как раз первый ид будет 0. эта переменная статическая т.е глобальная
 
     private String title;
     private String author;
@@ -78,12 +79,13 @@ public class Book {
 
     /**
      *
-     * @return ger=t a current book's owner
+     * @return get a current book's owner
      */
     public Person getOwner() {
-        if (this.owner != null){
-
-        }return this.owner;
+        if (this.owner != null) {
+            return this.owner;
+        }
+        return null;
     }
 
     /**
