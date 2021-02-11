@@ -81,7 +81,9 @@ public class Book {
      * @return ger=t a current book's owner
      */
     public Person getOwner() {
-        return this.owner;
+        if (this.owner != null){
+
+        }return this.owner;
     }
 
     /**
