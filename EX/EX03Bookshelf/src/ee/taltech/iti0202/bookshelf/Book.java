@@ -135,8 +135,8 @@ public class Book {
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         if (booksOf.size() > 0) {
             for (Book book:booksOf) {
-                if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing ==
-                        yearOfPublishing && book.price == price){
+                if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing
+                        == yearOfPublishing && book.price == price) {
                     return book;
                 }
             }
