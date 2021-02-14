@@ -135,7 +135,8 @@ public class Book {
     public static Book of(String title, String author, int yearOfPublishing, int price) {
         if (booksOf.size() > 0) {
             for (Book book:booksOf) {
-                if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing == yearOfPublishing && book.price == price){
+                if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing ==
+                        yearOfPublishing && book.price == price){
                     return book;
                 }
             }
@@ -182,8 +183,8 @@ public class Book {
      */
     public static List<Book> getBooksByAuthor(String author) {
         List<Book> res = new ArrayList<>();
-        for (String authorr: authorAndBook.keySet()){
-            if (authorr.toLowerCase().equals(author.toLowerCase())){
+        for (String authorr: authorAndBook.keySet()) {
+            if (authorr.toLowerCase().equals(author.toLowerCase())) {
                 res.add(authorAndBook.get(authorr));
             }
         }
