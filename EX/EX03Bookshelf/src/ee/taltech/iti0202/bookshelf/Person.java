@@ -47,7 +47,7 @@ public class Person {
         } else {
             this.money -= book.getPrice();
             book.setOwner(this);
-            personBooks.add(book);
+            this.hisBook = book;
             return true;
         }
     }
@@ -61,7 +61,7 @@ public class Person {
         if (book != null && book.getOwner() == this) {
             this.money += book.getPrice();
             this.hisBook = null;
-            personBooks.remove(book);
+            book.setOwner(null);
             return true;
         } else {
             return false;
@@ -73,6 +73,6 @@ public class Person {
      * @return List of books
      */
     public List<Book> getBooks() {
-        return personBooks;
+        return null;
     }
 }
