@@ -96,11 +96,12 @@ public class Book {
     public boolean buy(Person buyer) {
         if (this.owner == buyer || buyer.getMoney() <= this.price) {
             return false;
-        } else {
+        } else if (buyer == null) {
             this.owner.sellBook(this);
+        } else {
             buyer.buyBook(this);
-            return true;
         }
+        return true;
     }
 
     /**
