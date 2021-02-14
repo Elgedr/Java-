@@ -94,7 +94,7 @@ public class Book {
      * @return if book was bought or not
      */
     public boolean buy(Person buyer) {
-        if (this.owner == null){
+        if (this.owner == null && buyer != null){
             buyer.buyBook(this);
         } else if (buyer == null){
             this.owner.sellBook(this);
