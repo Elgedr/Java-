@@ -99,6 +99,7 @@ public class Book {
         } else if (buyer == null) {
             this.owner.sellBook(this);
         } else {
+            this.owner.sellBook(this);
             buyer.buyBook(this);
         }
         return true;
