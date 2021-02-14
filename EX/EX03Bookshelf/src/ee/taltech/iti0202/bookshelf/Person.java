@@ -47,6 +47,7 @@ public class Person {
         } else {
             this.money -= book.getPrice();
             book.setOwner(this);
+            personBooks.add(book);
             return true;
         }
     }
@@ -59,7 +60,8 @@ public class Person {
     public boolean sellBook(Book book) {
         if (book != null && book.getOwner() == this) {
             this.money += book.getPrice();
-            book.setOwner(null);
+            this.hisBook = null;
+            personBooks.remove(book);
             return true;
         } else {
             return false;
