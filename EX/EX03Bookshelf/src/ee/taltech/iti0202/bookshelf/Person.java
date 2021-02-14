@@ -7,7 +7,6 @@ import java.util.List;
 public class Person {
     private String name;
     private int money;
-    private Book hisBook;
     private List<Book> personBooks = new ArrayList<>();
 
     /**
@@ -47,7 +46,6 @@ public class Person {
         } else {
             this.money -= book.getPrice();
             book.setOwner(this);
-            this.hisBook = book;
             personBooks.add(book);
             return true;
         }
@@ -61,7 +59,6 @@ public class Person {
     public boolean sellBook(Book book) {
         if (book != null && book.getOwner() == this) {
             this.money += book.getPrice();
-            this.hisBook = null;
             personBooks.remove(book);
             book.setOwner(null);
             return true;
