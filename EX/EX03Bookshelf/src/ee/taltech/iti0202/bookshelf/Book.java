@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.bookshelf;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Book {
@@ -8,6 +9,7 @@ public class Book {
     // как раз первый ид будет 0. эта переменная статическая т.е глобальная и она не сбрасывается
     // при создании нового объекта. статичные переменные не привязаны к объекту
     private static List<Book> booksOf = new ArrayList<>();
+    private static HashMap<String, Book> authorAndBook = new HashMap<>();
 
     private String title;
     private String author;
@@ -30,6 +32,8 @@ public class Book {
         this.price = price;
         globalid += 1; //при создании новой книги у нее будет новый ид. на 1 больше
         this.id = globalid;
+        authorAndBook.put(author, this);
+
     }
 
     /**
@@ -137,6 +141,9 @@ public class Book {
             }
         }
         Book newBook = new Book(title, author, yearOfPublishing, price);
+        booksOf.add(newBook);
+        authorAndBook.put(author, newBook);
+
         return newBook;
     }
 
@@ -156,7 +163,7 @@ public class Book {
      * @return list of books by owner
      */
     public static List<Book> getBooksByOwner(Person owner) {
-        return null;
+        return owner.getBooks();
     }
 
     /**
@@ -174,7 +181,13 @@ public class Book {
      * @return list of books by author
      */
     public static List<Book> getBooksByAuthor(String author) {
-        return null;
+        List<Book> res = new ArrayList<>();
+        for (String authorr: authorAndBook.keySet()){
+            if (authorr.toLowerCase().equals(author.toLowerCase())){
+                res.add(authorAndBook.get(authorr));
+            }
+        }
+        return res;
     }
 
 
