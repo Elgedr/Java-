@@ -1,11 +1,13 @@
 package ee.taltech.iti0202.bookshelf;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
     private static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1,
     // как раз первый ид будет 0. эта переменная статическая т.е глобальная и она не сбрасывается
     // при создании нового объекта. статичные переменные не привязаны к объекту
+    private static List<Book> booksOf = new ArrayList<>();
 
     private String title;
     private String author;
@@ -127,7 +129,15 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, String author, int yearOfPublishing, int price) {
-        return null;
+        if (booksOf.size() > 0) {
+            for (Book book:booksOf) {
+                if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing == yearOfPublishing && book.price == price){
+                    return book;
+                }
+            }
+        }
+        Book newBook = new Book(title, author, yearOfPublishing, price);
+        return newBook;
     }
 
     /**
