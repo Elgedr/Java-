@@ -81,7 +81,7 @@ public class Stock {
         }
         productsByName.sort(Comparator.comparingInt(Product::getPrice).thenComparingInt(Product::getId));
         res = productsByName.get(0);
-        return Optional.of(res);
+        return Optional.ofNullable(res);
     }
 
     /**
@@ -131,7 +131,7 @@ public class Stock {
             }
         }
         productsByName.sort(Comparator.comparingInt(Product::getPrice)
-                .thenComparingInt(Product::getId));
+                .thenComparingInt(Product::getId)); // если в убывающем порядке, используем (Product::getId).reversed()
         return productsByName;
     }
 
