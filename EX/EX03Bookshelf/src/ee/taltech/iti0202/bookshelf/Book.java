@@ -189,10 +189,10 @@ public class Book {
         } if (book.getOwner() != null) {
             book.getOwner().sellBook(book);
             booksOf.remove(book);
-            authorAndBook.remove(book.getAuthor(), book);
+            authorAndBook.remove(book.getAuthor().toLowerCase(), book);
         } else {
             booksOf.remove(book);
-            authorAndBook.remove(book.getAuthor(), book);
+            authorAndBook.remove(book.getAuthor().toLowerCase(), book);
         }
         return true;
     }
