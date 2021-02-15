@@ -184,6 +184,12 @@ public class Book {
      * @return bool
      */
     public static boolean removeBook(Book book) {
+        if (book == null || !booksOf.contains(book)){
+            return false;
+        } if (book.getOwner() != null){
+            book.getOwner().sellBook(book);
+        }
+        booksOf.remove(book);
         return true;
     }
 
