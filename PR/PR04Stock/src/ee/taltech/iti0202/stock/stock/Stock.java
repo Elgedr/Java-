@@ -101,7 +101,7 @@ public class Stock {
     public Optional<Product> removeProduct(String name) {
         for (Product product:ProductsList){
                 if (product.getName().equals(name)) {
-                    ProductsList.remove(getProduct(name));
+                    ProductsList.remove(product);
                     return getProduct(name);
                 }
             }
