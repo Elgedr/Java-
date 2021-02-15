@@ -120,7 +120,14 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts(String name) {
-        return null;
+        List<Product> productsByName = new ArrayList<>();
+        for (Product product: this.ProductsList) {
+            if (product.getName().equals(name)) {
+                productsByName.add(product);
+            }
+        }
+        productsByName.sort(Comparator.comparingInt(Product::getPrice).reversed().thenComparingInt(Product::getId).reversed());
+        return productsByName;
     }
 
     /**
@@ -129,7 +136,11 @@ public class Stock {
      * @return Total price.
      */
     public int getTotalPrice() {
-        return -1;
+        int res = 0;
+        for (Product product: ProductsList){
+            res += product.getPrice();
+        }
+        return res;
     }
 
     /**
