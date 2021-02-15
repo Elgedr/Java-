@@ -27,7 +27,12 @@ public class Product {
         globalId++;
 
     }
-    public String toString() {//overriding the toString() method
+
+    /**
+     *
+     * @return overriding
+     */
+    public String toString() {
         return this.getName() + ". Price: " + this.getPrice() + ". id:" + this.id;
     }
 

@@ -24,7 +24,7 @@ import java.util.Optional;
 public class Stock {
     private String stockName;
     private int maxCapacity;
-    private List<Product> ProductsList = new ArrayList<>();
+    private List<Product> productsList = new ArrayList<>();
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -49,12 +49,12 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
-        if (this.ProductsList.contains(product)){
+        if (this.productsList.contains(product)) {
             throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
-        } else if (this.ProductsList.size() == this.maxCapacity){
+        } else if (this.productsList.size() == this.maxCapacity) {
             throw new StockException(StockException.Reason.STOCK_IS_FULL);
         }
-        this.ProductsList.add(product);
+        this.productsList.add(product);
 
 
     }
@@ -71,12 +71,12 @@ public class Stock {
     public Optional<Product> getProduct(String name) {
         Product res;
         List<Product> productsByName = new ArrayList<>();
-        for (Product product: this.ProductsList) {
+        for (Product product: this.productsList) {
             if (product.getName().equals(name)) {
                 productsByName.add(product);
             }
         }
-        if (productsByName.size() == 0){
+        if (productsByName.size() == 0) {
             return Optional.empty();
         }
         productsByName.sort(Comparator.comparingInt(Product::getPrice).thenComparingInt(Product::getId));
@@ -97,9 +97,9 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        for (Product product:ProductsList){
+        for (Product product:productsList) {
                 if (product.getName().equals(name)) {
-                    ProductsList.remove(product);
+                    productsList.remove(product);
                     return getProduct(name);
                 }
             }
@@ -112,7 +112,7 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts() {
-        return this.ProductsList;
+        return this.productsList;
     }
 
     /**
@@ -125,7 +125,7 @@ public class Stock {
      */
     public List<Product> getProducts(String name) {
         List<Product> productsByName = new ArrayList<>();
-        for (Product product: this.ProductsList) {
+        for (Product product: this.productsList) {
             if (product.getName().equals(name)) {
                 productsByName.add(product);
             }
@@ -142,7 +142,7 @@ public class Stock {
      */
     public int getTotalPrice() {
         int res = 0;
-        for (Product product: ProductsList){
+        for (Product product: productsList) {
             res += product.getPrice();
         }
         return res;
@@ -154,7 +154,7 @@ public class Stock {
      * @return boolean
      */
     public boolean isFull() {
-        if(this.ProductsList.size() == this.maxCapacity){
+        if (this.productsList.size() == this.maxCapacity) {
             return true;
         }
         return false;
