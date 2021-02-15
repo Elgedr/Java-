@@ -19,7 +19,7 @@ public class Product {
      */
     public Product(String name, int price) throws StockException {
         if (price < 0){
-            throw new StockException(StockException.Reason.NEGATIVE_PRICE);
+            throw new StockException(StockException.Reason.NEGATIVE_PRICE); // выкидываем нашу ошибку
         }
         this.name = name;
         this.price = price;
