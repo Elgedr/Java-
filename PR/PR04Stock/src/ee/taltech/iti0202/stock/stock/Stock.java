@@ -2,6 +2,7 @@ package ee.taltech.iti0202.stock.stock;
 import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,6 +21,9 @@ import java.util.Optional;
  */
 
 public class Stock {
+    private String stockName;
+    private int maxCapacity;
+    private List<Product> ProductsList = new ArrayList<>();
 
     /**
      * Create a new stock with the given name and the max capacity for the products.
@@ -28,6 +32,8 @@ public class Stock {
      * @param maxCapacity max amount of products allowed in the stock.
      */
     public Stock(String name, int maxCapacity) {
+        this.stockName = name;
+        this.maxCapacity = maxCapacity;
     }
 
     /**
@@ -42,6 +48,14 @@ public class Stock {
      */
 
     public void addProduct(Product product) throws StockException {
+        if (this.ProductsList.contains(product)){
+            throw new StockException(StockException.Reason.STOCK_ALREADY_CONTAINS_PRODUCT);
+        } else if (this.ProductsList.size() == this.maxCapacity){
+            throw new StockException(StockException.Reason.STOCK_IS_FULL);
+        }
+        this.ProductsList.add(product);
+
+
     }
 
     /**
@@ -79,7 +93,7 @@ public class Stock {
      * @return List
      */
     public List<Product> getProducts() {
-        return null;
+        return this.ProductsList;
     }
 
     /**
@@ -109,6 +123,9 @@ public class Stock {
      * @return boolean
      */
     public boolean isFull() {
+        if(this.ProductsList.size() == this.maxCapacity){
+            return true;
+        }
         return false;
     }
 
