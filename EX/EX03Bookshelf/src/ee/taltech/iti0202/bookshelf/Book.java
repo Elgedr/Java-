@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.bookshelf;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class Book {
     // как раз первый ид будет 0. эта переменная статическая т.е глобальная и она не сбрасывается
     // при создании нового объекта. статичные переменные не привязаны к объекту
     private static List<Book> booksOf = new ArrayList<>();
-    private static HashMap<String, Book> authorAndBook = new HashMap<>();
+    private static HashMap<String, List<Book>> authorAndBook = new HashMap<>();
     private static String previousAuthor;
     private static int previousYear = -100;
 
@@ -34,7 +35,6 @@ public class Book {
         this.price = price;
         globalid += 1; //при создании новой книги у нее будет новый ид. на 1 больше
         this.id = globalid;
-        authorAndBook.put(author, this);
 
     }
 
@@ -139,6 +139,7 @@ public class Book {
             for (Book book:booksOf) {
                 if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing
                         == yearOfPublishing && book.price == price) {
+                    authorAndBook.get(author.toLowerCase()).add(book);
                     return book;
                 }
             }
@@ -147,7 +148,8 @@ public class Book {
         previousAuthor = author;
         previousYear = yearOfPublishing;
         booksOf.add(newBook);
-        authorAndBook.put(author, newBook);
+        authorAndBook.putIfAbsent(author.toLowerCase(), new ArrayList<>());
+        authorAndBook.get(author.toLowerCase()).add(newBook);
 
         return newBook;
     }
@@ -163,7 +165,7 @@ public class Book {
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
-            authorAndBook.put(previousAuthor, newBook);
+            authorAndBook.get(previousAuthor.toLowerCase()).add(newBook);
             booksOf.add(newBook);
             return newBook;
         }
@@ -189,7 +191,7 @@ public class Book {
         } if (book.getOwner() != null) {
             book.getOwner().sellBook(book);
             booksOf.remove(book);
-            authorAndBook.remove(book.getAuthor());
+            authorAndBook.remove(book.author);
             return true;
         }
         booksOf.remove(book);
@@ -203,13 +205,7 @@ public class Book {
      * @return list of books by author
      */
     public static List<Book> getBooksByAuthor(String author) {
-        List<Book> res = new ArrayList<>();
-        for (String authorr: authorAndBook.keySet()) {
-            if (authorr.toLowerCase().equals(author.toLowerCase())) {
-                res.add(authorAndBook.get(authorr));
-            }
-        }
-        return res;
+        return authorAndBook.getOrDefault(author.toLowerCase(),new ArrayList<>());
     }
 
 
