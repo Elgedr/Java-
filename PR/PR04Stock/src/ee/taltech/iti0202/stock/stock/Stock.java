@@ -130,8 +130,8 @@ public class Stock {
                 productsByName.add(product);
             }
         }
-        productsByName.sort(Comparator.comparingInt(Product::getPrice).reversed()
-                .thenComparingInt(Product::getId).reversed());
+        productsByName.sort(Comparator.comparingInt(Product::getPrice)
+                .thenComparingInt(Product::getId));
         return productsByName;
     }
 
