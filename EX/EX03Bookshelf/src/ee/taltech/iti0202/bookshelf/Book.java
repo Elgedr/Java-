@@ -34,7 +34,7 @@ public class Book {
         this.price = price;
         globalid += 1; //при создании новой книги у нее будет новый ид. на 1 больше
         this.id = globalid;
-        authorAndBook.put(author, this);
+        authorAndBook.put(author.toLowerCase(), this);
 
     }
 
@@ -147,7 +147,7 @@ public class Book {
         previousAuthor = author;
         previousYear = yearOfPublishing;
         booksOf.add(newBook);
-        authorAndBook.put(author, newBook);
+        authorAndBook.put(author.toLowerCase(), newBook);
 
         return newBook;
     }
@@ -163,7 +163,7 @@ public class Book {
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
-            authorAndBook.put(previousAuthor, newBook);
+            authorAndBook.put(previousAuthor.toLowerCase(), newBook);
             booksOf.add(newBook);
             return newBook;
         }
@@ -190,7 +190,7 @@ public class Book {
             book.getOwner().sellBook(book);
             booksOf.remove(book);
             authorAndBook.remove(book.getAuthor(), book);
-        } else if (book.getOwner() == null) {
+        } else {
             booksOf.remove(book);
             authorAndBook.remove(book.getAuthor(), book);
         }
@@ -204,10 +204,10 @@ public class Book {
      */
     public static List<Book> getBooksByAuthor(String author) {
         List<Book> res = new ArrayList<>();
-        for (String authorr: authorAndBook.keySet()) {
-            if (authorr.toLowerCase().equals(author.toLowerCase())) {
-                res.add(authorAndBook.get(authorr));
-            }
+        HashMap<String, Book> copy = new HashMap<>(authorAndBook);
+        while (copy.containsKey(author.toLowerCase())){
+            res.add(copy.get(author.toLowerCase()));
+            copy.remove(author.toLowerCase());
         }
         return res;
     }
