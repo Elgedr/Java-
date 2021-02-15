@@ -71,14 +71,18 @@ public class Stock {
      * @return Optional
      */
     public Optional<Product> getProduct(String name) {
+        Product res;
         List<Product> productsByName = new ArrayList<>();
         for (Product product: this.ProductsList) {
             if (product.getName().equals(name)) {
                 productsByName.add(product);
             }
         }
+        if (productsByName.size() == 0){
+            return Optional.empty();
+        }
         productsByName.sort(Comparator.comparingInt(Product::getPrice).thenComparingInt(Product::getId));
-        Product res = productsByName.get(0);
+        res = productsByName.get(0);
         return Optional.of(res);
     }
 
