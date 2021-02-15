@@ -8,8 +8,8 @@ public class Book {
     private static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1,
     // как раз первый ид будет 0. эта переменная статическая т.е глобальная и она не сбрасывается
     // при создании нового объекта. статичные переменные не привязаны к объекту
-    private static List<Book> booksOf = new ArrayList<>();
     private static HashMap<String, List<Book>> authorAndBook = new HashMap<>();
+    private static HashMap<String, Book> titleAndBook = new HashMap<>();
     private static String previousAuthor;
     private static Integer previousYear;
 
@@ -20,7 +20,6 @@ public class Book {
     private int id;
     private Person owner;
 
-    public static final int BYDEFAULT = -100;
 
     /**
      *
@@ -136,19 +135,15 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, String author, int yearOfPublishing, int price) {
-        if (booksOf.size() > 0) {
-            for (Book book:booksOf) {
-                if (book.title.equals(title) && book.author.equals(author) && book.yearOfPublishing
-                        == yearOfPublishing && book.price == price) {
-                    authorAndBook.get(author.toLowerCase()).add(book);
-                    return book;
-                }
+        if (titleAndBook.size() > 0) {
+            if (titleAndBook.containsKey(title)) {
+                return titleAndBook.get(title);
             }
         }
         Book newBook = new Book(title, author, yearOfPublishing, price);
         previousAuthor = author;
         previousYear = yearOfPublishing;
-        booksOf.add(newBook);
+        titleAndBook.put(title, newBook);
         authorAndBook.putIfAbsent(author.toLowerCase(), new ArrayList<>());
         authorAndBook.get(author.toLowerCase()).add(newBook);
 
@@ -167,7 +162,7 @@ public class Book {
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
             authorAndBook.get(previousAuthor.toLowerCase()).add(newBook);
-            booksOf.add(newBook);
+            titleAndBook.put(title, newBook);
             return newBook;
         }
     }
@@ -187,16 +182,16 @@ public class Book {
      * @return bool
      */
     public static boolean removeBook(Book book) {
-        if (book == null || !(booksOf.contains(book))) {
+        if (book == null || !(titleAndBook.containsKey(book.getTitle()))) {
             return false;
         }
         if (book.getOwner() != null) {
             book.getOwner().sellBook(book);
-            booksOf.remove(book);
+            titleAndBook.remove(book.getTitle());
             authorAndBook.get(book.getAuthor().toLowerCase()).remove(book);
             return true;
         }
-        booksOf.remove(book);
+        titleAndBook.remove(book.getTitle());
         authorAndBook.get(book.getAuthor().toLowerCase()).remove(book);
         return true;
     }
