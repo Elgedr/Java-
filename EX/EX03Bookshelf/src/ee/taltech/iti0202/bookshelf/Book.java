@@ -190,6 +190,7 @@ public class Book {
             book.getOwner().sellBook(book);
             booksOf.remove(book);
             authorAndBook.remove(book.getAuthor(), book);
+            return true;
         }
         booksOf.remove(book);
         authorAndBook.remove(book.getAuthor(), book);
