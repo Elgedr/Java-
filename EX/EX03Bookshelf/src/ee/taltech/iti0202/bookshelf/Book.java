@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.bookshelf;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -161,7 +160,7 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, int price) {
-        if (previousYear == -100 && previousAuthor == null){
+        if (previousYear == -100 && previousAuthor == null) {
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
@@ -186,7 +185,7 @@ public class Book {
      * @return bool
      */
     public static boolean removeBook(Book book) {
-        if (book == null || !(booksOf.contains(book))){
+        if (book == null || !(booksOf.contains(book))) {
             return false;
         } if (book.getOwner() != null) {
             book.getOwner().sellBook(book);
@@ -205,7 +204,7 @@ public class Book {
      * @return list of books by author
      */
     public static List<Book> getBooksByAuthor(String author) {
-        return authorAndBook.getOrDefault(author.toLowerCase(),new ArrayList<>());
+        return authorAndBook.getOrDefault(author.toLowerCase(), new ArrayList<>());
     }
 
 
