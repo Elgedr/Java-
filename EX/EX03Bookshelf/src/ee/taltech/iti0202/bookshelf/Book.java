@@ -34,7 +34,7 @@ public class Book {
         this.price = price;
         globalid += 1; //при создании новой книги у нее будет новый ид. на 1 больше
         this.id = globalid;
-        authorAndBook.put(author.toLowerCase(), this);
+        authorAndBook.put(author, this);
 
     }
 
@@ -147,7 +147,7 @@ public class Book {
         previousAuthor = author;
         previousYear = yearOfPublishing;
         booksOf.add(newBook);
-        authorAndBook.put(author.toLowerCase(), newBook);
+        authorAndBook.put(author, newBook);
 
         return newBook;
     }
@@ -163,7 +163,7 @@ public class Book {
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
-            authorAndBook.put(previousAuthor.toLowerCase(), newBook);
+            authorAndBook.put(previousAuthor, newBook);
             booksOf.add(newBook);
             return newBook;
         }
@@ -189,11 +189,10 @@ public class Book {
         } if (book.getOwner() != null) {
             book.getOwner().sellBook(book);
             booksOf.remove(book);
-            authorAndBook.remove(book.getAuthor().toLowerCase(), book);
-        } else {
-            booksOf.remove(book);
-            authorAndBook.remove(book.getAuthor().toLowerCase(), book);
+            authorAndBook.remove(book.getAuthor(), book);
         }
+        booksOf.remove(book);
+        authorAndBook.remove(book.getAuthor(), book);
         return true;
     }
 
@@ -204,10 +203,10 @@ public class Book {
      */
     public static List<Book> getBooksByAuthor(String author) {
         List<Book> res = new ArrayList<>();
-        HashMap<String, Book> copy = new HashMap<>(authorAndBook);
-        while (copy.containsKey(author.toLowerCase())){
-            res.add(copy.get(author.toLowerCase()));
-            copy.remove(author.toLowerCase());
+        for (String authorr: authorAndBook.keySet()) {
+            if (authorr.toLowerCase().equals(author.toLowerCase())) {
+                res.add(authorAndBook.get(authorr));
+            }
         }
         return res;
     }
