@@ -11,7 +11,7 @@ public class Book {
     private static List<Book> booksOf = new ArrayList<>();
     private static HashMap<String, List<Book>> authorAndBook = new HashMap<>();
     private static String previousAuthor;
-    private static int previousYear = -100;
+    private static Integer previousYear;
 
     private String title;
     private String author;
@@ -162,7 +162,7 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, int price) {
-        if (previousYear == BYDEFAULT && previousAuthor == null) {
+        if (previousYear == null && previousAuthor == null) {
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
