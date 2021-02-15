@@ -187,7 +187,8 @@ public class Book {
     public static boolean removeBook(Book book) {
         if (book == null || !(booksOf.contains(book))) {
             return false;
-        } if (book.getOwner() != null) {
+        }
+        if (book.getOwner() != null) {
             book.getOwner().sellBook(book);
             booksOf.remove(book);
             authorAndBook.get(book.getAuthor().toLowerCase()).remove(book);
