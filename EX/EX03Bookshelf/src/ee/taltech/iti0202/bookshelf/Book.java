@@ -10,6 +10,8 @@ public class Book {
     // при создании нового объекта. статичные переменные не привязаны к объекту
     private static List<Book> booksOf = new ArrayList<>();
     private static HashMap<String, Book> authorAndBook = new HashMap<>();
+    private static String previousAuthor;
+    private static int previousYear = -100;
 
     private String title;
     private String author;
@@ -142,6 +144,8 @@ public class Book {
             }
         }
         Book newBook = new Book(title, author, yearOfPublishing, price);
+        previousAuthor = author;
+        previousYear = yearOfPublishing;
         booksOf.add(newBook);
         authorAndBook.put(author, newBook);
 
@@ -155,7 +159,14 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, int price) {
-        return null;
+        if (previousYear == -100 && previousAuthor == null){
+            return null;
+        } else {
+            Book newBook = new Book(title, previousAuthor, previousYear, price);
+            authorAndBook.put(previousAuthor, newBook);
+            booksOf.add(newBook);
+            return newBook;
+        }
     }
 
     /**
