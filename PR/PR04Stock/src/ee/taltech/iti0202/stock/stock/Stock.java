@@ -99,8 +99,13 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        ProductsList.remove(getProduct(name));
-        return getProduct(name);
+        for (Product product:ProductsList){
+                if (product.getName().equals(name)) {
+                    ProductsList.remove(getProduct(name));
+                    return getProduct(name);
+                }
+            }
+        return Optional.empty();
     }
 
     /**
