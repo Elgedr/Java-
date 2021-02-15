@@ -99,7 +99,8 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        return Optional.empty();
+        ProductsList.remove(getProduct(name));
+        return getProduct(name);
     }
 
     /**
