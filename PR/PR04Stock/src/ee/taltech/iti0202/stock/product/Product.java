@@ -24,7 +24,7 @@ public class Product {
         this.name = name;
         this.price = price;
         this.id = globalId;
-        globalId ++;
+        globalId++;
 
     }
 
@@ -36,7 +36,7 @@ public class Product {
      * @return The next id.
      */
     public static int getNextId() {
-        return globalId ++;
+        return globalId++;
     }
 
     /**
