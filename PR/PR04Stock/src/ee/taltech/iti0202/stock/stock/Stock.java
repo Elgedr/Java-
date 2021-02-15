@@ -4,9 +4,7 @@ import ee.taltech.iti0202.stock.product.Product;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -132,7 +130,8 @@ public class Stock {
                 productsByName.add(product);
             }
         }
-        productsByName.sort(Comparator.comparingInt(Product::getPrice).reversed().thenComparingInt(Product::getId).reversed());
+        productsByName.sort(Comparator.comparingInt(Product::getPrice).reversed()
+                .thenComparingInt(Product::getId).reversed());
         return productsByName;
     }
 
