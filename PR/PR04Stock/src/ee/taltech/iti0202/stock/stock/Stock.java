@@ -3,7 +3,10 @@ import ee.taltech.iti0202.stock.exceptions.StockException;
 import ee.taltech.iti0202.stock.product.Product;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -68,7 +71,15 @@ public class Stock {
      * @return Optional
      */
     public Optional<Product> getProduct(String name) {
-        return Optional.empty();
+        List<Product> productsByName = new ArrayList<>();
+        for (Product product: this.ProductsList) {
+            if (product.getName().equals(name)) {
+                productsByName.add(product);
+            }
+        }
+        productsByName.sort(Comparator.comparingInt(Product::getPrice).thenComparingInt(Product::getId));
+        Product res = productsByName.get(0);
+        return Optional.of(res);
     }
 
     /**
