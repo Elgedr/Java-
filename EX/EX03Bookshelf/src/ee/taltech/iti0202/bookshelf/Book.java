@@ -20,6 +20,8 @@ public class Book {
     private int id;
     private Person owner;
 
+    public static final int BYDEFAULT = -100;
+
     /**
      *
      * @param title book's title
@@ -160,7 +162,7 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, int price) {
-        if (previousYear == -100 && previousAuthor == null) {
+        if (previousYear == BYDEFAULT && previousAuthor == null) {
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
