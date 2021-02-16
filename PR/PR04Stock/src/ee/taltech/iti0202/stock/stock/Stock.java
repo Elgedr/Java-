@@ -98,7 +98,7 @@ public class Stock {
 
     public Optional<Product> removeProduct(String name) {
         Optional<Product> willBeRemovedO = getProduct(name);
-        if (willBeRemovedO.isEmpty()){
+        if (willBeRemovedO.isEmpty()) {
             return willBeRemovedO;
         }
         Product willBeRemoved = willBeRemovedO.get();
