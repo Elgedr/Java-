@@ -10,7 +10,7 @@ public class Book {
     // при создании нового объекта. статичные переменные не привязаны к объекту
     private static HashMap<String, List<Book>> authorAndBook = new HashMap<>();
     private static HashMap<String, Book> titleAndBook = new HashMap<>();
-    private static String previousAuthor;
+    private static String previousAuthor; // для второго метода of
     private static Integer previousYear;
 
     private String title;

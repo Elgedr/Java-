@@ -97,13 +97,13 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        for (Product product:productsList) {
-                if (product.getName().equals(name)) {
-                    productsList.remove(product);
-                    return getProduct(name);
-                }
-            }
-        return Optional.empty();
+        Optional<Product> willBeRemovedO = getProduct(name);
+        if (willBeRemovedO.isEmpty()){
+            return willBeRemovedO;
+        }
+        Product willBeRemoved = willBeRemovedO.get();
+        productsList.remove(willBeRemoved);
+        return Optional.of(willBeRemoved);
     }
 
     /**
