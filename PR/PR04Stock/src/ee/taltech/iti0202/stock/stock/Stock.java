@@ -101,7 +101,7 @@ public class Stock {
             return Optional.empty();
         }
         Product willBeRemoved = getProduct(name).get();
-        productsList.remove(getProduct(name));
+        productsList.remove(willBeRemoved);
         return Optional.of(willBeRemoved);
     }
 
