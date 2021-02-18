@@ -81,7 +81,7 @@ public class Stock {
         }
         productsByName.sort(Comparator.comparingInt(Product::getPrice).thenComparingInt(Product::getId));
         res = productsByName.get(0);
-        return Optional.ofNullable(res);
+        return Optional.ofNullable(res); // возвращает Optional-объект, а если его нет,то empty Optional-объект.
     }
 
     /**
@@ -97,10 +97,10 @@ public class Stock {
      */
 
     public Optional<Product> removeProduct(String name) {
-        if (getProduct(name).isEmpty()) {
+        if (getProduct(name).isEmpty()) { //если удалять нечего, и наш метод возвращает empty, то вернем Optional.empty
             return Optional.empty();
         }
-        Product willBeRemoved = getProduct(name).get();
+        Product willBeRemoved = getProduct(name).get(); //если продукт есть, то с помощью .get получим сам объект
         productsList.remove(willBeRemoved);
         return Optional.of(willBeRemoved);
     }

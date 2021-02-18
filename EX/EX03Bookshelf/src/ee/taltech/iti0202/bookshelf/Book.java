@@ -8,10 +8,10 @@ public class Book {
     private static int globalid = -1; //ид должен начинаться с -1. так как при создании делаем +1,
     // как раз первый ид будет 0. эта переменная статическая т.е глобальная и она не сбрасывается
     // при создании нового объекта. статичные переменные не привязаны к объекту
-    private static HashMap<String, List<Book>> authorAndBook = new HashMap<>();
+    private static HashMap<String, List<Book>> authorAndBook = new HashMap<>(); //словарь, где значение- список из Book
     private static HashMap<String, Book> titleAndBook = new HashMap<>();
     private static String previousAuthor; // для второго метода of
-    private static Integer previousYear;
+    private static Integer previousYear; // если хотим проверить на Null, то пишем не int, a Integer
 
     private String title;
     private String author;
@@ -103,9 +103,9 @@ public class Book {
      * @return if book was bought or not
      */
     public boolean buy(Person buyer) {
-        if (this.owner == null && buyer != null) {
+        if (this.owner == null && buyer != null) { //если продавца нет, но есть покупатель, то книгу просто покупают
             buyer.buyBook(this);
-        } else if (this.owner != null && buyer == null) {
+        } else if (this.owner != null && buyer == null) { //если покупателя нет,есть продавец,то книга просто продается
             this.owner.sellBook(this);
             return true;
         } else if (this.owner == buyer || buyer.getMoney() <= this.price) {
@@ -135,8 +135,8 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, String author, int yearOfPublishing, int price) {
-        if (titleAndBook.size() > 0) {
-            if (titleAndBook.containsKey(title)) {
+        if (titleAndBook.size() > 0) { //если в словаре есть какие-то элементы, то проверяем есть ли там уже такая книга
+            if (titleAndBook.containsKey(title)) { //если есть, то возвращаю сущесивуюущую книгу
                 return titleAndBook.get(title);
             }
         }
@@ -144,8 +144,9 @@ public class Book {
         previousAuthor = author;
         previousYear = yearOfPublishing;
         titleAndBook.put(title, newBook);
-        authorAndBook.putIfAbsent(author.toLowerCase(), new ArrayList<>());
-        authorAndBook.get(author.toLowerCase()).add(newBook);
+        authorAndBook.putIfAbsent(author.toLowerCase(), new ArrayList<>()); //equalsIgnoreCase чтоб игнорировать шрифт
+        //создаем пару где ключ это имя автора, значение- список из его книг
+        authorAndBook.get(author.toLowerCase()).add(newBook); //добавляю в список из значения книгу
 
         return newBook;
     }
@@ -157,7 +158,7 @@ public class Book {
      * @return book object
      */
     public static Book of(String title, int price) {
-        if (previousYear == null && previousAuthor == null) {
+        if (previousYear == null && previousAuthor == null) { //если null, значит до этого не вызывали первый метод of
             return null;
         } else {
             Book newBook = new Book(title, previousAuthor, previousYear, price);
@@ -202,7 +203,7 @@ public class Book {
      * @return list of books by author
      */
     public static List<Book> getBooksByAuthor(String author) {
-        return authorAndBook.getOrDefault(author.toLowerCase(), new ArrayList<>());
+        return authorAndBook.getOrDefault(author.toLowerCase(), new ArrayList<>()); //вернем список из книг автора. если их нет, то по дефолту вернем пустой список
     }
 
 
