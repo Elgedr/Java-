@@ -22,9 +22,9 @@ public class SocialNetwork {
 
     public Feed getFeedForUser(User user) {
         Set<Message> groupMessages = new HashSet<>();
-        for (Group group: this.registeredGroups){
+        for (Group group: this.registeredGroups) {
             for (User userr: group.getParticipants()) {
-                if (userr == user){
+                if (userr == user) {
                     groupMessages.addAll(group.getMessages());
                 }
             }
