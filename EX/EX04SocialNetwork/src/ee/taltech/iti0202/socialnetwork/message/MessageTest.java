@@ -3,7 +3,6 @@ package ee.taltech.iti0202.socialnetwork.message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 import org.junit.Assert;
 
-import static org.junit.Assert.*;
 
 public class MessageTest {
     User user1 = new User("user1", 10);
