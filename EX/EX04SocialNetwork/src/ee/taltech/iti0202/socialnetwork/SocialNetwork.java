@@ -31,4 +31,5 @@ public class SocialNetwork {
         }
         return new Feed(user, groupMessages);
     }
+
 }

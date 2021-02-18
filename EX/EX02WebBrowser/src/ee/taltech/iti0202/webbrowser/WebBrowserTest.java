@@ -11,10 +11,10 @@ import java.util.List;
 public class WebBrowserTest {
     public static final int THIRTY = 30;
     WebBrowser webBrowser = new WebBrowser();
+
     /**Test1*/
     @org.junit.Test
     public void homePage() {
-
     }
 
 
