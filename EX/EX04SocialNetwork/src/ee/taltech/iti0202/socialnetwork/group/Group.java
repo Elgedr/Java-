@@ -3,7 +3,6 @@ package ee.taltech.iti0202.socialnetwork.group;
 import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -42,7 +41,7 @@ public class Group {
     }
 
     public void publishMessage(Message message) {
-        if (users.contains(message.getAuthor())){
+        if (users.contains(message.getAuthor())) {
             publishedMessages.add(message);
         }
     }

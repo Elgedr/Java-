@@ -5,14 +5,16 @@ import ee.taltech.iti0202.socialnetwork.user.User;
 
 import java.util.Set;
 
+
 public class SocialNetwork {
+    private Set<Group> registeredGroups;
 
     public void registerGroup(Group group) {
-
+        registeredGroups.add(group);
     }
 
     public Set<Group> getGroups() {
-        return null;
+        return registeredGroups;
     }
 
     public Feed getFeedForUser(User user) {
