@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.Set;
 
 public class GroupTest {
+
+    public static final int AGE = 15;
+
     User user1 = new User("user1", 10);
-    User user2 = new User("user2", 15);
+    User user2 = new User("user2", AGE);
     Group gr1 = new Group("G1", user1);
     Message m1 = new Message("M1", "Hiii", user2);
 
