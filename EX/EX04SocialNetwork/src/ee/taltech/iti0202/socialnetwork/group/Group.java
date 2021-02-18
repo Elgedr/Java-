@@ -12,12 +12,13 @@ import java.util.Set;
 public class Group {
     private String groupName;
     private User chatCreator;
-    private Set<User> users = new HashSet<>(Arrays.asList(chatCreator));
+    private Set<User> users = new HashSet<>(Arrays.asList());
     private List<Message> publishedMessages = new LinkedList<>();
 
     public Group(String name, User owner) {
         this.groupName = name;
         this.chatCreator = owner;
+        this.users.add(owner);
     }
 
     public String getName() {

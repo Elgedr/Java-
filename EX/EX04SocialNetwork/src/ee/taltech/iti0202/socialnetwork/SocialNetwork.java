@@ -4,14 +4,12 @@ import ee.taltech.iti0202.socialnetwork.group.Group;
 import ee.taltech.iti0202.socialnetwork.message.Message;
 import ee.taltech.iti0202.socialnetwork.user.User;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
 public class SocialNetwork {
-    private Set<Group> registeredGroups;
+    private Set<Group> registeredGroups = new HashSet<>();
     private Feed feed;
 
     public void registerGroup(Group group) {
@@ -25,7 +23,7 @@ public class SocialNetwork {
     public Feed getFeedForUser(User user) {
         Set<Message> groupMessages = new HashSet<>();
         for (Group group: this.registeredGroups){
-            for (User userr: group.getParticipants()){
+            for (User userr: group.getParticipants()) {
                 if (userr == user){
                     groupMessages.addAll(group.getMessages());
                 }
