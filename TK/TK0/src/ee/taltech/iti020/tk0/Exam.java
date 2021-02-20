@@ -3,6 +3,7 @@ package ee.taltech.iti020.tk0;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +62,14 @@ public class Exam {
      * getSandwich("xxbreadyy") → ""
      */
     public static String getSandwich(String str) {
-        return "";
+        List<String> listt = Arrays.asList(str.split("bread"));
+        int occurrences = Collections.frequency(listt, "bread");
+        if (occurrences <= 1){
+            return "";
+        }
+        int first = listt.indexOf("bread");
+        int last = listt.lastIndexOf("bread");
+        return listt.subList(first, last + 1).toString();
     }
 
 
