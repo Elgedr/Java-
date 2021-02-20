@@ -32,7 +32,7 @@ public class Cat {
         this.name = name;
     }
 
-    public String getColour() {
+    public String getColor() {
         return colour;
     }
 
@@ -42,7 +42,7 @@ public class Cat {
 
     @Override
     public String toString() {
-        if (this.getColour() != null && this.getName() != null && age != null) {
+        if (this.getColor() != null && this.getName() != null && age != null) {
             return colour + " " + name + " " + age;
         }
         return name;
