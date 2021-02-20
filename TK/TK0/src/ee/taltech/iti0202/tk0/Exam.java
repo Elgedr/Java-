@@ -3,7 +3,9 @@ package ee.taltech.iti0202.tk0;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -24,25 +26,21 @@ public class Exam {
      * evenOdd([2, 2, 2]) → [2, 2, 2]
      */
     public static List<Integer> evenOdd(List<Integer> nums) {
-        List<Integer> res = new ArrayList<>();
-        for (int integer: nums){
-            if (integer % 2 == 0) {
-                res.add(integer);
-//                nums.remove(integer);
+        var result = nums.stream().filter(x -> x % 2 == 0).collect(Collectors.toList());
+        var result2 = nums.stream().filter(x -> x % 2 != 0).collect(Collectors.toList());
+//        List<Integer> res = new ArrayList<>();
+//        for (int integer: nums){
+//            if (integer % 2 == 0) {
+//                res.add(integer);
 //            }
 //        }
 //        for (int el: nums){
-//            res.add(el);
+//            if(el % 2 != 0){
+//                res.add(el);
+//            }
 //        }
-//        return res;
-            }
-        }
-        for (int el: nums){
-            if(el % 2 != 0){
-                res.add(el);
-            }
-        }
-        return res;
+        result.addAll(result2);
+        return result;
     }
 
 
