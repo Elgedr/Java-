@@ -18,7 +18,7 @@ public class Person {
         return catsList;
     }
 
-    boolean sellCat(Person sellTo, Cat cat){
+    public boolean sellCat(Person sellTo, Cat cat){
         if (catsList.contains(cat) && !(sellTo == this)){
             sellTo.addCat(cat);
             this.catsList.remove(cat);
