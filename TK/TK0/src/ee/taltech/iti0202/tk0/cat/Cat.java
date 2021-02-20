@@ -43,7 +43,7 @@ public class Cat {
     @Override
     public String toString() {
         if (this.getColor() != null && this.getName() != null && age != null) {
-            return colour + " " + name + " " + age;
+            return colour + " " + name + " (" + age + ")";
         }
         return name;
     }
