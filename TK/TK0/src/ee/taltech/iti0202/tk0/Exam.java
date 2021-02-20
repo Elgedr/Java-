@@ -53,12 +53,17 @@ public class Exam {
      * loneSum(3, 3, 3) → 0
      */
     public static int loneSum(int a, int b, int c) {
-        Set<Integer> res = new HashSet<>(Arrays.asList(a, b, c));
-        int resul = 0;
-        for (int integer: res){
-            resul += integer;
+        if (a == b && a == c){
+            return 0;
+        } else if (a == b) {
+            return c;
+        } else if (a == c) {
+            return b;
+        } else if (b == c) {
+            return a;
+        } else {
+            return a + b + c;
         }
-        return resul;
     }
 
 
@@ -103,6 +108,7 @@ public class Exam {
 
     public static void main(String[] args) {
         System.out.println(evenOdd(Arrays.asList(1, 0, 1, 0, 0, 1, 1)));
+        System.out.println(loneSum(3, 3, 3));
     }
 
 
