@@ -1,7 +1,7 @@
 package ee.taltech.iti0202.tk0.cat;
 
 public class Cat {
-    private int age;
+    private Integer age;
     private String name;
     private String colour;
 
@@ -41,7 +41,7 @@ public class Cat {
 
     @Override
     public String toString() {
-        if (this.getColour() != null && this.getName() != null) {
+        if (this.getColour() != null && this.getName() != null && age != null) {
             return colour + " " + name + " " + age;
         }
         return name;
