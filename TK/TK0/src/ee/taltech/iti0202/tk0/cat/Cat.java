@@ -9,10 +9,11 @@ public class Cat {
         this.name = name;
     }
 
-    public Cat(String name, String colour, int age){
+    public Cat(String name,int age, String colour){
+        this.colour = colour;
         this.age = age;
         this.name = name;
-        this.colour = colour;
+
     }
 
     public int getAge() {
