@@ -84,7 +84,11 @@ public class Exam {
      * topping({"pancake": "syrup"}) → {"bread": "butter", "pancake": "syrup"}
      */
     public static Map<String, String> topping(Map<String, String> map) {
-        return null;
+        if (map.containsKey("ice cream")){
+            map.put("ice cream", "cherry");
+        }
+        map.put("bread", "butter");
+        return map;
     }
 
     public static void main(String[] args) {
