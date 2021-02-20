@@ -37,8 +37,11 @@ public class Exam {
 //        return res;
             }
         }
-        nums.stream().filter(x -> x % 2 != 0).collect(Collectors.toList());
-        res.addAll(nums);
+        for (int el: nums){
+            if(el % 2 != 0){
+                res.add(el);
+            }
+        }
         return res;
     }
 
