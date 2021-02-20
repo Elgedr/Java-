@@ -3,8 +3,11 @@ package ee.taltech.iti020.tk0;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 public class Exam {
 
 
@@ -39,7 +42,12 @@ public class Exam {
      * loneSum(3, 3, 3) → 0
      */
     public static int loneSum(int a, int b, int c) {
-        return 0;
+        Set<Integer> res = new HashSet<>(Arrays.asList(a, b, c));
+        int resul = 0;
+        for (int integer: res){
+            resul += integer;
+        }
+        return resul;
     }
 
 
