@@ -6,7 +6,7 @@ import java.util.List;
 public class Person {
     private List<Cat> catsList = new ArrayList<>();
 
-    private boolean addCat(Cat cat){
+    public boolean addCat(Cat cat){
         if (!catsList.contains(cat)){
             catsList.add(cat);
             return true;
