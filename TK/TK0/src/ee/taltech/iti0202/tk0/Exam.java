@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Exam {
 
@@ -25,11 +26,19 @@ public class Exam {
     public static List<Integer> evenOdd(List<Integer> nums) {
         List<Integer> res = new ArrayList<>();
         for (int integer: nums){
-            if (integer % 2 == 0){
+            if (integer % 2 == 0) {
                 res.add(integer);
-                nums.remove(integer);
+//                nums.remove(integer);
+//            }
+//        }
+//        for (int el: nums){
+//            res.add(el);
+//        }
+//        return res;
             }
         }
+        nums.stream().filter(x -> x % 2 != 0).collect(Collectors.toList());
+        res.addAll(nums);
         return res;
     }
 
