@@ -77,14 +77,13 @@ public class Exam {
      * getSandwich("xxbreadyy") → ""
      */
     public static String getSandwich(String str) {
-        List<String> listt = Arrays.asList(str.split("bread"));
-        int occurrences = Collections.frequency(listt, "bread");
-        if (occurrences <= 1){
+        int first = str.indexOf("bread");
+        int last = str.lastIndexOf("bread");
+        if (first == -1 || last == -1){
             return "";
         }
-        int first = listt.indexOf("bread");
-        int last = listt.lastIndexOf("bread");
-        return listt.subList(first, last + 1).toString();
+        System.out.println(str.substring(first + 5, last));
+        return str.substring(first + 5, last);
     }
 
 
@@ -107,8 +106,9 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(evenOdd(Arrays.asList(1, 0, 1, 0, 0, 1, 1)));
-        System.out.println(loneSum(3, 3, 3));
+//        System.out.println(evenOdd(Arrays.asList(1, 0, 1, 0, 0, 1, 1)));
+//        System.out.println(loneSum(3, 3, 3));
+        getSandwich("breadjambread");
     }
 
 
