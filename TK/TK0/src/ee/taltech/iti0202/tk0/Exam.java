@@ -79,11 +79,15 @@ public class Exam {
     public static String getSandwich(String str) {
         int first = str.indexOf("bread");
         int last = str.lastIndexOf("bread");
-        if (first == -1 || last == -1){
+        System.out.println(last);
+        System.out.println(first);
+        if (first == last) {
             return "";
+        } else {
+            System.out.println(str.substring(first + 5, last));
+            return str.substring(first + 5, last);
         }
-        System.out.println(str.substring(first + 5, last));
-        return str.substring(first + 5, last);
+
     }
 
 
@@ -106,9 +110,9 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-//        System.out.println(evenOdd(Arrays.asList(1, 0, 1, 0, 0, 1, 1)));
-//        System.out.println(loneSum(3, 3, 3));
-        getSandwich("breadjambread");
+        System.out.println(evenOdd(Arrays.asList(1, 0, 1, 0, 0, 1, 1)));
+        System.out.println(loneSum(3, 3, 3));
+        getSandwich("xxbrdyy");
     }
 
 
