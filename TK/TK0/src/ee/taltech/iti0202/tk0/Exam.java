@@ -79,12 +79,9 @@ public class Exam {
     public static String getSandwich(String str) {
         int first = str.indexOf("bread");
         int last = str.lastIndexOf("bread");
-        System.out.println(last);
-        System.out.println(first);
         if (first == last) {
             return "";
         } else {
-            System.out.println(str.substring(first + 5, last));
             return str.substring(first + 5, last);
         }
 
