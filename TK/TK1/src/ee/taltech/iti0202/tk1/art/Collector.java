@@ -20,7 +20,7 @@ public class Collector {
     }
 
     public boolean sellPainting(Painting painting, Collector fellowCollector) {
-        if (addPainting(painting) && fellowCollector != this && res.contains(painting)) {
+        if (fellowCollector.addPainting(painting) && fellowCollector != this && res.contains(painting)) {
             return true;
         }
         return false;
