@@ -67,7 +67,11 @@ public class Exam {
      * mapAB2({"a": "aaa", "b": "bbb", "c": "aaa"}) → {"a": "aaa", "b": "bbb", "c": "aaa"}
      */
     public static Map<String, String> mapAB(Map<String, String> map) {
-        return null;
+        if (map.containsKey("a") && map.containsKey("b") && map.get("a").equals(map.get("b"))){
+            map.remove("a");
+            map.remove("b");
+        }
+        return map;
     }
 
     public static void main(String[] args) {
