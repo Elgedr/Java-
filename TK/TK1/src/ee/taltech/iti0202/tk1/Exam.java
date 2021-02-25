@@ -26,7 +26,7 @@ public class Exam {
     public static int centeredAverage(List<Integer> nums) {
         List<Integer> finall = nums.stream().sorted().collect(Collectors.toList());
         finall.remove(0);
-        finall.remove(nums.size() - 1);
+        finall.remove(finall.size() - 1);
         int ress = finall.stream().mapToInt(Integer::intValue).sum();
         return ress / finall.size();
 
