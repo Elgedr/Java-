@@ -26,7 +26,7 @@ public class Collector {
         return false;
     }
 
-    List<Painting> getPaintings() {
+    public List<Painting> getPaintings() {
         return res;
     }
 
