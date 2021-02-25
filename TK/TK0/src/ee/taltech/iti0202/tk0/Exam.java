@@ -1,15 +1,9 @@
 package ee.taltech.iti0202.tk0;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Exam {
@@ -53,7 +47,7 @@ public class Exam {
      * loneSum(3, 3, 3) → 0
      */
     public static int loneSum(int a, int b, int c) {
-        if (a == b && a == c){
+        if (a == b && a == c) {
             return 0;
         } else if (a == b) {
             return c;
@@ -99,7 +93,7 @@ public class Exam {
      * topping({"pancake": "syrup"}) → {"bread": "butter", "pancake": "syrup"}
      */
     public static Map<String, String> topping(Map<String, String> map) {
-        if (map.containsKey("ice cream")){
+        if (map.containsKey("ice cream")) {
             map.put("ice cream", "cherry");
         }
         map.put("bread", "butter");
