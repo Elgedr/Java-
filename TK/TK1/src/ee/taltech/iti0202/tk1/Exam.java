@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Exam {
@@ -23,11 +24,11 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        Collections.sort(nums);
+        List<Integer> finall = nums.stream().sorted().collect(Collectors.toList());
         nums.remove(0);
         nums.remove(nums.size()-1);
         int ress = 0;
-        for (Integer num: nums){
+        for (Integer num: finall){
             ress =+ num;
         }
         return ress / nums.size();
@@ -88,6 +89,5 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-
     }
 }
