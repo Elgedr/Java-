@@ -21,14 +21,26 @@ public class Painting {
         return title;
     }
 
+    /**
+     *
+     * @param author author.
+     */
     public void setAuthor(String author) {
         this.author = author;
     }
 
+    /**
+     *
+     * @param title title.
+     */
     public void setTitle(String title) {
         this.title = title;
     }
 
+    /**
+     *
+     * @return string.
+     */
     public String toString() {
         if (this.author != null && this.title != null) {
             return "This is a painting named " + this.title + " and made by " + this.author + ".";
