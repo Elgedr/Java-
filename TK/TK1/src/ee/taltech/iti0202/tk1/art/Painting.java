@@ -4,7 +4,7 @@ public class Painting {
     String author;
     String title;
 
-    public Painting(String name){
+    public Painting(String name) {
         this.title = name;
     }
 
@@ -29,8 +29,8 @@ public class Painting {
         this.title = title;
     }
 
-    public String toString(){
-        if (this.author != null && this.title != null){
+    public String toString() {
+        if (this.author != null && this.title != null) {
             return "This is a painting named " + this.title + " and made by " + this.author + ".";
         } else {
             return "This is a painting named " + this.title + " and made by an unknown artist.";
