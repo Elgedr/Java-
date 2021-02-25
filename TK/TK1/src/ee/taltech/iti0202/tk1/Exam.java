@@ -75,8 +75,6 @@ public class Exam {
     }
 
     public static void main(String[] args) {
-        System.out.println(blackjack(22, 22));
-        System.out.println(repeatEnd("Hello", 1));
 
     }
 }
