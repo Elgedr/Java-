@@ -4,10 +4,19 @@ public class Painting {
     String author;
     String title;
 
+    /**
+     *
+     * @param name name.
+     */
     public Painting(String name) {
         this.title = name;
     }
 
+    /**
+     *
+     * @param name name.
+     * @param author author.
+     */
     public Painting(String name, String author) {
         this.title = name;
         this.author = author;
