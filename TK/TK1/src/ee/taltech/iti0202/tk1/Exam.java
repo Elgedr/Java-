@@ -1,5 +1,6 @@
 package ee.taltech.iti0202.tk1;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,11 +21,12 @@ public class Exam {
      * centeredAverage([-10, -4, -2, -4, -2, 0]) → -3
      */
     public static int centeredAverage(List<Integer> nums) {
-        List<Integer> finall = nums.stream().sorted().collect(Collectors.toList());
-        finall.remove(0);
-        finall.remove(finall.size() - 1);
-        int ress = finall.stream().mapToInt(Integer::intValue).sum();
-        return ress / finall.size();
+//        List<Integer> finall = nums.stream().sorted().collect(Collectors.toList());
+        Collections.sort(nums);
+        nums.remove(0);
+        nums.remove(nums.size() - 1);
+        int ress = nums.stream().mapToInt(Integer::intValue).sum();
+        return ress / nums.size();
 
     }
 
