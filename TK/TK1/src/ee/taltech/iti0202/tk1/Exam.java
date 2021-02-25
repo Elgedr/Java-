@@ -53,7 +53,8 @@ public class Exam {
      * repeatEnd("Hello", 1) → "o"
      */
     public static String repeatEnd(String str, int n) {
-        return "";
+        String res = str.substring(str.length() - n);
+        return res.repeat(n);
 
     }
 
@@ -71,6 +72,7 @@ public class Exam {
 
     public static void main(String[] args) {
         System.out.println(blackjack(22, 22));
+        System.out.println(repeatEnd("Hello", 1));
 
     }
 }
