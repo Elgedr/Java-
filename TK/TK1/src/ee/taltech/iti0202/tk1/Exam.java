@@ -7,6 +7,8 @@ import java.util.Map;
 public class Exam {
 
 
+    public static final int INT = 21;
+
     /**
      * Return the "centered" average of an array of ints, which we'll say is the mean average of the values,
      * except ignoring the largest and smallest values in the array. If there are multiple copies of the
@@ -31,13 +33,13 @@ public class Exam {
      * blackjack(19, 22) → 19
      */
     public static int blackjack(int a, int b) {
-        if (a > b && a <= 21) {
+        if (a > b && a <= INT) {
             return a;
-        } else if (b > a && b <= 21) {
+        } else if (b > a && b <= INT) {
             return b;
-        } else if (b <= 21) {
+        } else if (b <= INT) {
             return b;
-        } else if (a <= 21) {
+        } else if (a <= INT) {
             return a;
         }
         return 0;
