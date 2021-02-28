@@ -13,6 +13,7 @@ import static ee.taltech.iti0202.mysticorbs.oven.Oven.allOrbs;
 public class OrbFactory {
     public ResourceStorage resourceStorage;
     public LinkedList<Oven> ovens = new LinkedList<>();
+    public LinkedList<Orb> orbs = new LinkedList<>();
 
     public OrbFactory(ResourceStorage resourceStorage) {
         this.resourceStorage = resourceStorage;
@@ -37,8 +38,11 @@ public class OrbFactory {
     public int produceOrbs(){
         for (Oven oven: ovens){
             oven.craftOrb();
+            if (oven.craftOrb().isPresent()){
+                orbs.add(oven.craftOrb().get());
+            }
         }
-        return allOrbs.size();
+        return orbs.size();
     }
 
     public int produceOrbs(int cycles){
