@@ -22,22 +22,42 @@ public class Oven {
         this.resourceStorage = resourceStorage;
     }
 
+    /**
+     *
+     * @return .
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @return .
+     */
     public ResourceStorage getResourceStorage() {
         return resourceStorage;
     }
 
+    /**
+     *
+     * @return .
+     */
     public int getCreatedOrbsAmount() {
         return orbsMadeInOven;
     }
 
+    /**
+     *
+     * @return .
+     */
     public boolean isBroken() {
         return orbsMadeInOven >= 15;
     }
 
+    /**
+     *
+     * @return .
+     */
     public Optional<Orb> craftOrb() {
         if (!isBroken() && resourceStorage.hasEnoughResource("pearl", 1)
                 && resourceStorage.hasEnoughResource("silver", 1)) {
@@ -53,7 +73,4 @@ public class Oven {
         return Optional.empty();
     }
 
-    public static void main(String[] args) {
-
-    }
 }
