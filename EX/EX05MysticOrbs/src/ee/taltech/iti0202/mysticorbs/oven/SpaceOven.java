@@ -9,6 +9,11 @@ import java.util.Optional;
 public class SpaceOven extends Oven {
     private int orbsMadeBySpaceOven = 0;
 
+    /**
+     *
+     * @param name .
+     * @param resourceStorage .
+     */
     public SpaceOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
     }

@@ -17,6 +17,11 @@ public class Oven {
     private int orbsMadeInOven = 0;
     public static LinkedList<Orb> allOrbs = new LinkedList<>();
 
+    /**
+     *
+     * @param name .
+     * @param resourceStorage .
+     */
     public Oven(String name, ResourceStorage resourceStorage) {
         this.name = name;
         this.resourceStorage = resourceStorage;

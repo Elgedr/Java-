@@ -8,6 +8,11 @@ import java.util.Optional;
 public class InfinityMagicOven extends MagicOven {
     private int orbsMadeByInfinityMagicOven = 0;
 
+    /**
+     *
+     * @param name .
+     * @param resourceStorage .
+     */
     public InfinityMagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
         super.isMagic = true;

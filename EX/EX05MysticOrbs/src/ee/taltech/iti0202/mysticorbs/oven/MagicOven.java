@@ -9,6 +9,11 @@ import java.util.Optional;
 public class MagicOven extends Oven {
     private int orbsMadeByMagicOven = 0;
 
+    /**
+     *
+     * @param name .
+     * @param resourceStorage .
+     */
     public MagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
     }
