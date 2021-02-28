@@ -31,7 +31,7 @@ public class SpaceOven extends Oven {
                 return Optional.of(newObject);
             }
         } else if (resourceStorage.hasEnoughResource("pearl", 1)
-                && resourceStorage.hasEnoughResource("silver", 1)){
+                && resourceStorage.hasEnoughResource("silver", 1)) {
             Orb newObject = new Orb(this.name);
             resourceStorage.takeResource("pearl", 1);
             resourceStorage.takeResource("silver", 1);

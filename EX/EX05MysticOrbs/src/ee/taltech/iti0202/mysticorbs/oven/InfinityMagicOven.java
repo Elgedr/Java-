@@ -33,4 +33,5 @@ public class InfinityMagicOven extends MagicOven {
             return Optional.of(newObject);
         }
         return Optional.empty();
-}}
+    }
+}

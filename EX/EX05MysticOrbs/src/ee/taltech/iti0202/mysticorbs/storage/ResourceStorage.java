@@ -7,9 +7,16 @@ public class ResourceStorage {
 
     public HashMap<String, Integer> resources = new LinkedHashMap<>();
 
+    /**
+     * Constructor.
+     */
     public ResourceStorage() {
     }
 
+    /**
+     *
+     * @return boolean.
+     */
     public boolean isEmpty() {
         if (resources.size() == 0) {
             return true;
@@ -22,6 +29,11 @@ public class ResourceStorage {
         return true;
     }
 
+    /**
+     *
+     * @param resource resource.
+     * @param amount amount.
+     */
     public void addResource(String resource, int amount) {
         if (!resource.isBlank() && amount > 0) {
             if (!resources.containsKey(resource.toLowerCase())) {
@@ -34,6 +46,11 @@ public class ResourceStorage {
         }
     }
 
+    /**
+     *
+     * @param resource resource.
+     * @return string.
+     */
     public int getResourceAmount(String resource) {
         if (resources.containsKey(resource.toLowerCase())) {
             return resources.get(resource.toLowerCase());
@@ -41,6 +58,12 @@ public class ResourceStorage {
         return 0;
     }
 
+    /**
+     *
+     * @param resource resource.
+     * @param amount amount.
+     * @return boolean.
+     */
     public boolean hasEnoughResource(String resource, int amount) {
         if (amount < 1) {
             return false;
@@ -54,6 +77,12 @@ public class ResourceStorage {
         return false;
     }
 
+    /**
+     *
+     * @param resource resource.
+     * @param amount amount.
+     * @return boolean.
+     */
     public boolean takeResource(String resource, int amount) {
         if (hasEnoughResource(resource.toLowerCase(), amount)) {
             resources.put(resource.toLowerCase(), resources.get(resource.toLowerCase()) - amount);

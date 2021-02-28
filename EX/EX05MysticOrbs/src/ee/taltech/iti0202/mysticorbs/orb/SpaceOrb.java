@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.orb;
 
-public class SpaceOrb extends Orb{ // Kuul, mida ei saa laadida, aga tal on oskus neelata nõrgemaid kuule.
+public class SpaceOrb extends Orb { // Kuul, mida ei saa laadida, aga tal on oskus neelata nõrgemaid kuule.
 
     public SpaceOrb(String creator) {
         super(creator);
@@ -8,15 +8,15 @@ public class SpaceOrb extends Orb{ // Kuul, mida ei saa laadida, aga tal on osku
     }
 
     @Override
-    public void charge(String resource, int amount){
+    public void charge(String resource, int amount) {
     }
 
-    public String toString(){
-        return  "SpaceOrb by " + super.owenName;
+    public String toString() {
+        return "SpaceOrb by " + super.owenName;
     }
 
-    public boolean absorb(Orb orb){
-        if (orb.getEnergy() < super.getEnergy()){
+    public boolean absorb(Orb orb) {
+        if (orb.getEnergy() < super.getEnergy()) {
             super.energy += orb.energy;
             orb.energy = 0;
             return true;
