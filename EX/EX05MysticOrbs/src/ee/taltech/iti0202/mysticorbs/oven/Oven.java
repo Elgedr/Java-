@@ -8,6 +8,7 @@ import java.util.Optional;
 
 
 public class Oven {
+    public static final int FIFTEEN = 15;
     public String name;
     public ResourceStorage resourceStorage;
     public Boolean isMagic = false;
@@ -54,7 +55,7 @@ public class Oven {
      * @return .
      */
     public boolean isBroken() {
-        return orbsMadeInOven >= 15;
+        return orbsMadeInOven >= FIFTEEN;
     }
 
     /**

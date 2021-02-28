@@ -7,6 +7,8 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class SpaceOven extends Oven {
+    public static final int TWENTY_FIVE = 25;
+    public static final int FIFTEEN = 15;
     private int orbsMadeBySpaceOven = 0;
 
     /**
@@ -20,18 +22,18 @@ public class SpaceOven extends Oven {
 
     @Override
     public boolean isBroken() {
-        return this.orbsMadeBySpaceOven >= 25;
+        return this.orbsMadeBySpaceOven >= TWENTY_FIVE;
     }
 
     @Override
     public Optional<Orb> craftOrb() {
         if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1)
-                && resourceStorage.hasEnoughResource("star fragment", 15)) {
+                && resourceStorage.hasEnoughResource("star fragment", FIFTEEN)) {
             if (resourceStorage.hasEnoughResource("meteorite stone", 1)
-                    && resourceStorage.hasEnoughResource("star fragment", 15)) {
+                    && resourceStorage.hasEnoughResource("star fragment", FIFTEEN)) {
                 Orb newObject = new SpaceOrb(this.name);
                 resourceStorage.takeResource("meteorite stone", 1);
-                resourceStorage.takeResource("star fragment", 15);
+                resourceStorage.takeResource("star fragment", FIFTEEN);
                 allOrbs.add(newObject);
                 orbsMadeBySpaceOven++;
                 return Optional.of(newObject);
