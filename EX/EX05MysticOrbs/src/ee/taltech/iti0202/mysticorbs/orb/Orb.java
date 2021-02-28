@@ -3,7 +3,6 @@ package ee.taltech.iti0202.mysticorbs.orb;
 import java.util.ArrayList;
 import java.util.List;
 
-import ee.taltech.iti0202.mysticorbs.oven.Oven;
 
 
 public class Orb {
@@ -31,10 +30,18 @@ public class Orb {
         }
     }
 
+    /**
+     *
+     * @return .
+     */
     public int getEnergy() {
         return energy;
     }
 
+    /**
+     *
+     * @return .
+     */
     public String toString() {
         return "Orb by " + this.owenName;
     }
