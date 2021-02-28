@@ -2,6 +2,8 @@ package ee.taltech.iti0202.mysticorbs.orb;
 
 import java.util.ArrayList;
 import java.util.List;
+import ee.taltech.iti0202.mysticorbs.oven.Oven;
+
 
 public class Orb {
     public String owenName; // ahju nime, milles kuul toodeti.
