@@ -24,9 +24,9 @@ public class MagicOven extends Oven {
                 && resourceStorage.hasEnoughResource("dust", 3)) {
             Orb newObject;
             if (orbsMadeByMagicOven + 1 == 2 || orbsMadeByMagicOven + 1 == 4) {
-                newObject = new Orb(this.name);
-            } else {
                 newObject = new MagicOrb(this.name);
+            } else {
+                newObject = new Orb(this.name);
             }
             newObject.charge("gold", 1);
             newObject.charge("dust", 3);
@@ -37,5 +37,18 @@ public class MagicOven extends Oven {
             return Optional.of(newObject);
         }
         return Optional.empty();
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+        resourceStorage.addResource("pearl", 999999);
+        resourceStorage.addResource("silver", 999999);
+        resourceStorage.addResource("gold", 999999);
+        resourceStorage.addResource("dust", 999999);
+
+        Oven magicOven = new MagicOven("MagicOven", resourceStorage);
+
+        Optional<Orb> orbOptional = magicOven.craftOrb();
+        orbOptional.get();
     }
 }
