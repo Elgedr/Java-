@@ -23,17 +23,20 @@ public class ResourceStorage {
     }
 
     public void addResource(String resource, int amount) {
-        if (!resource.equals("")) {
-            if (resources.containsKey(resource)) {
-                resources.put(resource, resources.get(resource) + amount);
+        if (!resource.isBlank() && amount > 0) {
+            if (!resources.containsKey(resource.toLowerCase())){
+                resources.put(resource.toLowerCase(), amount);
+            } else if (resources.containsKey(resource.toLowerCase())) {
+                int newValue = resources.get(resource.toLowerCase()) + amount;
+                System.out.println(newValue);
+                resources.put(resource.toLowerCase(), newValue);
             }
-            resources.put(resource, amount);
         }
     }
 
     public int getResourceAmount(String resource) {
-        if (resources.containsKey(resource)) {
-            return resources.get(resource);
+        if (resources.containsKey(resource.toLowerCase())) {
+            return resources.get(resource.toLowerCase());
         }
         return 0;
     }
@@ -54,5 +57,15 @@ public class ResourceStorage {
             return true;
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+
+        resourceStorage.addResource("steel", 1);
+        resourceStorage.addResource("steel", 1);
+        resourceStorage.addResource("steel", 1);
+        System.out.println(resourceStorage.getResourceAmount("steel"));
+//        System.out.println(resourceStorage.getResourceAmount("steel"));
     }
 }

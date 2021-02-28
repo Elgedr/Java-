@@ -31,7 +31,7 @@ public class Oven {
     }
 
     public int getCreatedOrbsAmount() {
-        return Collections.frequency(creators, this.name);
+        return orbsMadeInOven;
     }
 
     public boolean isBroken() {
