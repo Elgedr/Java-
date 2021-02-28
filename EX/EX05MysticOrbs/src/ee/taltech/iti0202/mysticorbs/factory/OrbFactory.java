@@ -24,6 +24,10 @@ public class OrbFactory {
         this.resourceStorage = resourceStorage;
     }
 
+    /**
+     *
+     * @param oven .
+     */
     public void addOven(Oven oven) {
         if (!ovens.contains(oven) && oven.resourceStorage == this.resourceStorage) {
             this.ovens.add(oven);
@@ -38,6 +42,10 @@ public class OrbFactory {
         return this.ovens;
     }
 
+    /**
+     *
+     * @return .
+     */
     public List<Orb> getAndClearProducedOrbsList() {
         List<Orb> copy = new LinkedList<>(orbs);
         orbs.clear();

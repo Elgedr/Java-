@@ -3,11 +3,9 @@ package ee.taltech.iti0202.mysticorbs.oven;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Optional;
 
-import static ee.taltech.iti0202.mysticorbs.orb.Orb.creators;
 
 public class Oven {
     public String name;

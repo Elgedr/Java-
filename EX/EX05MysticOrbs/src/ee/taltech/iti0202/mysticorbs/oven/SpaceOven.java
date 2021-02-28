@@ -25,7 +25,8 @@ public class SpaceOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
-        if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1) && resourceStorage.hasEnoughResource("star fragment", 15)) {
+        if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1)
+                && resourceStorage.hasEnoughResource("star fragment", 15)) {
             if (resourceStorage.hasEnoughResource("meteorite stone", 1)
                     && resourceStorage.hasEnoughResource("star fragment", 15)) {
                 Orb newObject = new SpaceOrb(this.name);
