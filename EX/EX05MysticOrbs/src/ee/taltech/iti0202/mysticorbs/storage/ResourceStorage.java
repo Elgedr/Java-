@@ -24,7 +24,7 @@ public class ResourceStorage {
 
     public void addResource(String resource, int amount) {
         if (!resource.isBlank() && amount > 0) {
-            if (!resources.containsKey(resource.toLowerCase())){
+            if (!resources.containsKey(resource.toLowerCase())) {
                 resources.put(resource.toLowerCase(), amount);
             } else if (resources.containsKey(resource.toLowerCase())) {
                 int newValue = resources.get(resource.toLowerCase()) + amount;
@@ -44,18 +44,19 @@ public class ResourceStorage {
     public boolean hasEnoughResource(String resource, int amount) {
         if (amount < 1) {
             return false;
-        }if (resources.size() == 0){
+        }
+        if (resources.size() == 0 || !resources.containsKey(resource.toLowerCase())) {
             return false;
         }
-        if (resources.get(resource) >= amount) {
+        if (resources.get(resource.toLowerCase()) >= amount) {
             return true;
         }
         return false;
     }
 
     public boolean takeResource(String resource, int amount) {
-        if (hasEnoughResource(resource, amount)) {
-            resources.put(resource, resources.get(resource) - amount);
+        if (hasEnoughResource(resource.toLowerCase(), amount)) {
+            resources.put(resource.toLowerCase(), resources.get(resource.toLowerCase()) - amount);
             return true;
         }
         return false;
