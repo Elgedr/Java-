@@ -8,8 +8,8 @@ public class MagicOrb extends Orb {
 
     @Override
     public void charge(String resource, int amount) {
-        if (!resource.equals("dust") && !resource.contains(" ")) {
-            super.energy += 2 * (resource.length() * amount);
+        if (!resource.equalsIgnoreCase("dust") && !resource.isBlank()) {
+            energy = energy + (2 * (resource.length() * amount));
         }
     }
 
