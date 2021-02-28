@@ -4,17 +4,22 @@ import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import static ee.taltech.iti0202.mysticorbs.oven.Oven.allOrbs;
 
+/**
+ * Class.
+ */
 public class OrbFactory {
     public ResourceStorage resourceStorage;
     public LinkedList<Oven> ovens = new LinkedList<>();
     public LinkedList<Orb> orbs = new LinkedList<>();
 
+    /**
+     *
+     * @param resourceStorage .
+     */
     public OrbFactory(ResourceStorage resourceStorage) {
         this.resourceStorage = resourceStorage;
     }
@@ -25,6 +30,10 @@ public class OrbFactory {
         }
     }
 
+    /**
+     *
+     * @return .
+     */
     public List<Oven> getOvens() {
         return this.ovens;
     }
@@ -35,6 +44,10 @@ public class OrbFactory {
         return copy;
     }
 
+    /**
+     *
+     * @return .
+     */
     public int produceOrbs() {
         if (ovens.size() > 0) {
             for (Oven oven : ovens) {
@@ -47,6 +60,11 @@ public class OrbFactory {
         return orbs.size();
     }
 
+    /**
+     *
+     * @param cycles .
+     * @return .
+     */
     public int produceOrbs(int cycles) {
         int res = 0;
         for (int i = 0; i < cycles; i++) {

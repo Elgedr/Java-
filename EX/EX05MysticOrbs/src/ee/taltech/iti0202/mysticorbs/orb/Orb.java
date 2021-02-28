@@ -11,11 +11,20 @@ public class Orb {
     public int energy = 0;
     public static List<String> creators = new ArrayList<>();
 
+    /**
+     *
+     * @param creator .
+     */
     public Orb(String creator) {
         this.owenName = creator;
         creators.add(creator);
     }
 
+    /**
+     *
+     * @param resource .
+     * @param amount .
+     */
     public void charge(String resource, int amount) {
         if (!resource.equalsIgnoreCase("dust") && !resource.isBlank() && amount > 0) {
             energy = energy + resource.length() * amount;

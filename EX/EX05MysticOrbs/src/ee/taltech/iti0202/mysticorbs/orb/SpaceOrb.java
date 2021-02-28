@@ -11,10 +11,19 @@ public class SpaceOrb extends Orb { // Kuul, mida ei saa laadida, aga tal on osk
     public void charge(String resource, int amount) {
     }
 
+    /**
+     *
+     * @return .
+     */
     public String toString() {
         return "SpaceOrb by " + super.owenName;
     }
 
+    /**
+     *
+     * @param orb .
+     * @return .
+     */
     public boolean absorb(Orb orb) {
         if (orb.getEnergy() < super.getEnergy()) {
             super.energy += orb.energy;
