@@ -1,12 +1,13 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.orb.SpaceOrb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.Optional;
 
-public class SpaceOven extends Oven {
+public class SpaceOven extends Oven implements Fixable {
     public static final int TWENTY_FIVE = 25;
     public static final int FIFTEEN = 15;
     private int orbsMadeBySpaceOven = 0;
@@ -48,5 +49,17 @@ public class SpaceOven extends Oven {
             return Optional.of(newObject);
         }
         return Optional.empty();
+    }
+
+    @Override
+    public void fix() throws CannotFixException{
+        //TODO
+    }
+
+
+    @Override
+     public int getTimesFixed(){
+        //TODO
+        return 0;
     }
 }
