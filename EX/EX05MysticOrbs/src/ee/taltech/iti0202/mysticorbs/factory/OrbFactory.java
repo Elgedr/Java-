@@ -30,8 +30,8 @@ public class OrbFactory {
     }
 
     public List<Orb> getAndClearProducedOrbsList(){
-        List<Orb> copy =  allOrbs;
-        allOrbs.clear();
+        List<Orb> copy =  orbs;
+        orbs.clear();
         return copy;
     }
 
