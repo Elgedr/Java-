@@ -20,9 +20,9 @@ public class SpaceOven extends Oven {
 
     @Override
     public Optional<Orb> craftOrb() {
-        if (!isBroken()) {
+        if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1) && resourceStorage.hasEnoughResource("star fragment", 15)) {
             if (resourceStorage.hasEnoughResource("meteorite stone", 1)
-                    && resourceStorage.hasEnoughResource("star fragment", 15)){
+                    && resourceStorage.hasEnoughResource("star fragment", 15)) {
                 Orb newObject = new SpaceOrb(this.name);
                 resourceStorage.takeResource("meteorite stone", 1);
                 resourceStorage.takeResource("star fragment", 15);
@@ -30,7 +30,33 @@ public class SpaceOven extends Oven {
                 orbsMadeBySpaceOven++;
                 return Optional.of(newObject);
             }
+        } else if (resourceStorage.hasEnoughResource("pearl", 1)
+                && resourceStorage.hasEnoughResource("silver", 1)){
+            Orb newObject = new Orb(this.name);
+            resourceStorage.takeResource("pearl", 1);
+            resourceStorage.takeResource("silver", 1);
+            allOrbs.add(newObject);
+            orbsMadeBySpaceOven++;
+            return Optional.of(newObject);
         }
-        return super.craftOrb();
+        return Optional.empty();
+    }
+
+    public static void main(String[] args) {
+        ResourceStorage resourceStorage = new ResourceStorage();
+        resourceStorage.addResource("pearl", 10);
+        resourceStorage.addResource("silver", 10);
+        resourceStorage.addResource("meteorite stone", 999999);
+        resourceStorage.addResource("star fragment", 999999);
+
+        Oven spaceOven = new SpaceOven("space-oven-2", resourceStorage);
+
+        // break oven
+        for (int i = 0; i < 25; i++) {
+            spaceOven.craftOrb();
+        }
+        Optional<Orb> optionalOrb = spaceOven.craftOrb();
+        Orb orb = optionalOrb.get();
+        System.out.println(orb);
     }
 }

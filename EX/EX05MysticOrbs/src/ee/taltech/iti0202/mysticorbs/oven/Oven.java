@@ -35,7 +35,7 @@ public class Oven {
     }
 
     public boolean isBroken() {
-        return allOrbs.size() >= 15;
+        return orbsMadeInOven >= 15;
     }
 
     public Optional<Orb> craftOrb() {
@@ -51,5 +51,9 @@ public class Oven {
             return Optional.of(newObject);
         }
         return Optional.empty();
+    }
+
+    public static void main(String[] args) {
+
     }
 }
