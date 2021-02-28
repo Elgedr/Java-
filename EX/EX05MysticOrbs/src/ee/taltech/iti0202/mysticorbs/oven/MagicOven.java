@@ -39,16 +39,4 @@ public class MagicOven extends Oven {
         return Optional.empty();
     }
 
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("pearl", 999999);
-        resourceStorage.addResource("silver", 999999);
-        resourceStorage.addResource("gold", 999999);
-        resourceStorage.addResource("dust", 999999);
-
-        Oven magicOven = new MagicOven("MagicOven", resourceStorage);
-
-        Optional<Orb> orbOptional = magicOven.craftOrb();
-        orbOptional.get();
-    }
 }

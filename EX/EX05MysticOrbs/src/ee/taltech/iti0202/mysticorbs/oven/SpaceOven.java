@@ -41,22 +41,4 @@ public class SpaceOven extends Oven {
         }
         return Optional.empty();
     }
-
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-        resourceStorage.addResource("pearl", 10);
-        resourceStorage.addResource("silver", 10);
-        resourceStorage.addResource("meteorite stone", 999999);
-        resourceStorage.addResource("star fragment", 999999);
-
-        Oven spaceOven = new SpaceOven("space-oven-2", resourceStorage);
-
-        // break oven
-        for (int i = 0; i < 25; i++) {
-            spaceOven.craftOrb();
-        }
-        Optional<Orb> optionalOrb = spaceOven.craftOrb();
-        Orb orb = optionalOrb.get();
-        System.out.println(orb);
-    }
 }

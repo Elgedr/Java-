@@ -44,6 +44,8 @@ public class ResourceStorage {
     public boolean hasEnoughResource(String resource, int amount) {
         if (amount < 1) {
             return false;
+        }if (resources.size() == 0){
+            return false;
         }
         if (resources.get(resource) >= amount) {
             return true;
@@ -59,13 +61,4 @@ public class ResourceStorage {
         return false;
     }
 
-    public static void main(String[] args) {
-        ResourceStorage resourceStorage = new ResourceStorage();
-
-        resourceStorage.addResource("steel", 1);
-        resourceStorage.addResource("steel", 1);
-        resourceStorage.addResource("steel", 1);
-        System.out.println(resourceStorage.getResourceAmount("steel"));
-//        System.out.println(resourceStorage.getResourceAmount("steel"));
-    }
 }

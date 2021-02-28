@@ -30,10 +30,4 @@ public class Orb {
         return "Orb by " + this.owenName;
     }
 
-    public static void main(String[] args) {
-        Orb orb = new MagicOrb("CreatorHere");
-        System.out.println(orb.getEnergy());
-        orb.charge("   ", 2);
-        System.out.println(orb.getEnergy());
-    }
 }

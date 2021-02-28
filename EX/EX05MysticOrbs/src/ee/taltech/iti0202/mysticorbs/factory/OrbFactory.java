@@ -36,10 +36,12 @@ public class OrbFactory {
     }
 
     public int produceOrbs() {
-        for (Oven oven : ovens) {
-            oven.craftOrb();
-            if (oven.craftOrb().isPresent()) {
-                orbs.add(oven.craftOrb().get());
+        if (ovens.size() > 0) {
+            for (Oven oven : ovens) {
+                oven.craftOrb();
+                if (oven.craftOrb().isPresent()) {
+                    orbs.add(oven.craftOrb().get());
+                }
             }
         }
         return orbs.size();
