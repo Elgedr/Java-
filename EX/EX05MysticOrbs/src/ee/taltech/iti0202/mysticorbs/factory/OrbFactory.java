@@ -25,30 +25,30 @@ public class OrbFactory {
         }
     }
 
-    public List<Oven> getOvens(){
+    public List<Oven> getOvens() {
         return this.ovens;
     }
 
-    public List<Orb> getAndClearProducedOrbsList(){
-        List<Orb> copy =  orbs;
+    public List<Orb> getAndClearProducedOrbsList() {
+        List<Orb> copy = new LinkedList<>(orbs);
         orbs.clear();
         return copy;
     }
 
-    public int produceOrbs(){
-        for (Oven oven: ovens){
+    public int produceOrbs() {
+        for (Oven oven : ovens) {
             oven.craftOrb();
-            if (oven.craftOrb().isPresent()){
+            if (oven.craftOrb().isPresent()) {
                 orbs.add(oven.craftOrb().get());
             }
         }
         return orbs.size();
     }
 
-    public int produceOrbs(int cycles){
+    public int produceOrbs(int cycles) {
         int res = 0;
-        for (int i = 0; i < cycles; i++){
-            res =+ produceOrbs();
+        for (int i = 0; i < cycles; i++) {
+            res = +produceOrbs();
         }
         return res;
     }
