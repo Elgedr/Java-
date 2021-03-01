@@ -8,8 +8,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class MagicOven extends Oven implements Fixable {
-    public int orbsMadeByMagicOven = 0;
-    private int countOrbs = 0;
+    private int orbsMadeByMagicOven = 0;
     private int timesFixed = 0;
 
 
@@ -23,7 +22,7 @@ public class MagicOven extends Oven implements Fixable {
 
     @Override
     public boolean isBroken() {
-        return countOrbs % 5 == 0;
+        return orbsMadeByMagicOven >= 5;
     }
 
     @Override
@@ -31,11 +30,9 @@ public class MagicOven extends Oven implements Fixable {
         if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
                 && resourceStorage.hasEnoughResource("dust", 3)) {
             Orb newObject;
-            if (orbsMadeByMagicOven + 1 % 2 == 0 && (timesFixed == 0 || timesFixed % 2 == 0)) {
+            if (orbsMadeByMagicOven + 1 == 2 || orbsMadeByMagicOven + 1 == 4) {
                 newObject = new MagicOrb(this.name);
-            } else if (orbsMadeByMagicOven + 1 % 2 != 0 && timesFixed % 2 != 0){
-                newObject = new MagicOrb(this.name);
-            }else {
+            } else {
                 newObject = new Orb(this.name);
             }
             newObject.charge("gold", 1);
@@ -44,7 +41,6 @@ public class MagicOven extends Oven implements Fixable {
             resourceStorage.takeResource("dust", 3);
             allOrbs.add(newObject);
             orbsMadeByMagicOven++;
-            countOrbs++;
             return Optional.of(newObject);
         }
         return Optional.empty();
@@ -60,7 +56,7 @@ public class MagicOven extends Oven implements Fixable {
         } else if (timesFixed >= 10) {
             throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
         } else {
-            countOrbs = 0;
+            orbsMadeByMagicOven = 0;
             resourceStorage.takeResource("clay", 25 * (timesFixed + 1));
             resourceStorage.takeResource("freezing powder", 100 * (timesFixed + 1));
             timesFixed++;
