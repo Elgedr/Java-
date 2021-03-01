@@ -15,7 +15,6 @@ public class InfinityMagicOven extends MagicOven {
      */
     public InfinityMagicOven(String name, ResourceStorage resourceStorage) {
         super(name, resourceStorage);
-        super.isMagic = true;
     }
 
     @Override

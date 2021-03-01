@@ -13,8 +13,6 @@ public class Oven implements Comparable<Oven> {
     public static final int FIFTEEN = 15;
     public String name;
     public ResourceStorage resourceStorage;
-    public Boolean isMagic = false;
-    public Boolean isSpace = false;
     private int orbsMadeInOven = 0;
     public static LinkedList<Orb> allOrbs = new LinkedList<>();
 

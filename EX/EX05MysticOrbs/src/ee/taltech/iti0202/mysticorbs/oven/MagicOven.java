@@ -23,7 +23,7 @@ public class MagicOven extends Oven implements Fixable {
     @Override
     public boolean isBroken() {
         if (orbsMadeByMagicOven > 0) {
-            return orbsMadeByMagicOven % 5 == 0;
+            return orbsMadeByMagicOven >= 5;
         }
         return false;
     }
@@ -62,6 +62,7 @@ public class MagicOven extends Oven implements Fixable {
             resourceStorage.takeResource("clay", 25 * (timesFixed + 1));
             resourceStorage.takeResource("freezing powder", 100 * (timesFixed + 1));
             timesFixed++;
+            orbsMadeByMagicOven = 0;
         }
     }
 
