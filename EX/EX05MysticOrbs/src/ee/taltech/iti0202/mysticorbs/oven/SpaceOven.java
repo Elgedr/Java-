@@ -10,6 +10,7 @@ import java.util.Optional;
 public class SpaceOven extends Oven implements Fixable {
     public static final int TWENTY_FIVE = 25;
     public static final int FIFTEEN = 15;
+    public static final int FOURTY = 40;
     public int orbsMadeBySpaceOven = 0;
     public int timesFixed = 0;
 
@@ -58,11 +59,11 @@ public class SpaceOven extends Oven implements Fixable {
     public void fix() throws CannotFixException {
         if (!isBroken()) {
             throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
-        } else if (!resourceStorage.hasEnoughResource("liquid silver", 40 * (timesFixed + 1))
+        } else if (!resourceStorage.hasEnoughResource("liquid silver", FOURTY * (timesFixed + 1))
                 && !resourceStorage.hasEnoughResource("star essence", 10 * (timesFixed + 1))) {
             throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
-        } else if (resourceStorage.hasEnoughResource("liquid silver", 40 * (timesFixed + 1))) {
-            resourceStorage.takeResource("liquid silver", 40 * (timesFixed + 1));
+        } else if (resourceStorage.hasEnoughResource("liquid silver", FOURTY * (timesFixed + 1))) {
+            resourceStorage.takeResource("liquid silver", FOURTY * (timesFixed + 1));
             timesFixed++;
             orbsMadeBySpaceOven = 0;
         } else if (resourceStorage.hasEnoughResource("star essence", 10 * (timesFixed + 1))) {
