@@ -22,7 +22,10 @@ public class MagicOven extends Oven implements Fixable {
 
     @Override
     public boolean isBroken() {
-        return orbsMadeByMagicOven % 5 == 0;
+        if (orbsMadeByMagicOven > 0) {
+            return orbsMadeByMagicOven % 5 == 0;
+        }
+        return false;
     }
 
     @Override
