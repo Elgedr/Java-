@@ -80,7 +80,7 @@ public class Oven implements Comparable<Oven> {
             return 1;
         }
         if ((this.isBroken() && (o.isBroken())) || (!this.isBroken() && !o.isBroken())) {
-            if (this instanceof SpaceOven && !(o instanceof InfinityMagicOven) && !(o instanceof SpaceOven) ){
+            if (this instanceof SpaceOven && !(o instanceof InfinityMagicOven) && !(o instanceof SpaceOven)) {
                 return 1;
             } else if (o instanceof SpaceOven && !(this instanceof InfinityMagicOven) && !(this instanceof SpaceOven)) {
                 return -1;
@@ -113,11 +113,11 @@ public class Oven implements Comparable<Oven> {
         if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) {
             return 1;
         }
-        if (this.name.length() > o.name.length()) {
-            return 1;
-        }
-        if (this.name.length() < o.name.length()) {
+        if (this.name.compareTo(o.name) == -1) {
             return -1;
+        }
+        if (this.name.compareTo(o.name) == 1) {
+            return 1;
         }
         return 0;
     }
