@@ -83,6 +83,7 @@ public class OrbFactory {
                         Optional<Orb> orb = oven.craftOrb();
                         if (orb.isPresent()) {
                             orbs.add(orb.get());
+                            oven.getCreatedOrbsAmount();
                     }
                     }
                 }
