@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public class MagicOven extends Oven implements Fixable {
     public int orbsMadeByMagicOven = 0;
-    private int timesFixed = 0;
+    public int timesFixed = 0;
 
 
     /**

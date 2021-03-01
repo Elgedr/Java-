@@ -2,7 +2,9 @@ package ee.taltech.iti0202.mysticorbs.factory;
 
 import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
+import ee.taltech.iti0202.mysticorbs.oven.MagicOven;
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
+import ee.taltech.iti0202.mysticorbs.oven.SpaceOven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.ArrayList;
@@ -18,6 +20,7 @@ public class OrbFactory {
     public ResourceStorage resourceStorage;
     public LinkedList<Oven> ovens = new LinkedList<>();
     public LinkedList<Orb> orbs = new LinkedList<>();
+    public LinkedList<Oven> canNotFix = new LinkedList<>();
 
     /**
      * @param resourceStorage .
@@ -91,12 +94,22 @@ public class OrbFactory {
     }
 
     public List<Oven> getOvensThatCannotBeFixed(){
-        List<Oven> res = new ArrayList<>();
-        return res;
+        for (Oven ov: ovens){
+            if (!(ov instanceof MagicOven) && !(ov instanceof SpaceOven) && ov.isBroken()){
+                canNotFix.add(ov);
+            } else if (ov instanceof MagicOven && ((MagicOven) ov).timesFixed >= 10){
+                canNotFix.add(ov);
+            } else if (ov instanceof SpaceOven && ((SpaceOven) ov).timesFixed >= 25){
+                canNotFix.add(ov);
+            }
+        }
+        return canNotFix;
     }
 
     public void getRidOfOvensThatCannotBeFixed(){
-
+        for (Oven ov: canNotFix){
+            ovens.remove(ov);
+        }
     }
 
     public void optimizeOvensOrder(){

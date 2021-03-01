@@ -11,7 +11,7 @@ public class SpaceOven extends Oven implements Fixable {
     public static final int TWENTY_FIVE = 25;
     public static final int FIFTEEN = 15;
     public int orbsMadeBySpaceOven = 0;
-    private int timesFixed = 0;
+    public int timesFixed = 0;
 
     /**
      * @param name            .
