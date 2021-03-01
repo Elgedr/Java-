@@ -6,6 +6,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -78,8 +79,8 @@ public class OrbFactory {
         for (int i = 0; i < cycles; i++) {
             if (ovens.size() > 0) {
                 for (Oven oven : ovens) {
-                    oven.craftOrb();
-                    if (oven.craftOrb().isPresent()) {
+                    Optional<Orb> orb = oven.craftOrb();
+                    if (orb.isPresent()) {
                         orbs.add(oven.craftOrb().get());
                     }
                 }
