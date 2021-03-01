@@ -13,8 +13,7 @@ public class SpaceOven extends Oven implements Fixable {
     private int orbsMadeBySpaceOven = 0;
 
     /**
-     *
-     * @param name .
+     * @param name            .
      * @param resourceStorage .
      */
     public SpaceOven(String name, ResourceStorage resourceStorage) {
@@ -52,13 +51,13 @@ public class SpaceOven extends Oven implements Fixable {
     }
 
     @Override
-    public void fix() throws CannotFixException{
+    public void fix() throws CannotFixException {
         //TODO
     }
 
 
     @Override
-     public int getTimesFixed(){
+    public int getTimesFixed() {
         //TODO
         return 0;
     }

@@ -69,7 +69,6 @@ public class OrbFactory {
      * @return .
      */
     public int produceOrbs(int cycles) {
-        int res = 0;
         for (int i = 0; i < cycles; i++) {
             if (ovens.size() > 0) {
                 for (Oven oven : ovens) {
@@ -81,9 +80,8 @@ public class OrbFactory {
                     }
                 }
             }
-            res += orbs.size();
         }
-        return res;
+        return orbs.size();
     }
 
 }

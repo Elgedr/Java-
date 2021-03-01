@@ -12,16 +12,29 @@ public class CannotFixException extends Exception {
         NOT_ENOUGH_RESOURCES
     }
 
+    /**
+     *
+     * @param oven .
+     * @param reason .
+     */
     public CannotFixException(Oven oven, Reason reason) {
         this.oven = oven;
         this.reason = reason;
 
     }
 
+    /**
+     *
+     * @return .
+     */
     public Oven getOven() {
         return this.oven;
     }
 
+    /**
+     *
+     * @return .
+     */
     public Reason getReason() {
         return this.reason;
     }
