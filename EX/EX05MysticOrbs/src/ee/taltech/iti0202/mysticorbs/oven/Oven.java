@@ -86,7 +86,7 @@ public class Oven implements Comparable<Oven> {
                 return -1;
             } else if (this instanceof MagicOven && !(o instanceof MagicOven)) {
                 return 1;
-            } else if (o instanceof MagicOven && !(this instanceof InfinityMagicOven)) {
+            } else if (o instanceof MagicOven && !(this instanceof MagicOven)) {
                 return -1;
             }
         }
