@@ -16,6 +16,7 @@ import java.util.Optional;
  * Class.
  */
 public class OrbFactory {
+    public static final int TWENTYFIVE = 25;
     public ResourceStorage resourceStorage;
     public LinkedList<Oven> ovens = new LinkedList<>();
     public LinkedList<Orb> orbs = new LinkedList<>();
@@ -103,7 +104,7 @@ public class OrbFactory {
                 canNotFix.add(ov);
             } else if (ov instanceof MagicOven && ((MagicOven) ov).timesFixed >= 10) {
                 canNotFix.add(ov);
-            } else if (ov instanceof SpaceOven && ((SpaceOven) ov).timesFixed >= 25) {
+            } else if (ov instanceof SpaceOven && ((SpaceOven) ov).timesFixed >= TWENTYFIVE) {
                 canNotFix.add(ov);
             }
         }
