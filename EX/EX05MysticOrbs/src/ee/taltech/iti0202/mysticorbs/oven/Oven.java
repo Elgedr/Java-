@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
 import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
-import ee.taltech.iti0202.mysticorbs.factory.OrbFactory;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
@@ -117,12 +116,10 @@ public class Oven implements Comparable<Oven> {
     }
 
 
+    /**
+     * @throws CannotFixException .
+     */
     public void fix() throws CannotFixException {
-    }
-
-
-    public static void main(String[] args) {
-
     }
 
 }

@@ -23,11 +23,12 @@ public class SpaceOven extends Oven implements Fixable {
 
     @Override
     public boolean isBroken() {
-        if (timesFixed >= 5){
+        if (timesFixed >= 5) {
             return false;
         }
         return this.orbsMadeBySpaceOven >= TWENTY_FIVE;
     }
+
     @Override
     public Optional<Orb> craftOrb() {
         if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1)
@@ -60,8 +61,6 @@ public class SpaceOven extends Oven implements Fixable {
         } else if (!resourceStorage.hasEnoughResource("liquid silver", 40 * (timesFixed + 1))
                 && !resourceStorage.hasEnoughResource("star essence", 10 * (timesFixed + 1))) {
             throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
-        } else if (timesFixed >= 5) {
-            //TODO
         } else if (resourceStorage.hasEnoughResource("liquid silver", 40 * (timesFixed + 1))) {
             resourceStorage.takeResource("liquid silver", 40 * (timesFixed + 1));
             timesFixed++;

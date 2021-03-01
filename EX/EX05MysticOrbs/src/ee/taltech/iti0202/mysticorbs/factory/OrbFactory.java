@@ -81,7 +81,8 @@ public class OrbFactory {
                         Optional<Orb> orb = oven.craftOrb();
                         orb.ifPresent(value -> orbs.add(value));
                     } else {
-                        try {oven.fix();
+                        try {
+                            oven.fix();
                             Optional<Orb> orb = oven.craftOrb();
                             orb.ifPresent(value -> orbs.add(value));
                         } catch (CannotFixException ignored) {
@@ -93,26 +94,26 @@ public class OrbFactory {
         return orbs.size();
     }
 
-    public List<Oven> getOvensThatCannotBeFixed(){
-        for (Oven ov: ovens){
-            if (!(ov instanceof MagicOven) && !(ov instanceof SpaceOven) && ov.isBroken()){
+    public List<Oven> getOvensThatCannotBeFixed() {
+        for (Oven ov : ovens) {
+            if (!(ov instanceof MagicOven) && !(ov instanceof SpaceOven) && ov.isBroken()) {
                 canNotFix.add(ov);
-            } else if (ov instanceof MagicOven && ((MagicOven) ov).timesFixed >= 10){
+            } else if (ov instanceof MagicOven && ((MagicOven) ov).timesFixed >= 10) {
                 canNotFix.add(ov);
-            } else if (ov instanceof SpaceOven && ((SpaceOven) ov).timesFixed >= 25){
+            } else if (ov instanceof SpaceOven && ((SpaceOven) ov).timesFixed >= 25) {
                 canNotFix.add(ov);
             }
         }
         return canNotFix;
     }
 
-    public void getRidOfOvensThatCannotBeFixed(){
-        for (Oven ov: canNotFix){
+    public void getRidOfOvensThatCannotBeFixed() {
+        for (Oven ov : canNotFix) {
             ovens.remove(ov);
         }
     }
 
-    public void optimizeOvensOrder(){
+    public void optimizeOvensOrder() {
 
     }
 

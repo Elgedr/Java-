@@ -8,6 +8,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class MagicOven extends Oven implements Fixable {
+    public static final int TWENTYFIVE = 25;
     public int orbsMadeByMagicOven = 0;
     public int timesFixed = 0;
 
@@ -53,13 +54,13 @@ public class MagicOven extends Oven implements Fixable {
     public void fix() throws CannotFixException {
         if (!isBroken()) {
             throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
-        } else if (!resourceStorage.hasEnoughResource("clay", 25 * (timesFixed + 1))
+        } else if (!resourceStorage.hasEnoughResource("clay", TWENTYFIVE * (timesFixed + 1))
                 || !resourceStorage.hasEnoughResource("freezing powder", 100 * (timesFixed + 1))) {
             throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
         } else if (timesFixed >= 10) {
             throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
-        } else if(isBroken() && timesFixed < 10){
-            resourceStorage.takeResource("clay", 25 * (timesFixed + 1));
+        } else if (isBroken() && timesFixed < 10) {
+            resourceStorage.takeResource("clay", TWENTYFIVE * (timesFixed + 1));
             resourceStorage.takeResource("freezing powder", 100 * (timesFixed + 1));
             timesFixed++;
             orbsMadeByMagicOven = 0;
