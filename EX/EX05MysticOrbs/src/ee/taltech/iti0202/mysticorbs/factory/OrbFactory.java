@@ -7,7 +7,6 @@ import ee.taltech.iti0202.mysticorbs.oven.Oven;
 import ee.taltech.iti0202.mysticorbs.oven.SpaceOven;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
@@ -94,6 +93,10 @@ public class OrbFactory {
         return orbs.size();
     }
 
+    /**
+     *
+     * @return .
+     */
     public List<Oven> getOvensThatCannotBeFixed() {
         for (Oven ov : ovens) {
             if (!(ov instanceof MagicOven) && !(ov instanceof SpaceOven) && ov.isBroken()) {
@@ -107,12 +110,18 @@ public class OrbFactory {
         return canNotFix;
     }
 
+    /**
+     * .
+     */
     public void getRidOfOvensThatCannotBeFixed() {
         for (Oven ov : canNotFix) {
             ovens.remove(ov);
         }
     }
 
+    /**
+     * .
+     */
     public void optimizeOvensOrder() {
 
     }
