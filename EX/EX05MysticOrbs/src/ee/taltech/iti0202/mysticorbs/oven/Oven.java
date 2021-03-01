@@ -113,13 +113,7 @@ public class Oven implements Comparable<Oven> {
         if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) {
             return 1;
         }
-        if (this.name.compareTo(o.name) == -1) {
-            return -1;
-        }
-        if (this.name.compareTo(o.name) == 1) {
-            return 1;
-        }
-        return 0;
+        return Integer.compare(this.name.compareTo(o.name), 0);
     }
 
 
