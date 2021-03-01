@@ -2,9 +2,9 @@ package ee.taltech.iti0202.mysticorbs.exceptions;
 
 import ee.taltech.iti0202.mysticorbs.oven.Oven;
 
-public class CannotFixException extends Exception {
-    public Oven oven;
-    public Reason reason;
+public class CannotFixException extends Throwable {
+    private Oven oven;
+    private Reason reason;
 
     public enum Reason {
         IS_NOT_BROKEN,
@@ -13,8 +13,7 @@ public class CannotFixException extends Exception {
     }
 
     /**
-     *
-     * @param oven .
+     * @param oven   .
      * @param reason .
      */
     public CannotFixException(Oven oven, Reason reason) {
@@ -24,7 +23,6 @@ public class CannotFixException extends Exception {
     }
 
     /**
-     *
      * @return .
      */
     public Oven getOven() {
@@ -32,7 +30,6 @@ public class CannotFixException extends Exception {
     }
 
     /**
-     *
      * @return .
      */
     public Reason getReason() {

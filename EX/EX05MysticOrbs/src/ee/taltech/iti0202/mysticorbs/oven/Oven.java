@@ -1,5 +1,7 @@
 package ee.taltech.iti0202.mysticorbs.oven;
 
+import ee.taltech.iti0202.mysticorbs.exceptions.CannotFixException;
+import ee.taltech.iti0202.mysticorbs.factory.OrbFactory;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
@@ -7,7 +9,7 @@ import java.util.LinkedList;
 import java.util.Optional;
 
 
-public class Oven {
+public class Oven implements Comparable<Oven> {
     public static final int FIFTEEN = 15;
     public String name;
     public ResourceStorage resourceStorage;
@@ -17,8 +19,7 @@ public class Oven {
     public static LinkedList<Orb> allOrbs = new LinkedList<>();
 
     /**
-     *
-     * @param name .
+     * @param name            .
      * @param resourceStorage .
      */
     public Oven(String name, ResourceStorage resourceStorage) {
@@ -27,7 +28,6 @@ public class Oven {
     }
 
     /**
-     *
      * @return .
      */
     public String getName() {
@@ -35,7 +35,6 @@ public class Oven {
     }
 
     /**
-     *
      * @return .
      */
     public ResourceStorage getResourceStorage() {
@@ -43,7 +42,6 @@ public class Oven {
     }
 
     /**
-     *
      * @return .
      */
     public int getCreatedOrbsAmount() {
@@ -51,7 +49,6 @@ public class Oven {
     }
 
     /**
-     *
      * @return .
      */
     public boolean isBroken() {
@@ -59,7 +56,6 @@ public class Oven {
     }
 
     /**
-     *
      * @return .
      */
     public Optional<Orb> craftOrb() {
@@ -77,4 +73,36 @@ public class Oven {
         return Optional.empty();
     }
 
+    @Override
+    public int compareTo(Oven o) {
+        if (this.isBroken() && !o.isBroken()) {
+            return -1;
+        } else if (!this.isBroken() && o.isBroken()) {
+            return 1;
+        } else if (this.isBroken() && o.isBroken() || !this.isBroken() && !o.isBroken()) {
+            if (this instanceof SpaceOven) {
+                return 1;
+            } else if (o instanceof SpaceOven) {
+                return -1;
+            } else if (this instanceof MagicOven) {
+                return 1;
+            } else if (o instanceof MagicOven) {
+                return -1;
+            }
+        } else if (this instanceof MagicOven && o instanceof MagicOven) {
+            if (((MagicOven) this).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) this).orbsMadeByMagicOven + 1 == 4) {
+                return 1;
+            } else if (((MagicOven) o).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) o).orbsMadeByMagicOven + 1 == 4) {
+                return -1;
+            }
+        } else if (this instanceof MagicOven && o instanceof InfinityMagicOven && ((MagicOven) this).orbsMadeByMagicOven == ((InfinityMagicOven) o).orbsMadeByInfinityMagicOven) {
+            return -1;
+        } else if (this instanceof InfinityMagicOven && o instanceof MagicOven && ((MagicOven) this).orbsMadeByMagicOven == ((InfinityMagicOven) o).orbsMadeByInfinityMagicOven){
+            return 1;
+        }
+    }
+
+
+    public void fix() throws CannotFixException {
+    }
 }

@@ -6,7 +6,7 @@ import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 import java.util.Optional;
 
 public class InfinityMagicOven extends MagicOven {
-    private int orbsMadeByInfinityMagicOven = 0;
+    public int orbsMadeByInfinityMagicOven = 0;
 
     /**
      *

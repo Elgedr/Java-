@@ -5,14 +5,17 @@ import ee.taltech.iti0202.mysticorbs.orb.MagicOrb;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class MagicOven extends Oven implements Fixable {
-    private int orbsMadeByMagicOven = 0;
+    public List<Orb> orbsMadeByMagicOven = new ArrayList<>();
+    private int timesFixed = 0;
+
 
     /**
-     *
-     * @param name .
+     * @param name            .
      * @param resourceStorage .
      */
     public MagicOven(String name, ResourceStorage resourceStorage) {
@@ -21,7 +24,7 @@ public class MagicOven extends Oven implements Fixable {
 
     @Override
     public boolean isBroken() {
-        return orbsMadeByMagicOven >= 5;
+        return orbsMadeByMagicOven.size() % 5 == 0;
     }
 
     @Override
@@ -29,7 +32,7 @@ public class MagicOven extends Oven implements Fixable {
         if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
                 && resourceStorage.hasEnoughResource("dust", 3)) {
             Orb newObject;
-            if (orbsMadeByMagicOven + 1 == 2 || orbsMadeByMagicOven + 1 == 4) {
+            if ((orbsMadeByMagicOven.size() + 1) % 2 == 0) {
                 newObject = new MagicOrb(this.name);
             } else {
                 newObject = new Orb(this.name);
@@ -39,7 +42,7 @@ public class MagicOven extends Oven implements Fixable {
             resourceStorage.takeResource("gold", 1);
             resourceStorage.takeResource("dust", 3);
             allOrbs.add(newObject);
-            orbsMadeByMagicOven++;
+            orbsMadeByMagicOven.add(newObject);
             return Optional.of(newObject);
         }
         return Optional.empty();
@@ -47,12 +50,23 @@ public class MagicOven extends Oven implements Fixable {
 
     @Override
     public void fix() throws CannotFixException {
-        //TODO
+        if (!isBroken()) {
+            throw new CannotFixException(this, CannotFixException.Reason.IS_NOT_BROKEN);
+        } else if (!resourceStorage.hasEnoughResource("clay", 25 * (timesFixed + 1))
+                || !resourceStorage.hasEnoughResource("freezing powder", 100 * (timesFixed + 1))) {
+            throw new CannotFixException(this, CannotFixException.Reason.NOT_ENOUGH_RESOURCES);
+        } else if (timesFixed >= 10) {
+            throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
+        } else {
+//            orbsMadeByMagicOven = 0;
+            resourceStorage.takeResource("clay", 25 * (timesFixed + 1));
+            resourceStorage.takeResource("freezing powder", 100 * (timesFixed + 1));
+            timesFixed++;
+        }
     }
 
     @Override
     public int getTimesFixed() {
-        //TODO
-        return 0;
+        return timesFixed;
     }
 }
