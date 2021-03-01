@@ -79,7 +79,7 @@ public class Oven implements Comparable<Oven> {
         if (!this.isBroken() && o.isBroken()) {
             return 1;
         }
-        if (this.isBroken() && (o.isBroken() || !this.isBroken()) && !o.isBroken()
+        if ((this.isBroken() && (o.isBroken())) || (!this.isBroken() && !o.isBroken())
                 && !(this instanceof InfinityMagicOven) && !(o instanceof InfinityMagicOven)) {
             if (this instanceof SpaceOven) {
                 return 1;

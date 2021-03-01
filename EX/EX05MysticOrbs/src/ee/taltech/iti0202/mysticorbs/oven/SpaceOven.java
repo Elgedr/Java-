@@ -28,7 +28,6 @@ public class SpaceOven extends Oven implements Fixable {
         }
         return this.orbsMadeBySpaceOven >= TWENTY_FIVE;
     }
-
     @Override
     public Optional<Orb> craftOrb() {
         if (!isBroken() && resourceStorage.hasEnoughResource("meteorite stone", 1)
