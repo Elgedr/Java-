@@ -61,7 +61,7 @@ public class OrbFactory {
                 }
             }
         }
-        return getAndClearProducedOrbsList().size();
+        return orbs.size();
     }
 
     /**
@@ -81,7 +81,7 @@ public class OrbFactory {
                     }
                 }
             }
-            res += getAndClearProducedOrbsList().size();
+            res += orbs.size();
         }
         return res;
     }
