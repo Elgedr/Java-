@@ -5,12 +5,10 @@ import ee.taltech.iti0202.mysticorbs.orb.MagicOrb;
 import ee.taltech.iti0202.mysticorbs.orb.Orb;
 import ee.taltech.iti0202.mysticorbs.storage.ResourceStorage;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 public class MagicOven extends Oven implements Fixable {
-    public List<Orb> orbsMadeByMagicOven = new ArrayList<>();
+    public int orbsMadeByMagicOven = 0;
     private int timesFixed = 0;
 
 
@@ -24,7 +22,7 @@ public class MagicOven extends Oven implements Fixable {
 
     @Override
     public boolean isBroken() {
-        return orbsMadeByMagicOven.size() % 5 == 0;
+        return orbsMadeByMagicOven % 5 == 0;
     }
 
     @Override
@@ -32,9 +30,11 @@ public class MagicOven extends Oven implements Fixable {
         if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
                 && resourceStorage.hasEnoughResource("dust", 3)) {
             Orb newObject;
-            if ((orbsMadeByMagicOven.size() + 1) % 2 == 0) {
+            if (orbsMadeByMagicOven + 1 % 2 == 0 && (timesFixed == 0 || timesFixed % 2 == 0)) {
                 newObject = new MagicOrb(this.name);
-            } else {
+            } else if (orbsMadeByMagicOven + 1 % 2 != 0 && timesFixed % 2 != 0){
+                newObject = new MagicOrb(this.name);
+            }else {
                 newObject = new Orb(this.name);
             }
             newObject.charge("gold", 1);
@@ -42,7 +42,7 @@ public class MagicOven extends Oven implements Fixable {
             resourceStorage.takeResource("gold", 1);
             resourceStorage.takeResource("dust", 3);
             allOrbs.add(newObject);
-            orbsMadeByMagicOven.add(newObject);
+            orbsMadeByMagicOven++;
             return Optional.of(newObject);
         }
         return Optional.empty();
@@ -58,7 +58,7 @@ public class MagicOven extends Oven implements Fixable {
         } else if (timesFixed >= 10) {
             throw new CannotFixException(this, CannotFixException.Reason.FIXED_MAXIMUM_TIMES);
         } else {
-//            orbsMadeByMagicOven = 0;
+            orbsMadeByMagicOven = 0;
             resourceStorage.takeResource("clay", 25 * (timesFixed + 1));
             resourceStorage.takeResource("freezing powder", 100 * (timesFixed + 1));
             timesFixed++;
