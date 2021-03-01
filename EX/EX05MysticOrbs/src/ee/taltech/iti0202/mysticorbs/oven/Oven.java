@@ -94,9 +94,9 @@ public class Oven implements Comparable<Oven> {
                 && ((MagicOven) this).orbsMadeByMagicOven != ((MagicOven) o).orbsMadeByMagicOven
                 && !(this instanceof InfinityMagicOven || o instanceof InfinityMagicOven)) {
             if (((MagicOven) this).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) this).orbsMadeByMagicOven + 1 == 4) {
-                return -1;
-            } else if (((MagicOven) o).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) o).orbsMadeByMagicOven + 1 == 4) {
                 return 1;
+            } else if (((MagicOven) o).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) o).orbsMadeByMagicOven + 1 == 4) {
+                return -1;
             }
         }
         if (this instanceof MagicOven && o instanceof InfinityMagicOven && ((MagicOven) this).orbsMadeByMagicOven
