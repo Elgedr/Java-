@@ -89,4 +89,15 @@ public class OrbFactory {
         return orbs.size();
     }
 
+    public void getOvensThatCannotBeFixed(){
+    }
+
+    public void getRidOfOvensThatCannotBeFixed(){
+
+    }
+
+    public void optimizeOvensOrder(){
+
+    }
+
 }
