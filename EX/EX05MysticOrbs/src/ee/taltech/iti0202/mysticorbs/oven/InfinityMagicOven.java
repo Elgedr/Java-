@@ -39,4 +39,9 @@ public class InfinityMagicOven extends MagicOven {
         }
         return Optional.empty();
     }
+
+    @Override
+    public int getCreatedOrbsAmount() {
+        return orbsMadeByInfinityMagicOven;
+    }
 }

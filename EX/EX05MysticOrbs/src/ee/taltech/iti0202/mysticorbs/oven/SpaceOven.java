@@ -10,7 +10,7 @@ import java.util.Optional;
 public class SpaceOven extends Oven implements Fixable {
     public static final int TWENTY_FIVE = 25;
     public static final int FIFTEEN = 15;
-    private int orbsMadeBySpaceOven = 0;
+    public int orbsMadeBySpaceOven = 0;
     private int timesFixed = 0;
 
     /**
@@ -73,6 +73,11 @@ public class SpaceOven extends Oven implements Fixable {
             orbsMadeBySpaceOven = 0;
 
         }
+    }
+
+    @Override
+    public int getCreatedOrbsAmount() {
+        return orbsMadeBySpaceOven;
     }
 
 

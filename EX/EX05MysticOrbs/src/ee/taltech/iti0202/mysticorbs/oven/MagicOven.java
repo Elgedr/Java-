@@ -69,4 +69,9 @@ public class MagicOven extends Oven implements Fixable {
     public int getTimesFixed() {
         return timesFixed;
     }
+
+    @Override
+    public int getCreatedOrbsAmount() {
+        return orbsMadeByMagicOven;
+    }
 }

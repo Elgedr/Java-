@@ -77,9 +77,12 @@ public class Oven implements Comparable<Oven> {
     public int compareTo(Oven o) {
         if (this.isBroken() && !o.isBroken()) {
             return -1;
-        } else if (!this.isBroken() && o.isBroken()) {
+        }
+        if (!this.isBroken() && o.isBroken()) {
             return 1;
-        } else if (this.isBroken() && o.isBroken() || !this.isBroken() && !o.isBroken()) {
+        }
+        if (this.isBroken() && (o.isBroken() || !this.isBroken()) && !o.isBroken()
+                && !(this instanceof InfinityMagicOven) && !(o instanceof InfinityMagicOven)) {
             if (this instanceof SpaceOven) {
                 return 1;
             } else if (o instanceof SpaceOven) {
@@ -89,24 +92,46 @@ public class Oven implements Comparable<Oven> {
             } else if (o instanceof MagicOven) {
                 return -1;
             }
-        } else if (this instanceof MagicOven && o instanceof MagicOven) {
+        }
+        if (this instanceof MagicOven && o instanceof MagicOven
+                && ((MagicOven) this).orbsMadeByMagicOven != ((MagicOven) o).orbsMadeByMagicOven
+                && !(this instanceof InfinityMagicOven || o instanceof InfinityMagicOven)) {
             if (((MagicOven) this).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) this).orbsMadeByMagicOven + 1 == 4) {
                 return 1;
             } else if (((MagicOven) o).orbsMadeByMagicOven + 1 == 2 || ((MagicOven) o).orbsMadeByMagicOven + 1 == 4) {
                 return -1;
             }
-        } else if (this instanceof MagicOven && o instanceof InfinityMagicOven && ((MagicOven) this).orbsMadeByMagicOven == ((InfinityMagicOven) o).orbsMadeByInfinityMagicOven) {
+        }
+        if (this instanceof MagicOven && o instanceof InfinityMagicOven && ((MagicOven) this).orbsMadeByMagicOven
+                == ((InfinityMagicOven) o).orbsMadeByInfinityMagicOven) {
             return -1;
-        } else if (this instanceof InfinityMagicOven && o instanceof MagicOven && ((MagicOven) this).orbsMadeByMagicOven == ((InfinityMagicOven) o).orbsMadeByInfinityMagicOven){
+        }
+        if (this instanceof InfinityMagicOven && o instanceof MagicOven && ((MagicOven) this).orbsMadeByMagicOven
+                == ((InfinityMagicOven) o).orbsMadeByInfinityMagicOven) {
             return 1;
-        } else if (this.name.length() > o.name.length()){
+        }
+        if (this.getCreatedOrbsAmount() > o.getCreatedOrbsAmount()) {
+            return -1;
+        }
+        if (this.getCreatedOrbsAmount() < o.getCreatedOrbsAmount()) {
             return 1;
-        } else return -1;
+        }
+        if (this.name.length() > o.name.length()) {
+            return 1;
+        }
+        if (this.name.length() < o.name.length()) {
+            return -1;
+        }
         return 0;
     }
 
 
     public void fix() throws CannotFixException {
+    }
+
+
+    public static void main(String[] args) {
+
     }
 
 }
