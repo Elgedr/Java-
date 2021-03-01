@@ -81,7 +81,7 @@ public class OrbFactory {
                 for (Oven oven : ovens) {
                     Optional<Orb> orb = oven.craftOrb();
                     if (orb.isPresent()) {
-                        orbs.add(oven.craftOrb().get());
+                        orbs.add(orb.get());
                     }
                 }
             }
