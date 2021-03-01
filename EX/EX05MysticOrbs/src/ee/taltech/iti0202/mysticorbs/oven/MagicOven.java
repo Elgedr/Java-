@@ -33,7 +33,7 @@ public class MagicOven extends Oven implements Fixable {
         if (!isBroken() && resourceStorage.hasEnoughResource("gold", 1)
                 && resourceStorage.hasEnoughResource("dust", 3)) {
             Orb newObject;
-            if (orbsMadeByMagicOven + 1 == 2 || orbsMadeByMagicOven + 1 == 4) {
+            if (orbsMadeByMagicOven + 1 % 2 == 0) {
                 newObject = new MagicOrb(this.name);
             } else {
                 newObject = new Orb(this.name);
