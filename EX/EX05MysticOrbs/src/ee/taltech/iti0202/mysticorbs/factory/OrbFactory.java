@@ -18,7 +18,6 @@ public class OrbFactory {
     public LinkedList<Orb> orbs = new LinkedList<>();
 
     /**
-     *
      * @param resourceStorage .
      */
     public OrbFactory(ResourceStorage resourceStorage) {
@@ -26,7 +25,6 @@ public class OrbFactory {
     }
 
     /**
-     *
      * @param oven .
      */
     public void addOven(Oven oven) {
@@ -36,7 +34,6 @@ public class OrbFactory {
     }
 
     /**
-     *
      * @return .
      */
     public List<Oven> getOvens() {
@@ -44,7 +41,6 @@ public class OrbFactory {
     }
 
     /**
-     *
      * @return .
      */
     public List<Orb> getAndClearProducedOrbsList() {
@@ -54,7 +50,6 @@ public class OrbFactory {
     }
 
     /**
-     *
      * @return .
      */
     public int produceOrbs() {
@@ -66,11 +61,10 @@ public class OrbFactory {
                 }
             }
         }
-        return orbs.size();
+        return getAndClearProducedOrbsList().size();
     }
 
     /**
-     *
      * @param cycles .
      * @return .
      */
@@ -79,16 +73,15 @@ public class OrbFactory {
         for (int i = 0; i < cycles; i++) {
             if (ovens.size() > 0) {
                 for (Oven oven : ovens) {
-                    if (!oven.isBroken()){
+                    if (!oven.isBroken()) {
                         Optional<Orb> orb = oven.craftOrb();
                         if (orb.isPresent()) {
                             orbs.add(orb.get());
-                            oven.getCreatedOrbsAmount();
-                    }
+                        }
                     }
                 }
             }
-            res += orbs.size();
+            res += getAndClearProducedOrbsList().size();
         }
         return res;
     }
