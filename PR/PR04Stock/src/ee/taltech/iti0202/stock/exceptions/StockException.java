@@ -7,6 +7,8 @@ package ee.taltech.iti0202.stock.exceptions;
  */
 public class StockException extends Exception {
 
+    private Reason reason;
+
     /**
      * Different reasons for exception.
      *
@@ -19,7 +21,6 @@ public class StockException extends Exception {
         STOCK_ALREADY_CONTAINS_PRODUCT
     }
 
-    private Reason reason;
 
     /**
      * Constructor with the reason.
