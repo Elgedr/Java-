@@ -20,7 +20,7 @@ public class AnimalShelter {
      * and return whatever you have by that point.
      *
      * @param animalType Type.
-     * @param color Color used when filtering.
+     * @param color Color used when filteering.
      * @param count Maximum number of result to return.
      * @return Maximum {count} number of animals with the given type and color.
      */
