@@ -38,7 +38,7 @@ public class AnimalShelter {
                 return finalRes;
             }
             for (Animal animal: returnedFromProvider){
-                if (animal.getColor().equals(color) && !finalRes.contains(animal)){
+                if (animal.getColor().equals(color) && !finalRes.contains(animal) && ((finalRes.size() +1) <= count)){
                     finalRes.add(animal);
                 }
             }
