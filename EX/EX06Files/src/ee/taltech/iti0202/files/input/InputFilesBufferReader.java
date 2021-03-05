@@ -13,7 +13,7 @@ public class InputFilesBufferReader implements InputFilesReader {
     @Override
     public List<String> readTextFromFile(String filename) {
         List<String> result = new ArrayList<>();
-        Path path = Paths.get("ee/taltech/iti0202/files/output/morse.txt");
+        Path path = Paths.get("morse.txt");
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             while (true) {
                 String line = reader.readLine();

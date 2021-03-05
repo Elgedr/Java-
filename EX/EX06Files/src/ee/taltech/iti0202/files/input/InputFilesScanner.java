@@ -12,7 +12,7 @@ public class InputFilesScanner implements InputFilesReader {
     @Override
     public List<String> readTextFromFile(String filename) {
         List<String> result = new ArrayList<>();
-        Path path = Paths.get("ee/taltech/iti0202/files/output/morse.txt");
+        Path path = Paths.get("morse.txt");
         try (Scanner scanner = new Scanner(path)) {
             while (scanner.hasNext()) {
                 result.add(scanner.next());
@@ -21,5 +21,9 @@ public class InputFilesScanner implements InputFilesReader {
             throw new FileReaderException("No such file", e);
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(System.getProperty("user.dir"));
     }
 }
