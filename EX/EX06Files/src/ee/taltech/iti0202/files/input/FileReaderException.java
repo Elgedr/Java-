@@ -5,7 +5,6 @@ public class FileReaderException extends RuntimeException{
     private Throwable reason;
 
     public FileReaderException(String message, Throwable reason) {
-        this.message = message;
-        this.reason = reason;
+        super(message, reason);
     }
 }
