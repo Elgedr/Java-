@@ -10,13 +10,19 @@ import java.util.List;
 
 public class OutputFilesWriter {
 
+    /**
+     *
+     * @param lines .
+     * @param filename .
+     * @return .
+     */
     public boolean writeLinesToFile(List<String> lines, String filename) {
         Path path = Paths.get(filename);
         boolean fileExists = Files.exists(path);
 
         if (fileExists) {
             try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
-                for (String str: lines){
+                for (String str : lines) {
                     writer.write(str + "\n");
                 }
             } catch (IOException e) {

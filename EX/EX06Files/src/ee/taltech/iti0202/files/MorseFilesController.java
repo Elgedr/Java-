@@ -44,7 +44,8 @@ public class MorseFilesController {
 
         OutputFilesWriter writer = new OutputFilesWriter();
         List<String> inputt = new ArrayList<>(Arrays.asList("hello", "gg"));
-        System.out.println(writer.writeLinesToFile(inputt,"output.txt")); //true
+        System.out.println(writer.writeLinesToFile(inputt, "output.txt")); //true
         //This should also create a new file/ write in an existing file
 //    }
-}}
+    }
+}

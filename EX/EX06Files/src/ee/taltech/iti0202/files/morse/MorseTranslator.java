@@ -12,6 +12,11 @@ public class MorseTranslator {
     public List<String> translatedToMorse = new ArrayList<>();
     public List<String> translatedFromMorse = new ArrayList<>();
 
+    /**
+     *
+     * @param lines .
+     * @return .
+     */
     public Map<String, String> addMorseCodes(List<String> lines) {
         for (String translation : lines) {
             String[] splitted = translation.split(" ");
@@ -20,6 +25,11 @@ public class MorseTranslator {
         return translations;
     }
 
+    /**
+     *
+     * @param lines .
+     * @return .
+     */
     public List<String> translateLinesToMorse(List<String> lines) {
         for (String str : lines) {
             translateLineToMorse(str);
@@ -28,6 +38,11 @@ public class MorseTranslator {
         return translatedToMorse;
     }
 
+    /**
+     *
+     * @param lines .
+     * @return .
+     */
     public List<String> translateLinesFromMorse(List<String> lines) {
         for (String line : lines) {
             translateLineFromMorse(line);
@@ -36,6 +51,11 @@ public class MorseTranslator {
         return translatedFromMorse;
     }
 
+    /**
+     *
+     * @param line .
+     * @return .
+     */
     private String translateLineToMorse(String line) {
         StringBuilder translatedToMorseString = new StringBuilder();
         for (int i = 0; i < line.length(); i++) {
@@ -52,6 +72,11 @@ public class MorseTranslator {
 
     }
 
+    /**
+     *
+     * @param line .
+     * @return .
+     */
     private String translateLineFromMorse(String line) {
         String translatedFromMorseString = "";
         String[] splittedWords = line.split("\t");

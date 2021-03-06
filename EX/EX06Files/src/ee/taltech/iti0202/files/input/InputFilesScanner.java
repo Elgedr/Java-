@@ -22,5 +22,4 @@ public class InputFilesScanner implements InputFilesReader {
         }
         return result;
     }
-
 }
