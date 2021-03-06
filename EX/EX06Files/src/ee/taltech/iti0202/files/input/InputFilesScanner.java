@@ -14,7 +14,7 @@ public class InputFilesScanner implements InputFilesReader {
         Path path = Paths.get(filename);
         List<String> result = new ArrayList<>();
         try (Scanner scanner = new Scanner(path)) {
-            while (scanner.hasNext()) {
+            while (scanner.hasNextLine()) {
                 result.add(scanner.nextLine());
             }
         } catch (IOException e) {

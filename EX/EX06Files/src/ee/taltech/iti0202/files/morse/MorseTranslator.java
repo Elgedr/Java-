@@ -60,11 +60,10 @@ public class MorseTranslator {
         for (int i = 0; i < line.length(); i++) {
             Character charAtIndex = line.charAt(i);
             String charToString = String.valueOf(charAtIndex).toLowerCase();
-            if (charToString.equals(" ")) {
-                translatedToMorseString.append("\t");
-            } else {
+            if (!charToString.equals(" ")) {
                 translatedToMorseString.append(translations.get(charToString)).append(" ");
             }
+            translatedToMorseString.append("\t");
         }
         return translatedToMorseString.substring(0, translatedToMorseString.length() - 1);
 
