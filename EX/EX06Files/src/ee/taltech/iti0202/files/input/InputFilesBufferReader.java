@@ -12,13 +12,13 @@ public class InputFilesBufferReader implements InputFilesReader {
 
     @Override
     public List<String> readTextFromFile(String filename) {
+        Path path = Paths.get(filename);
         List<String> result = new ArrayList<>();
-        Path path = Paths.get("morse.txt");
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             while (true) {
                 String line = reader.readLine();
-                result.add(line);
                 if (line == null) break;
+                result.add(line);
             }
         } catch (IOException e) {
             throw new FileReaderException("No such file", e);

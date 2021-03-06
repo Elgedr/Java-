@@ -11,15 +11,14 @@ public class InputFilesLines implements InputFilesReader {
 
     @Override
     public List<String> readTextFromFile(String filename) {
-        List<String> res = new ArrayList<>();
-        Path path = Paths.get("morse.txt");
+        Path path = Paths.get(filename);
+        List<String> lines = new ArrayList<>();
         try {
-            List<String> lines = Files.readAllLines(path);
-            res = lines;
+            lines = Files.readAllLines(path);
 
         } catch (IOException e) {
             throw new FileReaderException("No such file", e);
         }
-        return res;
+        return lines;
     }
 }

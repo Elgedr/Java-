@@ -11,11 +11,11 @@ public class InputFilesScanner implements InputFilesReader {
 
     @Override
     public List<String> readTextFromFile(String filename) {
+        Path path = Paths.get(filename);
         List<String> result = new ArrayList<>();
-        Path path = Paths.get("morse.txt");
         try (Scanner scanner = new Scanner(path)) {
             while (scanner.hasNext()) {
-                result.add(scanner.next());
+                result.add(scanner.nextLine());
             }
         } catch (IOException e) {
             throw new FileReaderException("No such file", e);

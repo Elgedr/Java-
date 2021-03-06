@@ -1,27 +1,71 @@
 package ee.taltech.iti0202.files.morse;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 public class MorseTranslator {
+    public Map<String, String> translations = new HashMap<>();
+    public List<String> translatedToMorse = new ArrayList<>();
+    public List<String> translatedFromMorse = new ArrayList<>();
 
     public Map<String, String> addMorseCodes(List<String> lines) {
-        return null;
+        for (String translation : lines) {
+            String[] splitted = translation.split(" ");
+            translations.put(splitted[0].toLowerCase(), splitted[1]);
+        }
+        return translations;
     }
 
     public List<String> translateLinesToMorse(List<String> lines) {
-        return null;
+        for (String str : lines) {
+            translateLineToMorse(str);
+            translatedToMorse.add(translateLineToMorse(str));
+        }
+        return translatedToMorse;
     }
 
     public List<String> translateLinesFromMorse(List<String> lines) {
-        return null;
+        for (String line : lines) {
+            translateLineFromMorse(line);
+            translatedFromMorse.add(translateLineFromMorse(line));
+        }
+        return translatedFromMorse;
     }
 
     private String translateLineToMorse(String line) {
-        return null;
+        StringBuilder translatedToMorseString = new StringBuilder();
+        for (int i = 0; i < line.length(); i++) {
+            Character charAtIndex = line.charAt(i);
+            String charToString = String.valueOf(charAtIndex).toLowerCase();
+            if (charToString.equals(" ")) {
+                translatedToMorseString.append("\t");
+            } else {
+                translatedToMorseString.append(translations.get(charToString)).append(" ");
+            }
+        }
+        translatedToMorseString.append("\n");
+        return translatedToMorseString.toString();
+
     }
 
     private String translateLineFromMorse(String line) {
-        return null;
+        String translatedFromMorseString = "";
+        String[] splittedWords = line.split("\t");
+        for (String morseWord : splittedWords) {
+            String[] splittedLetter = morseWord.split(" ");
+            for (String letter : splittedLetter) {
+                for (String key : translations.keySet()) {
+                    if (translations.get(key).equals(letter)) {
+                        translatedFromMorseString += key;
+                    }
+                }
+            }
+            translatedFromMorseString += " ";
+        }
+        return translatedFromMorseString;
     }
 }
