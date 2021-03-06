@@ -15,7 +15,7 @@ public class InputFilesScanner implements InputFilesReader {
         List<String> result = new ArrayList<>();
         try (Scanner scanner = new Scanner(path)) {
             while (scanner.hasNext()) {
-                result.add(scanner.nextLine());
+                result.add(scanner.next());
             }
         } catch (IOException e) {
             throw new FileReaderException("No such file", e);
