@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.files.output;
 
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,7 +22,7 @@ public class OutputFilesWriter {
         boolean fileExists = Files.exists(path);
 
         if (fileExists) {
-            try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.APPEND)) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
                 for (String str : lines) {
                     writer.write(str + "\n");
                 }
