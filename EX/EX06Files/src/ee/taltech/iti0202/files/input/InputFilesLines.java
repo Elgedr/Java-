@@ -17,7 +17,7 @@ public class InputFilesLines implements InputFilesReader {
             lines = Files.readAllLines(path);
 
         } catch (IOException e) {
-            throw new FileReaderException("No such file", e);
+//            throw new FileReaderException("No such file", e);
         }
         return lines;
     }
