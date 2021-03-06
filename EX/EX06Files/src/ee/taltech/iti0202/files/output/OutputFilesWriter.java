@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class OutputFilesWriter {
@@ -19,9 +18,7 @@ public class OutputFilesWriter {
      */
     public boolean writeLinesToFile(List<String> lines, String filename) {
         Path path = Paths.get(filename);
-        boolean fileExists = Files.exists(path);
 
-        if (fileExists) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
                 for (String str : lines) {
                     writer.write(str + "\n");
@@ -31,7 +28,6 @@ public class OutputFilesWriter {
                 e.printStackTrace();
                 return false;
             }
-        }
         return true;
     }
 }
