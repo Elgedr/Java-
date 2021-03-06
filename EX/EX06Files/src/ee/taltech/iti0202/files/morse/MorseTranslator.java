@@ -34,6 +34,7 @@ public class MorseTranslator {
             translateLineToMorse(str);
             translatedToMorse.add(translateLineToMorse(str));
         }
+        translatedToMorse.remove(translatedToMorse.size() - 1);
         return translatedToMorse;
     }
 
@@ -47,6 +48,7 @@ public class MorseTranslator {
             translateLineFromMorse(line);
             translatedFromMorse.add(translateLineFromMorse(line));
         }
+        translatedFromMorse.remove(translatedFromMorse.size() - 1);
         return translatedFromMorse;
     }
 
@@ -62,8 +64,6 @@ public class MorseTranslator {
             String charToString = String.valueOf(charAtIndex).toLowerCase();
             if (charToString.equals(" ")) {
                 translatedToMorseString.append("\t");
-            } else if (i == line.length() - 1){
-                translatedToMorseString.append(translations.get(charToString));
             } else {
                 translatedToMorseString.append(translations.get(charToString)).append(" ");
             }
