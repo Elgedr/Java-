@@ -56,14 +56,16 @@ public class MorseTranslator {
      * @return .
      */
     private String translateLineToMorse(String line) {
-        StringBuilder translatedToMorseString = new StringBuilder();
+        String translatedToMorseString = "";
         for (int i = 0; i < line.length(); i++) {
             Character charAtIndex = line.charAt(i);
             String charToString = String.valueOf(charAtIndex).toLowerCase();
             if (!charToString.equals(" ")) {
-                translatedToMorseString.append(translations.get(charToString)).append(" ");
+                translatedToMorseString += translations.get(charToString) + " ";
+            } else {
+                translatedToMorseString = translatedToMorseString.substring(0, translatedToMorseString.length() - 1);
+                translatedToMorseString += "\t";
             }
-            translatedToMorseString.append("\t");
         }
         return translatedToMorseString.substring(0, translatedToMorseString.length() - 1);
 
