@@ -62,8 +62,10 @@ public class MorseTranslator {
             String charToString = String.valueOf(charAtIndex).toLowerCase();
             if (charToString.equals(" ")) {
                 translatedToMorseString.append("\t");
-            } else {
+            } else if (i == line.length() - 1){
                 translatedToMorseString.append(translations.get(charToString));
+            } else {
+                translatedToMorseString.append(translations.get(charToString)).append(" ");
             }
         }
         translatedToMorseString.append("\n");
