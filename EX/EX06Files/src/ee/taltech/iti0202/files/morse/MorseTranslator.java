@@ -66,8 +66,7 @@ public class MorseTranslator {
                 translatedToMorseString.append(translations.get(charToString)).append(" ");
             }
         }
-        translatedToMorseString.append("\n");
-        return translatedToMorseString.toString();
+        return translatedToMorseString.substring(0, translatedToMorseString.length() - 1);
 
     }
 
