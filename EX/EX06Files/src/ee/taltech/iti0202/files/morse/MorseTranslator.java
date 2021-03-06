@@ -34,7 +34,6 @@ public class MorseTranslator {
             translateLineToMorse(str);
             translatedToMorse.add(translateLineToMorse(str));
         }
-        translatedToMorse.remove(translatedToMorse.size() - 1);
         return translatedToMorse;
     }
 
@@ -48,7 +47,6 @@ public class MorseTranslator {
             translateLineFromMorse(line);
             translatedFromMorse.add(translateLineFromMorse(line));
         }
-        translatedFromMorse.remove(translatedFromMorse.size() - 1);
         return translatedFromMorse;
     }
 
