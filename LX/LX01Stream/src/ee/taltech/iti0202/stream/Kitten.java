@@ -8,6 +8,12 @@ public class Kitten {
 
     public enum Gender {MALE, FEMALE}
 
+    /**
+     *
+     * @param name .
+     * @param gender .
+     * @param age .
+     */
     public Kitten(String name, Gender gender, int age) {
         this.name = name;
         this.gender = gender;

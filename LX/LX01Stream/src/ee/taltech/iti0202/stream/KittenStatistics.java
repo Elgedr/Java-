@@ -15,7 +15,6 @@ public class KittenStatistics {
     }
 
     /**
-     *
      * @return .
      */
     public OptionalDouble findKittensAverageAge() {
@@ -23,7 +22,6 @@ public class KittenStatistics {
     }
 
     /**
-     *
      * @return .
      */
     public Optional<Kitten> findOldestKitten() {
@@ -31,16 +29,15 @@ public class KittenStatistics {
     }
 
     /**
-     *
      * @return .
      */
     public List<Kitten> findYoungestKittens() {
         Kitten kitten_youngest = kittens.stream().min(Comparator.comparingInt(Kitten::getAge)).get();
-        return kittens.stream().filter(kitten -> kitten.getAge() == kitten_youngest.getAge()).collect(Collectors.toList());
+        return kittens.stream().filter(kitten -> kitten.getAge() == kitten_youngest.getAge())
+                .collect(Collectors.toList());
     }
 
     /**
-     *
      * @param gender .
      * @return .
      */
@@ -49,26 +46,25 @@ public class KittenStatistics {
     }
 
     /**
-     *
      * @param minAge .
      * @param maxAge .
      * @return .
      */
     public List<Kitten> findKittensBetweenAges(int minAge, int maxAge) {
-        return kittens.stream().filter(kitten -> kitten.getAge() >= minAge && kitten.getAge() <= maxAge).collect(Collectors.toList());
+        return kittens.stream().filter(kitten -> kitten.getAge() >= minAge && kitten.getAge() <= maxAge)
+                .collect(Collectors.toList());
     }
 
     /**
-     *
      * @param givenName .
      * @return .
      */
     public Optional<Kitten> findFirstKittenWithGivenName(String givenName) {
-        return kittens.stream().filter(kitten -> kitten.getName().toLowerCase().equals(givenName.toLowerCase())).findFirst();
+        return kittens.stream().filter(kitten -> kitten.getName().toLowerCase().equals(givenName.toLowerCase()))
+                .findFirst();
     }
 
     /**
-     *
      * @return .
      */
     public List<Kitten> kittensSortedByAgeYoungerFirst() {
@@ -76,7 +72,6 @@ public class KittenStatistics {
     }
 
     /**
-     *
      * @return .
      */
     public List<Kitten> kittensSortedByAgeOlderFirst() {
