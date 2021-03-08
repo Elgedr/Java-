@@ -32,8 +32,8 @@ public class KittenStatistics {
      * @return .
      */
     public List<Kitten> findYoungestKittens() {
-        Kitten kitten_youngest = kittens.stream().min(Comparator.comparingInt(Kitten::getAge)).get();
-        return kittens.stream().filter(kitten -> kitten.getAge() == kitten_youngest.getAge())
+        Kitten kittenYoungest = kittens.stream().min(Comparator.comparingInt(Kitten::getAge)).get();
+        return kittens.stream().filter(kitten -> kitten.getAge() == kittenYoungest.getAge())
                 .collect(Collectors.toList());
     }
 
